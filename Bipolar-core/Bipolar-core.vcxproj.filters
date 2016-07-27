@@ -18,5 +18,13 @@
     <ClInclude Include="src\Bipolar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\bplr\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\bplr\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
