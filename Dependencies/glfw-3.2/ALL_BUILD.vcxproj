@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{0952F72F-FCB5-3549-99AE-3838DC0AB803}</ProjectGUID>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>glfw</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HD:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2 -BC:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2 --check-stamp-file C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2/CMakeLists.txt;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystem.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\GNU-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\MIPSpro-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeRCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompilerABI.c;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMake\modules\FindVulkan.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindDoxygen.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw3Config.cmake.in;C:\Program Files\CMake\share\cmake-3.6\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw_config.h.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw3.pc.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\cmake_uninstall.cmake.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HD:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2 -BC:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2 --check-stamp-file C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2/CMakeLists.txt;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystem.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\GNU-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\MIPSpro-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeRCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompilerABI.c;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMake\modules\FindVulkan.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindDoxygen.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw3Config.cmake.in;C:\Program Files\CMake\share\cmake-3.6\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw_config.h.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw3.pc.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\cmake_uninstall.cmake.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HD:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2 -BC:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2 --check-stamp-file C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2/CMakeLists.txt;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystem.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\GNU-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\MIPSpro-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeRCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompilerABI.c;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMake\modules\FindVulkan.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindDoxygen.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw3Config.cmake.in;C:\Program Files\CMake\share\cmake-3.6\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw_config.h.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw3.pc.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\cmake_uninstall.cmake.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HD:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2 -BC:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2 --check-stamp-file C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:/Libraries/Documents/Programming/C++/Libraries/glfw-3.2/CMakeLists.txt;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystem.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\GNU-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\MIPSpro-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeRCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompilerABI.c;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeCCompiler.cmake.in;C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\3.6.0\CMakeCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMake\modules\FindVulkan.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindDoxygen.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.6\Modules\CMakeParseArguments.cmake;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw3Config.cmake.in;C:\Program Files\CMake\share\cmake-3.6\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw_config.h.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\src\glfw3.pc.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\cmake_uninstall.cmake.in;D:\Libraries\Documents\Programming\C++\Libraries\glfw-3.2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\Christopher\git\Bipolar\Bipolar\Dependencies\glfw-3.2\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/ZERO_CHECK.vcxproj">
+      <Project>85FEC405-093E-376D-AB93-1ECB9161B123</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/examples/boing.vcxproj">
+      <Project>20CFB17C-1022-35DF-849C-CD8492C13559</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/clipboard.vcxproj">
+      <Project>883E7541-867A-3641-B771-1E09A3C21BAA</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/cursor.vcxproj">
+      <Project>4EE956F0-D880-3284-B4D6-38032CE7DC24</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/empty.vcxproj">
+      <Project>D5EAED08-D934-3D33-B0A3-8CE65D4E9F8D</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/events.vcxproj">
+      <Project>CE64B83E-DFEA-31C9-8026-2AC26620EED9</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/gamma.vcxproj">
+      <Project>B85C86CC-C5BA-346B-8C38-79F18C0A3D46</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/examples/gears.vcxproj">
+      <Project>058736D5-D98F-3C4F-8FDD-4FDD30B3BB07</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/src/glfw.vcxproj">
+      <Project>8A76ACC4-3258-30CC-A31E-91CF58396126</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/glfwinfo.vcxproj">
+      <Project>97C7A63E-B8AD-3E59-8BF1-78CAF13737C6</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/examples/heightmap.vcxproj">
+      <Project>205A09C6-C560-30D3-AAA7-80E64A0B2BDF</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/icon.vcxproj">
+      <Project>78F414FF-D6F5-3355-B194-A34B0BDCB63F</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/iconify.vcxproj">
+      <Project>56677B09-89FA-3FA0-9A75-51A86803403E</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/joysticks.vcxproj">
+      <Project>5A0BB299-58F7-3384-B704-65E3AFFF1BD9</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/monitors.vcxproj">
+      <Project>A80C5FC8-A947-3360-9B5D-2C6E58AA28EC</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/msaa.vcxproj">
+      <Project>56DC8C02-9168-371B-A816-671D2D02B339</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/examples/particles.vcxproj">
+      <Project>CA51A40E-6336-346D-8A1A-5C9944BA7E91</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/reopen.vcxproj">
+      <Project>9562E166-2441-389C-B694-7840D6F1B77C</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/sharing.vcxproj">
+      <Project>893CF0B2-D01E-3FED-97F8-4C273C0276E4</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/examples/simple.vcxproj">
+      <Project>30CBD50A-6BC5-3A49-8A19-8CE37F3B1D75</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/examples/splitview.vcxproj">
+      <Project>778A1BB6-2792-363F-8A6F-798FB91C9864</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/tearing.vcxproj">
+      <Project>D3B654CD-BCDA-3C38-9BDB-AB2E6DD9EDBC</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/threads.vcxproj">
+      <Project>C4FCFB72-A18B-3191-8E8D-B4FE7C81554A</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/timeout.vcxproj">
+      <Project>CD17F742-97B1-3CFD-9D0C-E08F99E5605B</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/title.vcxproj">
+      <Project>02F5E80E-262E-3104-80E9-E087230FD52D</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/examples/wave.vcxproj">
+      <Project>D26C169A-6B68-3097-ABC3-1679D9D75A9F</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/Christopher/git/Bipolar/Bipolar/Dependencies/glfw-3.2/tests/windows.vcxproj">
+      <Project>2B0155D3-3FA7-3FC2-BCD7-5BC003781BEC</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
