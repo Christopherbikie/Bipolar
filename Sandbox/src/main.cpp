@@ -1,14 +1,21 @@
 #include <iostream>
 #include <string>
-#include <Bipolar.h>
+#include "Bipolar.h"
 
 int main()
 {
-	std::cout << "Hello World";
+	bplr::Bipolar engine = bplr::Bipolar();
 
-	bplr::Bipolar engine = bplr::Bipolar(static_cast<std::string>("This was passed in the constructor"));
+	if (engine.init(800, 600) != 0)
+		return -1;
 
-	system("PAUSE");
+	while (!engine.isCloseRequested())
+	{
+		engine.update();
+		engine.render();
+	}
+
+	engine.cleanUp();
 
 	return 0;
 }
