@@ -3,12 +3,12 @@
 
 namespace bplr
 {
-	window::window(std::string name, int width, int height)
+	window::window(std::string title, int width, int height)
 	{
-		m_window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
+		m_window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
 		if (m_window == nullptr)
 		{
-			std::cout << "Failed to create the window \"" + name + "\"" << std::endl;
+			std::cout << "Failed to create the window \"" + title + "\"" << std::endl;
 			glfwTerminate();
 		}
 
@@ -32,6 +32,10 @@ namespace bplr
 		this->m_bga = a;
 	}
 
+	void window::setTitle(std::string title) const
+	{
+		glfwSetWindowTitle(m_window, title.c_str());
+	}
 
 	void window::render() const
 	{

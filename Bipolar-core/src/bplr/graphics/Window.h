@@ -8,11 +8,13 @@ namespace bplr
 	class window
 	{
 	public:
-		window(std::string name, int width, int height);
+		window(std::string title, int width, int height);
 		~window();
 
-		void setBackgroundColour(float r, float g, float b, float a);
 		void render() const;
+
+		void setBackgroundColour(float r, float g, float b, float a);
+		void setTitle(std::string title) const;
 		
 		GLFWwindow* getGLFWwindow() const;
 		bool isCloseRequested() const;

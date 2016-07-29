@@ -15,8 +15,11 @@ namespace bplr
 
 		static int init();
 		static int initGlew();
+
+		void getInput();
 		void update();
 		void render() const;
+		void processCloseRequests();
 
 		bplr::window* createWindow(std::string name, int width, int height);
 		bool shouldApplicationClose() const;

@@ -49,7 +49,22 @@ namespace bplr
 		return window;
 	}
 
+	void Bipolar::getInput()
+	{
+		glfwPollEvents();
+	}
+
 	void Bipolar::update()
+	{
+	}
+
+	void Bipolar::render() const
+	{
+		for (bplr::window* window : m_windows)
+			window->render();
+	}
+
+	void Bipolar::processCloseRequests()
 	{
 		for (int i = 0; i < m_windows.size(); ++i)
 			if (m_windows[i]->isCloseRequested())
@@ -57,13 +72,6 @@ namespace bplr
 				delete m_windows[i];
 				m_windows.erase(m_windows.begin() + i);
 			}
-		glfwPollEvents();
-	}
-
-	void Bipolar::render() const
-	{
-		for (bplr::window* window : m_windows)
-			window->render();
 	}
 
 	bool Bipolar::shouldApplicationClose() const

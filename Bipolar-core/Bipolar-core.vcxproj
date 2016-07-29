@@ -124,6 +124,7 @@
     <ClInclude Include="src\Bipolar.h" />
     <ClInclude Include="src\bplr\Application.h" />
     <ClInclude Include="src\bplr\graphics\Window.h" />
+    <ClInclude Include="src\bplr\util\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\Application.cpp" />
