@@ -123,9 +123,11 @@
   <ItemGroup>
     <ClInclude Include="src\Bipolar.h" />
     <ClInclude Include="src\bplr\Application.h" />
+    <ClInclude Include="src\bplr\graphics\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\Application.cpp" />
+    <ClCompile Include="src\bplr\graphics\Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

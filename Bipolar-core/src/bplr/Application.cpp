@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "Application.h"
+#include "graphics/Window.h"
 
 namespace bplr
 {
@@ -12,58 +13,62 @@ namespace bplr
 	{
 	}
 
-	int Bipolar::init(int width, int height)
+	Bipolar::~Bipolar()
+	{
+		for (bplr::window* window : m_windows)
+			delete window;
+		glfwTerminate();
+	}
+
+	int Bipolar::init()
 	{
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-		m_window = glfwCreateWindow(width, height, "Bipolar", nullptr, nullptr);
-		if (m_window == nullptr)
-		{
-			std::cout << "Failed to create the GLFW m_window" << std::endl;
-			glfwTerminate();
-			return -1;
-		}
+		return 0;
+	}
 
-		glfwMakeContextCurrent(m_window);
-
+	int Bipolar::initGlew()
+	{
 		glewExperimental = GL_TRUE;
 		if (glewInit() != GLEW_OK)
 		{
 			std::cout << "Failed to initialise GLEW" << std::endl;
 			return -1;
 		}
-
-		glfwGetFramebufferSize(m_window, &m_width, &m_height);
-		glViewport(0, 0, m_width, m_height);
-		glEnable(GL_DEPTH_TEST);
-
 		return 0;
+	}
+
+	bplr::window* Bipolar::createWindow(std::string name, int width, int height)
+	{
+		bplr::window* window = new bplr::window(name, width, height);
+		m_windows.push_back(window);
+		return window;
 	}
 
 	void Bipolar::update()
 	{
+		for (int i = 0; i < m_windows.size(); ++i)
+			if (m_windows[i]->isCloseRequested())
+			{
+				delete m_windows[i];
+				m_windows.erase(m_windows.begin() + i);
+			}
 		glfwPollEvents();
 	}
 
-	void Bipolar::render()
+	void Bipolar::render() const
 	{
-		glClearColor(0.3f, 0.2f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		glfwSwapBuffers(m_window);
+		for (bplr::window* window : m_windows)
+			window->render();
 	}
 
-	void Bipolar::cleanUp()
+	bool Bipolar::shouldApplicationClose() const
 	{
-		glfwTerminate();
-	}
-
-	bool Bipolar::isCloseRequested() const
-	{
-		return glfwWindowShouldClose(m_window) == GL_FALSE ? false : true;
+		return m_windows.size() > 0 ? false : true;
 	}
 }
 		
