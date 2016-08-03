@@ -16,6 +16,8 @@ namespace bplr
 
 		glfwGetFramebufferSize(m_window, &m_width, &m_height);
 		glViewport(0, 0, m_width, m_height);
+
+		glfwSwapInterval(1);
 	}
 
 	window::~window()
