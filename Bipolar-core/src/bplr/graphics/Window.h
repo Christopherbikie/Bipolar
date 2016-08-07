@@ -5,24 +5,28 @@
 
 namespace bplr
 {
-	class window
+	namespace graphics
 	{
-	public:
-		window(std::string title, int width, int height);
-		~window();
+		class window
+		{
+		public:
+			window(std::string title, int width, int height);
+			~window();
 
-		void render() const;
+			void beginRender() const;
+			void swapBuffers() const;
 
-		void setBackgroundColour(float r, float g, float b, float a);
-		void setTitle(std::string title) const;
-		
-		GLFWwindow* getGLFWwindow() const;
-		bool isCloseRequested() const;
+			void setBackgroundColour(float r, float g, float b, float a);
+			void setTitle(std::string title) const;
 
-	private:
-		GLFWwindow* m_window;
-		int m_width, m_height;
-		// Background clear colours
-		float m_bgr = 0, m_bgg = 0, m_bgb = 0, m_bga = 1;
-	};
+			GLFWwindow* getGLFWwindow() const;
+			bool isCloseRequested() const;
+
+		private:
+			GLFWwindow* m_window;
+			int m_width, m_height;
+			// Background clear colours
+			float m_bgr = 0, m_bgg = 0, m_bgb = 0, m_bga = 1;
+		};
+	}
 }

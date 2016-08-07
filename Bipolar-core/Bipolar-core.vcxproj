@@ -123,12 +123,31 @@
   <ItemGroup>
     <ClInclude Include="src\Bipolar.h" />
     <ClInclude Include="src\bplr\Application.h" />
+    <ClInclude Include="src\bplr\graphics\Shader.h" />
+    <ClInclude Include="src\bplr\graphics\VAO.h" />
+    <ClInclude Include="src\bplr\graphics\VBO.h" />
     <ClInclude Include="src\bplr\graphics\Window.h" />
+    <ClInclude Include="src\bplr\math\mat4.h" />
+    <ClInclude Include="src\bplr\math\vec2.h" />
+    <ClInclude Include="src\bplr\math\vec3.h" />
+    <ClInclude Include="src\bplr\math\vec4.h" />
+    <ClInclude Include="src\bplr\util\Loader.h" />
     <ClInclude Include="src\bplr\util\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\Application.cpp" />
+    <ClCompile Include="src\bplr\graphics\Shader.cpp" />
+    <ClCompile Include="src\bplr\graphics\VBO.cpp" />
     <ClCompile Include="src\bplr\graphics\Window.cpp" />
+    <ClCompile Include="src\bplr\math\mat4.cpp" />
+    <ClCompile Include="src\bplr\math\vec2.cpp" />
+    <ClCompile Include="src\bplr\math\vec3.cpp" />
+    <ClCompile Include="src\bplr\math\vec4.cpp" />
+    <ClCompile Include="src\bplr\util\Loader.cpp" />
+    <ClCompile Include="src\bplr\graphics\VAO.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

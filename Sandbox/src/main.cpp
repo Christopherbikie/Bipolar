@@ -11,10 +11,24 @@ int main()
 	if (engine->init() != 0)
 		return -1;
 
-	bplr::window* window = engine->createWindow("Bipolar", 800, 600);;
+	bplr::graphics::window* window = engine->createWindow("Bipolar", 800, 600);;
 
 	if (engine->initGlew() != 0)
 		return -1;
+
+	GLfloat vertices[] = {
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
+		0.0f,  0.5f, 0.0f
+	};
+
+	bplr::graphics::Shader shader = bplr::graphics::Shader();
+	shader.addSource(bplr::graphics::VERTEX_SHADER, "res/vertex.vert");
+	shader.addSource(bplr::graphics::FRAGMENT_SHADER, "res/fragment.frag");
+	shader.link();
+
+	bplr::graphics::VAO vao = bplr::graphics::VAO();
+	vao.storeInBuffer(&shader, "position", 3, vertices, sizeof(vertices), bplr::graphics::STATIC_DRAW);
 
 	// Timing vars
 	double previous = bplr::time::getTime();
@@ -22,6 +36,10 @@ int main()
 	double lastSecond = previous;
 	long frames = 0;
 	long updates = 0;
+
+//	bplr::math::mat4 projection = bplr::math::mat4().orthographic(-10, 10, -10, 10, 0.01f, 1000.0f);
+//	bplr::math::vec3 coord = bplr::math::vec3(3, 3, -1);
+//	std::cout << projection * coord << std::endl;
 
 	// GAME LOOP ----------------------------------
 
@@ -47,7 +65,12 @@ int main()
 		// Render
 		float colour = sin(current * 2) / 2 + 0.5f;
 		window->setBackgroundColour(0.4f * colour, 0.2f * colour, 0.4f * colour, 1.0f);
-		engine->render();
+		window->beginRender();
+		shader.use();
+		vao.bind();
+		shader.draw(0, 3);
+		vao.unbind();
+		window->swapBuffers();
 		frames++;
 
 		// Update FPS / UPS

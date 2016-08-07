@@ -19,4 +19,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\fragment.frag" />
+    <None Include="res\vertex.vert" />
+  </ItemGroup>
 </Project>

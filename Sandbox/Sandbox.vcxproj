@@ -132,6 +132,14 @@
       <Project>{7220ac54-fcb7-40b4-bcf9-cecabdaa6001}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\fragment.frag">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="res\vertex.vert">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

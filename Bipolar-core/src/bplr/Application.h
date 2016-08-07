@@ -18,15 +18,14 @@ namespace bplr
 
 		void getInput();
 		void update();
-		void render() const;
 		void processCloseRequests();
 
-		bplr::window* createWindow(std::string name, int width, int height);
+		graphics::window* createWindow(std::string name, int width, int height);
 		bool shouldApplicationClose() const;
-		std::vector<bplr::window*> getWindows() const;
+		std::vector<graphics::window*> getWindows() const;
 
 	private:
-		std::vector<bplr::window*> m_windows;
+		std::vector<graphics::window*> m_windows;
 		GLFWwindow* m_window;
 		int m_width, m_height;
 	};
