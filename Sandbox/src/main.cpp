@@ -28,7 +28,7 @@ int main()
 	shader.link();
 
 	bplr::graphics::VAO vao = bplr::graphics::VAO();
-	vao.storeInBuffer(&shader, "position", 3, vertices, sizeof(vertices), bplr::graphics::STATIC_DRAW);
+	vao.storeInBuffer(&shader, "position", 3, /*sizeof(vertices) / sizeof(*vertices) / 3*/ 3, vertices);
 
 	// Timing vars
 	double previous = bplr::time::getTime();

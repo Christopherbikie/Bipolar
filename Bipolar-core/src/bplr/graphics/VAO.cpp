@@ -27,17 +27,22 @@ namespace bplr
 			glBindVertexArray(0);
 		}
 
-		void VAO::storeInBuffer(Shader *program, GLchar* name, GLuint size, GLfloat *data, GLint dataCount, DataUsage usage)
+		void VAO::storeInBuffer(Shader *program, GLchar *attribName, GLuint componentsPerVertex, GLint vertexCount, GLfloat *data, DataUsage usage)
 		{
-			GLint location = glGetAttribLocation(program->getLocation(), name);
+			GLint location = glGetAttribLocation(program->getLocation(), attribName);
 
 			bind();
 			
-			m_vbos[location].store(data, dataCount, usage);
-			glVertexAttribPointer(location, size, GL_FLOAT, GL_FALSE, size * sizeof(GLfloat), (GLvoid*)0);
+			m_vbos[location].store(data, vertexCount * componentsPerVertex, usage);
+			glVertexAttribPointer(location, componentsPerVertex, GL_FLOAT, GL_FALSE, componentsPerVertex * sizeof(GLfloat), (GLvoid*) 0);
 			glEnableVertexAttribArray(location);
 
 			unbind();
+		}
+
+		void VAO::storeInBuffer(Shader *program, GLchar *attribName, GLuint componentsPerVertex, GLint vertexCount, GLfloat *data)
+		{
+			storeInBuffer(program, attribName, componentsPerVertex,vertexCount , data, STATIC_DRAW);
 		}
 	}
 }

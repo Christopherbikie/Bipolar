@@ -18,7 +18,8 @@ namespace bplr
 			void bind() const;
 			static void unbind();
 
-			void storeInBuffer(Shader *program, GLchar* name, GLuint size, GLfloat *data, GLint dataCount, DataUsage usage);
+			void storeInBuffer(Shader *program, GLchar *attribName, GLuint componentsPerVertex, GLint vertexCount, GLfloat *data, DataUsage usage);
+			void storeInBuffer(Shader *program, GLchar *attribName, GLuint componentsPerVertex, GLint vertexCount, GLfloat *data);
 
 		private:
 			GLuint m_location;

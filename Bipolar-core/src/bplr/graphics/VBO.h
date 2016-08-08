@@ -20,7 +20,7 @@ namespace bplr
 			VBO(GLfloat data[], GLint dataSize, DataUsage usage);
 			~VBO();
 			
-			void store(GLfloat data[], GLint dataSize, DataUsage usage) const;
+			void store(GLfloat data[], GLint dataCount, DataUsage usage) const;
 			GLuint getLocation() const;
 
 		private:

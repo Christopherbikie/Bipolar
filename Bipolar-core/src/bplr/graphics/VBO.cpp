@@ -22,10 +22,10 @@ namespace bplr
 			glDeleteBuffers(1, &m_location);
 		}
 
-		void VBO::store(GLfloat data[], GLint dataSize, DataUsage usage) const
+		void VBO::store(GLfloat data[], GLint dataCount, DataUsage usage) const
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, m_location);
-			glBufferData(GL_ARRAY_BUFFER, dataSize, data, static_cast<GLenum>(usage));
+			glBufferData(GL_ARRAY_BUFFER, dataCount * sizeof(GLfloat), data, static_cast<GLenum>(usage));
 		}
 
 		GLuint VBO::getLocation() const
