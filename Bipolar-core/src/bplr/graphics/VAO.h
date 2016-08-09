@@ -1,7 +1,6 @@
 #pragma once
 
 #include <GL/glew.h>
-#include "VBO.h"
 #include <map>
 #include "Shader.h"
 
@@ -9,6 +8,13 @@ namespace bplr
 {
 	namespace graphics
 	{
+		enum DataUsage
+		{
+			STATIC_DRAW = GL_STATIC_DRAW,
+			DYNAMIC_DRAW = GL_DYNAMIC_DRAW,
+			STREAM_DRAW = GL_STREAM_DRAW,
+		};
+
 		class VAO
 		{
 		public:

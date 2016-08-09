@@ -10,7 +10,6 @@
 
 #include "bplr/graphics/Shader.h"
 #include "bplr/graphics/VAO.h"
-#include "bplr/graphics/VBO.h"
 #include "bplr/graphics/Window.h"
 
 #include "bplr/math/vec2.h"
