@@ -71,9 +71,14 @@ namespace bplr
 			glUseProgram(m_program);
 		}
 
-		void Shader::draw(GLint first, GLint count) const
+		void Shader::drawArrays(GLint first, GLint count) const
 		{
 			glDrawArrays(GL_TRIANGLES, first, count);
+		}
+
+		void Shader::drawElements(GLint count)
+		{
+			glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, 0);
 		}
 
 		GLuint Shader::getLocation() const

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "VAO.h"
-#include <iostream>
 
 namespace bplr
 {
@@ -33,16 +32,30 @@ namespace bplr
 
 			bind();
 			
-			m_vbos[location].store(data, vertexCount * componentsPerVertex, usage);
+			glGenBuffers(1, &m_vbos[location]);
+			glBindBuffer(GL_ARRAY_BUFFER, m_vbos[location]);
+			glBufferData(GL_ARRAY_BUFFER, vertexCount * componentsPerVertex * sizeof(GLfloat), data, static_cast<GLenum>(usage));
+
 			glVertexAttribPointer(location, componentsPerVertex, GL_FLOAT, GL_FALSE, componentsPerVertex * sizeof(GLfloat), (GLvoid*) 0);
 			glEnableVertexAttribArray(location);
 
 			unbind();
 		}
 
-		void VAO::storeInBuffer(Shader *program, GLchar *attribName, GLuint componentsPerVertex, GLint vertexCount, GLfloat *data)
+		void VAO::storeInElementBuffer(GLint vertexCount, GLuint* data, DataUsage usage)
 		{
-			storeInBuffer(program, attribName, componentsPerVertex,vertexCount , data, STATIC_DRAW);
+			bind();
+
+			glGenBuffers(1, &m_ebo);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertexCount * sizeof(GLuint), data, usage);
+
+			unbind();
+		}
+
+		void VAO::bindEBO()
+		{
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
 		}
 	}
 }

@@ -22,13 +22,32 @@ int main()
 		0.0f,  0.5f, 0.0f
 	};
 
+	GLfloat colours[] = {
+		1.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 1.0f
+	};
+
+	GLuint indices[] = {
+		0, 1, 2
+	};
+
 	bplr::graphics::Shader shader = bplr::graphics::Shader();
 	shader.addSource(bplr::graphics::VERTEX_SHADER, "res/vertex.vert");
 	shader.addSource(bplr::graphics::FRAGMENT_SHADER, "res/fragment.frag");
 	shader.link();
 
 	bplr::graphics::VAO vao = bplr::graphics::VAO();
-	vao.storeInBuffer(&shader, "position", 3, /*sizeof(vertices) / sizeof(*vertices) / 3*/ 3, vertices);
+	vao.storeInBuffer(&shader, "position", 3, sizeof(vertices) / sizeof(*vertices) / 3, vertices);
+	vao.storeInBuffer(&shader, "colour", 3, sizeof(colours) / sizeof(*colours) / 3, colours);
+	vao.storeInElementBuffer(sizeof(indices) / sizeof(*indices), indices);
+
+//	GLuint ebo;
+//	glGenBuffers(1, &ebo);
+//	vao.bind();
+//	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+//	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+//	vao.unbind();
 
 	// Timing vars
 	double previous = bplr::time::getTime();
@@ -65,10 +84,12 @@ int main()
 		// Render
 		float colour = sin(current * 2) / 2 + 0.5f;
 		window->setBackgroundColour(0.4f * colour, 0.2f * colour, 0.4f * colour, 1.0f);
+
 		window->beginRender();
 		shader.use();
 		vao.bind();
-		shader.draw(0, 3);
+		vao.bindEBO();
+		shader.drawElements(3);
 		vao.unbind();
 		window->swapBuffers();
 		frames++;

@@ -27,7 +27,8 @@ namespace bplr
 			void addSource(ShaderType type, const GLchar* path);
 			void link();
 			void use() const;
-			void draw(GLint first, GLint count) const;
+			void drawArrays(GLint first, GLint count) const;
+			void drawElements(GLint count);
 
 			GLuint getLocation() const;
 		
