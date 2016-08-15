@@ -4,14 +4,16 @@
 
 int main()
 {
+	using namespace bplr;
+
 	// INIT ----------------------------------------
 
-	bplr::Bipolar* engine = new bplr::Bipolar();
+	Bipolar* engine = new Bipolar();
 
 	if (engine->init() != 0)
 		return -1;
 
-	bplr::graphics::window* window = engine->createWindow("Bipolar", 800, 600);;
+	graphics::window* window = engine->createWindow("Bipolar", 800, 600);;
 
 	if (engine->initGlew() != 0)
 		return -1;
@@ -35,23 +37,23 @@ int main()
 	};
 
 	// Create Shader
-	bplr::graphics::Shader shader = bplr::graphics::Shader();
-	shader.addSource(bplr::graphics::VERTEX_SHADER, "res/vertex.vert");
-	shader.addSource(bplr::graphics::FRAGMENT_SHADER, "res/fragment.frag");
+	graphics::Shader shader = graphics::Shader();
+	shader.addSource(graphics::VERTEX_SHADER, "res/vertex.vert");
+	shader.addSource(graphics::FRAGMENT_SHADER, "res/fragment.frag");
 	shader.link();
 
 	// Create VAO
-	bplr::graphics::VAO vao = bplr::graphics::VAO();
+	graphics::VAO vao = graphics::VAO();
 	vao.storeInBuffer(&shader, "position", 3, sizeof(vertices) / sizeof(*vertices) / 3, vertices);
 	vao.storeInBuffer(&shader, "colour", 3, sizeof(colours) / sizeof(*colours) / 3, colours);
 	vao.storeInElementBuffer(sizeof(indices) / sizeof(*indices), indices);
 
 	// Create Entity
-	bplr::entity::Entity* triangle = (new bplr::entity::Entity())
-		->addComponent(new bplr::entity::MeshComponent(&vao));
+	entity::Entity* triangle = (new entity::Entity())
+		->addComponent(new entity::MeshComponent(&vao));
 
 	// Timing vars
-	double previous = bplr::time::getTime();
+	double previous = time::getTime();
 	double lag = 0.0;
 	double lastSecond = previous;
 	long frames = 0;
@@ -62,7 +64,7 @@ int main()
 	while (!engine->shouldApplicationClose())
 	{
 		// Timing math
-		double current = bplr::time::getTime();
+		double current = time::getTime();
 		double delta = current - previous;
 		previous = current;
 		lag += delta;
@@ -71,10 +73,10 @@ int main()
 		engine->getInput();
 
 		// Update
-		while (lag >= bplr::time::MS_PER_UPDATE)
+		while (lag >= time::MS_PER_UPDATE)
 		{
 			engine->update();
-			lag -= bplr::time::MS_PER_UPDATE;
+			lag -= time::MS_PER_UPDATE;
 			updates++;
 		}
 
@@ -83,7 +85,7 @@ int main()
 		window->setBackgroundColour(0.4f * colour, 0.2f * colour, 0.4f * colour, 1.0f);
 
 		window->beginRender();
-		triangle->getComponent<bplr::entity::MeshComponent>()->render(shader);
+		triangle->getComponent<entity::MeshComponent>()->render(shader);
 		window->swapBuffers();
 		frames++;
 
