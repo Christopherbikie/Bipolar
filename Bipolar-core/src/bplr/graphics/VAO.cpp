@@ -40,6 +40,9 @@ namespace bplr
 			glEnableVertexAttribArray(location);
 
 			unbind();
+
+			if (vertexCount > m_vertexCount)
+				m_vertexCount = vertexCount;
 		}
 
 		void VAO::storeInElementBuffer(GLint vertexCount, GLuint* data, DataUsage usage)
@@ -51,11 +54,19 @@ namespace bplr
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertexCount * sizeof(GLuint), data, usage);
 
 			unbind();
+
+			if (vertexCount > m_vertexCount)
+				m_vertexCount = vertexCount;
 		}
 
-		void VAO::bindEBO()
+		void VAO::bindEBO() const
 		{
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
+		}
+
+		GLuint VAO::getVertexCount() const
+		{
+			return m_vertexCount;
 		}
 	}
 }

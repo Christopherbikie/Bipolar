@@ -16,6 +16,8 @@ int main()
 	if (engine->initGlew() != 0)
 		return -1;
 
+
+	// Prepare vertices
 	GLfloat vertices[] = {
 		-0.5f, -0.5f, 0.0f,
 		0.5f, -0.5f, 0.0f,
@@ -32,22 +34,21 @@ int main()
 		0, 1, 2
 	};
 
+	// Create Shader
 	bplr::graphics::Shader shader = bplr::graphics::Shader();
 	shader.addSource(bplr::graphics::VERTEX_SHADER, "res/vertex.vert");
 	shader.addSource(bplr::graphics::FRAGMENT_SHADER, "res/fragment.frag");
 	shader.link();
 
+	// Create VAO
 	bplr::graphics::VAO vao = bplr::graphics::VAO();
 	vao.storeInBuffer(&shader, "position", 3, sizeof(vertices) / sizeof(*vertices) / 3, vertices);
 	vao.storeInBuffer(&shader, "colour", 3, sizeof(colours) / sizeof(*colours) / 3, colours);
 	vao.storeInElementBuffer(sizeof(indices) / sizeof(*indices), indices);
 
-//	GLuint ebo;
-//	glGenBuffers(1, &ebo);
-//	vao.bind();
-//	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-//	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-//	vao.unbind();
+	// Create Entity
+	bplr::entity::Entity* triangle = (new bplr::entity::Entity())
+		->addComponent(new bplr::entity::MeshComponent(&vao));
 
 	// Timing vars
 	double previous = bplr::time::getTime();
@@ -55,10 +56,6 @@ int main()
 	double lastSecond = previous;
 	long frames = 0;
 	long updates = 0;
-
-//	bplr::math::mat4 projection = bplr::math::mat4().orthographic(-10, 10, -10, 10, 0.01f, 1000.0f);
-//	bplr::math::vec3 coord = bplr::math::vec3(3, 3, -1);
-//	std::cout << projection * coord << std::endl;
 
 	// GAME LOOP ----------------------------------
 
@@ -86,11 +83,7 @@ int main()
 		window->setBackgroundColour(0.4f * colour, 0.2f * colour, 0.4f * colour, 1.0f);
 
 		window->beginRender();
-		shader.use();
-		vao.bind();
-		vao.bindEBO();
-		shader.drawElements(3);
-		vao.unbind();
+		triangle->getComponent<bplr::entity::MeshComponent>()->render(shader);
 		window->swapBuffers();
 		frames++;
 
@@ -109,6 +102,7 @@ int main()
 
 	// CLEAN UP -----------------------------------
 
+	delete triangle;
 	delete engine;
 
 	return 0;

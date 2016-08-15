@@ -277,9 +277,33 @@ namespace bplr
 			return result;
 		}
 
-		mat4 mat4::rotate()
+		mat4 mat4::rotate(float angle, const vec3& axis)
 		{
-			return mat4();
+			mat4 result(1.0f);
+
+			float r = (angle * PI) / 180;
+			float c = cos(r);
+			float s = sin(r);
+			float omc = 1.0f - c;
+
+			float x = axis.x;
+			float y = axis.y;
+			float z = axis.z;
+
+			result.elements[0 + 0 * 4] = x * omc + c;
+			result.elements[0 + 1 * 4] = y * x * omc + z * s;
+			result.elements[0 + 2 * 4] = x * z * omc - y * s;
+
+			result.elements[1 + 0 * 4] = x * y * omc - z * s;
+			result.elements[1 + 1 * 4] = y * omc + c;
+			result.elements[1 + 2 * 4] = y * z * omc + x * s;
+
+			result.elements[2 + 0 * 4] = x * z * omc + y * s;
+			result.elements[2 + 1 * 4] = y * z * omc - x * s;
+			result.elements[2 + 2 * 4] = z * omc + c;
+
+			return result;
+
 		}
 
 		mat4 mat4::scale(const vec3& scale)

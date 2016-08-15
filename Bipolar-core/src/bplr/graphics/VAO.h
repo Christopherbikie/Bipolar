@@ -26,12 +26,15 @@ namespace bplr
 
 			void storeInBuffer(Shader *program, GLchar *attribName, GLuint componentsPerVertex, GLint vertexCount, GLfloat *data, DataUsage usage = STATIC_DRAW);
 			void storeInElementBuffer(GLint vertexCount, GLuint* data, DataUsage usage = STATIC_DRAW);
-			void bindEBO();
+			void bindEBO() const;
+
+			GLuint getVertexCount() const;
 
 		private:
 			GLuint m_location;
 			GLuint m_ebo;
 			std::map<GLint, GLuint> m_vbos;
+			GLuint m_vertexCount = 0;
 		};
 	}
 }

@@ -132,6 +132,10 @@
     <ClInclude Include="src\bplr\math\vec4.h" />
     <ClInclude Include="src\bplr\util\Loader.h" />
     <ClInclude Include="src\bplr\util\Time.h" />
+    <ClInclude Include="src\bplr\entity\Component.h" />
+    <ClInclude Include="src\bplr\entity\Entity.h" />
+    <ClInclude Include="src\bplr\entity\MeshComponent.h" />
+    <ClInclude Include="src\bplr\entity\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\Application.cpp" />
@@ -143,9 +147,9 @@
     <ClCompile Include="src\bplr\math\vec4.cpp" />
     <ClCompile Include="src\bplr\util\Loader.cpp" />
     <ClCompile Include="src\bplr\graphics\VAO.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClCompile Include="src\bplr\entity\Entity.cpp" />
+    <ClCompile Include="src\bplr\entity\MeshComponent.cpp" />
+    <ClCompile Include="src\bplr\entity\TransformComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
