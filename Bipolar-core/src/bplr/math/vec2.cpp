@@ -118,6 +118,11 @@ namespace bplr
 			return vec2(left.x / value, left.y / value);
 		}
 
+		vec2 operator-(vec2 right)
+		{
+			return right * -1;
+		}
+
 		vec2& vec2::operator+=(const vec2& other)
 		{
 			return add(other);

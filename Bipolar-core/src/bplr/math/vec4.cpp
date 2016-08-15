@@ -92,6 +92,11 @@ namespace bplr
 			return left.divide(right);
 		}
 
+		vec4 operator-(vec4 right)
+		{
+			return right * -1;
+		}
+
 		vec4& vec4::operator+=(const vec4& other)
 		{
 			return add(other);

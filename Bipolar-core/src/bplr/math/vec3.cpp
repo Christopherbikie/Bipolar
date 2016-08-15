@@ -148,6 +148,11 @@ namespace bplr
 			return left.divide(right);
 		}
 
+		vec3 operator-(vec3 right)
+		{
+			return right * -1;
+		}
+
 		vec3& vec3::operator+=(const vec3& other)
 		{
 			return add(other);

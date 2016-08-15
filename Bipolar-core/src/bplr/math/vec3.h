@@ -39,6 +39,8 @@ namespace bplr
 			friend vec3 operator*(vec3 left, float value);
 			friend vec3 operator/(vec3 left, float value);
 
+			friend vec3 operator-(vec3 right);
+
 			bool operator==(const vec3& other) const;
 			bool operator!=(const vec3& other) const;
 
