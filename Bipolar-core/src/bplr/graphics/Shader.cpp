@@ -71,6 +71,54 @@ namespace bplr
 			glUseProgram(m_program);
 		}
 
+		void Shader::loadUniform(std::string name, GLboolean value) const
+		{
+			GLuint uniformLocation = glGetUniformLocation(m_program, name.c_str());
+			glUniform1i(uniformLocation, value ? 1 : 0);
+		}
+
+		void Shader::loadUniform(std::string name, GLint value) const
+		{
+			GLuint uniformLocation = glGetUniformLocation(m_program, name.c_str());
+			glUniform1i(uniformLocation, value);
+		}
+
+		void Shader::loadUniform(std::string name, GLfloat value) const
+		{
+			GLuint uniformLocation = glGetUniformLocation(m_program, name.c_str());
+			glUniform1f(uniformLocation, value);
+		}
+
+		void Shader::loadUniform(std::string name, GLdouble value) const
+		{
+			GLuint uniformLocation = glGetUniformLocation(m_program, name.c_str());
+			glUniform1d(uniformLocation, value);
+		}
+
+		void Shader::loadUniform(std::string name, math::vec2 vector) const
+		{
+			GLuint uniformLocation = glGetUniformLocation(m_program, name.c_str());
+			glUniform2f(uniformLocation, vector.x, vector.y);
+		}
+
+		void Shader::loadUniform(std::string name, math::vec3 vector) const
+		{
+			GLuint uniformLocation = glGetUniformLocation(m_program, name.c_str());
+			glUniform3f(uniformLocation, vector.x, vector.y, vector.z);
+		}
+
+		void Shader::loadUniform(std::string name, math::vec4 vector) const
+		{
+			GLuint uniformLocation = glGetUniformLocation(m_program, name.c_str());
+			glUniform4f(uniformLocation, vector.x, vector.y, vector.z, vector.w);
+		}
+
+		void Shader::loadUniform(std::string name, math::mat4 matrix) const
+		{
+			GLuint uniformLocation = glGetUniformLocation(m_program, name.c_str());
+			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, matrix.elements);
+		}
+
 		void Shader::drawArrays(GLint first, GLint count) const
 		{
 			glDrawArrays(GL_TRIANGLES, first, count);

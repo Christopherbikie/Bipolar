@@ -40,7 +40,7 @@ namespace bplr
 			static mat4 lookAt(const vec3& camera, const vec3& object, const vec3& up);
 
 			static mat4 translate(const vec3& translation);
-			static mat4 rotate(float angle, const vec3& axis);
+			static mat4 rotate(const vec3& rotation);
 			static mat4 scale(const vec3& scale);
 
 			std::string toString() const;

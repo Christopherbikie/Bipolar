@@ -11,6 +11,7 @@
 #include "bplr/entity/Entity.h"
 #include "bplr/entity/Component.h"
 #include "bplr/entity/MeshComponent.h"
+#include "bplr/entity/TransformComponent.h"
 
 #include "bplr/graphics/Shader.h"
 #include "bplr/graphics/VAO.h"

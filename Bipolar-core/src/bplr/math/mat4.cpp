@@ -3,6 +3,7 @@
 #include "vec4.h"
 #include "mat4.h"
 #include <sstream>
+#include <iostream>
 
 #define PI 3.14159265358979f
 
@@ -270,40 +271,40 @@ namespace bplr
 		{
 			mat4 result(1.0f);
 
-			result.elements[3 + 0 * 4] = translation.x;
-			result.elements[3 + 1 * 4] = translation.y;
-			result.elements[3 + 2 * 4] = translation.z;
+			result.elements[0 + 3 * 4] = translation.x;
+			result.elements[1 + 3 * 4] = translation.y;
+			result.elements[2 + 3 * 4] = translation.z;
 
 			return result;
 		}
 
-		mat4 mat4::rotate(float angle, const vec3& axis)
+		mat4 mat4::rotate(const vec3& rotation)
 		{
-			mat4 result(1.0f);
+			mat4 xRot = mat4(1.0f);
+			float sinX = sin(rotation.x * PI / 180);
+			float cosX = cos(rotation.x * PI / 180);
+			xRot.elements[1 + 1 * 4] = cosX;
+			xRot.elements[2 + 1 * 4] = -sinX;
+			xRot.elements[1 + 2 * 4] = sinX;
+			xRot.elements[2 + 2 * 4] = cosX;
 
-			float r = (angle * PI) / 180;
-			float c = cos(r);
-			float s = sin(r);
-			float omc = 1.0f - c;
+			mat4 yRot = mat4(1.0f);
+			float sinY = sin(rotation.y * PI / 180);
+			float cosY = cos(rotation.y * PI / 180);
+			yRot.elements[0 + 0* 4] = cosY;
+			yRot.elements[2 + 0 * 4] = sinY;
+			yRot.elements[0 + 2 * 4] = -sinY;
+			yRot.elements[2 + 2 * 4] = cosY;
 
-			float x = axis.x;
-			float y = axis.y;
-			float z = axis.z;
+			mat4 zRot = mat4(1.0f);
+			float sinZ = sin(rotation.z * PI / 180);
+			float cosZ = cos(rotation.z * PI / 180);
+			zRot.elements[0 + 0 * 4] = cosZ;
+			zRot.elements[1 + 0 * 4] = -sinZ;
+			zRot.elements[0 + 1 * 4] = sinZ;
+			zRot.elements[1 + 1 * 4] = cosZ;
 
-			result.elements[0 + 0 * 4] = x * omc + c;
-			result.elements[0 + 1 * 4] = y * x * omc + z * s;
-			result.elements[0 + 2 * 4] = x * z * omc - y * s;
-
-			result.elements[1 + 0 * 4] = x * y * omc - z * s;
-			result.elements[1 + 1 * 4] = y * omc + c;
-			result.elements[1 + 2 * 4] = y * z * omc + x * s;
-
-			result.elements[2 + 0 * 4] = x * z * omc + y * s;
-			result.elements[2 + 1 * 4] = y * z * omc - x * s;
-			result.elements[2 + 2 * 4] = z * omc + c;
-
-			return result;
-
+			return xRot * yRot * zRot;
 		}
 
 		mat4 mat4::scale(const vec3& scale)
