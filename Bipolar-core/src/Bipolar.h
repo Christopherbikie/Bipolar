@@ -14,6 +14,7 @@
 #include "bplr/entity/TransformComponent.h"
 
 #include "bplr/graphics/Shader.h"
+#include "bplr/graphics/Texture.h"
 #include "bplr/graphics/VAO.h"
 #include "bplr/graphics/Window.h"
 

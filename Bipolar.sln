@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{A7BD52AB-0F26-4CA8-B69B-D3D4BE790CE1}"
 EndProject
@@ -36,6 +36,18 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{9E67BC45-BEA3-4F11-9618-9BFF14280AF8}"
 	ProjectSection(SolutionItems) = preProject
 		Dependencies\glew\lib\glew32s.lib = Dependencies\glew\lib\glew32s.lib
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FreeImage", "FreeImage", "{CE961F79-F5CB-4FAF-A18F-D5302AE84757}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{66DF2AE8-0901-46C0-B293-271D0E381FE5}"
+	ProjectSection(SolutionItems) = preProject
+		Dependencies\FreeImage\include\FreeImage.h = Dependencies\FreeImage\include\FreeImage.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{7EA4683F-70D8-46DF-9E36-681562D0850E}"
+	ProjectSection(SolutionItems) = preProject
+		Dependencies\FreeImage\lib\FreeImage.lib = Dependencies\FreeImage\lib\FreeImage.lib
 	EndProjectSection
 EndProject
 Global
@@ -94,5 +106,8 @@ Global
 		{6AA5B673-8AC2-4D15-992A-D32BBFDE2109} = {0FAB7B25-6A05-46EF-BB43-E0536BDAC904}
 		{33F94F7B-29EB-4F50-9767-9192F8F36918} = {6AA5B673-8AC2-4D15-992A-D32BBFDE2109}
 		{9E67BC45-BEA3-4F11-9618-9BFF14280AF8} = {0FAB7B25-6A05-46EF-BB43-E0536BDAC904}
+		{CE961F79-F5CB-4FAF-A18F-D5302AE84757} = {A7BD52AB-0F26-4CA8-B69B-D3D4BE790CE1}
+		{66DF2AE8-0901-46C0-B293-271D0E381FE5} = {CE961F79-F5CB-4FAF-A18F-D5302AE84757}
+		{7EA4683F-70D8-46DF-9E36-681562D0850E} = {CE961F79-F5CB-4FAF-A18F-D5302AE84757}
 	EndGlobalSection
 EndGlobal

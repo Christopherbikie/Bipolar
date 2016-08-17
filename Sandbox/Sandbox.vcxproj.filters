@@ -20,7 +20,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\fragment.frag" />
-    <None Include="res\vertex.vert" />
+    <None Include="res\shaders\fragment.frag" />
+    <None Include="res\shaders\vertex.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\images\container.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

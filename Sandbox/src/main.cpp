@@ -20,58 +20,36 @@ int main()
 
 	// Prepare vertices
 	GLfloat vertices[] = {
-		-1.0f,	-1.0f,	1.0f,
-		1.0f,	-1.0f,	1.0f,
-		1.0f,	1.0f,	1.0f,
-		-1.0f,	1.0f,	1.0f,
-		-1.0f,	-1.0f,	-1.0f,
-		1.0f,	-1.0f,	-1.0f,
-		1.0f,	1.0f,	-1.0f,
-		-1.0f,	1.0f,	-1.0f,
+		-0.5f, 0.5f, 0.0f,
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
+		0.5f, 0.5f, 0.0f,
 	};
-
-	GLfloat colours[] = {
-		0.0f, 0.0f, 0.0f,
-		0.0f, 0.0f, 1.0f,
-		0.0f, 1.0f, 0.0f,
-		0.0f, 1.0f, 1.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 1.0f,
-		1.0f, 1.0f, 0.0f,
-		1.0f, 1.0f, 1.0f,
-	};
-
 	GLuint indices[] = {
-		// front
-		0, 1, 2,
-		2, 3, 0,
-		// top
-		1, 5, 6,
-		6, 2, 1,
-		// back
-		7, 6, 5,
-		5, 4, 7,
-		// bottom
-		4, 0, 3,
-		3, 7, 4,
-		// left
-		4, 5, 1,
-		1, 0, 4,
-		// right
-		3, 2, 6,
-		6, 7, 3,
+		0,1,3,
+		3,1,2
 	};
+	GLfloat textureCoords[] = {
+		0,0,
+		0,1,
+		1,1,
+		1,0
+	};
+
+	// Load textures
+	graphics::Texture* texture1 = new graphics::Texture("res/images/test.png");
+	graphics::Texture* texture2 = new graphics::Texture("res/images/wall.jpg");
 
 	// Create Shader
 	graphics::Shader shader = graphics::Shader();
-	shader.addSource(graphics::VERTEX_SHADER, "res/vertex.vert");
-	shader.addSource(graphics::FRAGMENT_SHADER, "res/fragment.frag");
+	shader.addSource(graphics::VERTEX_SHADER, "res/shaders/vertex.vert");
+	shader.addSource(graphics::FRAGMENT_SHADER, "res/shaders/fragment.frag");
 	shader.link();
 
 	// Create VAO
 	graphics::VAO vao = graphics::VAO();
 	vao.storeInBuffer(&shader, "position", 3, sizeof(vertices) / sizeof(*vertices) / 3, vertices);
-	vao.storeInBuffer(&shader, "colour", 3, sizeof(colours) / sizeof(*colours) / 3, colours);
+	vao.storeInBuffer(&shader, "textureCoords", 2, sizeof(textureCoords) / sizeof(*textureCoords) / 2, textureCoords);
 	vao.storeInElementBuffer(sizeof(indices) / sizeof(*indices), indices);
 
 	// Create Entity
@@ -105,11 +83,6 @@ int main()
 		// Update
 		while (lag >= time::MS_PER_UPDATE)
 		{
-			// Transform cube
-			triangle->getComponent<entity::TransformComponent>()->position = math::vec3(sin(current), cos(current), 0);
-			triangle->getComponent<entity::TransformComponent>()->rotation = math::vec3(sin(current * 1.1f) * 120, cos(current * 1.4f) * 120, 0);
-			triangle->getComponent<entity::TransformComponent>()->scale = math::vec3(sin(current * 1.5f) / 2 + 0.5f, cos(current) / 2 + 0.5f, sin(current * 1.3f) / 2 + 0.5f);
-
 			engine->update();
 			lag -= time::MS_PER_UPDATE;
 			updates++;
@@ -117,7 +90,7 @@ int main()
 
 		// Load uniforms
 		shader.loadUniform("transform", triangle->getComponent<entity::TransformComponent>()->getTransform());
-		shader.loadUniform("view", math::mat4(1.0f).translate(-math::vec3(0.0f, 0.0f, 2.0)));
+		shader.loadUniform("view", math::mat4(1.0f).translate(-math::vec3(0.0f, 0.0f, 1.0)));
 		shader.loadUniform("projection", projectionMatrix);
 
 		// Render
@@ -125,6 +98,8 @@ int main()
 		window->setBackgroundColour(0.4f * colour, 0.2f * colour, 0.4f * colour, 1.0f);
 
 		window->beginRender();
+		texture1->bind(&shader, "diffuseTexture1");
+		texture2->bind(&shader, "diffuseTexture2");
 		triangle->getComponent<entity::MeshComponent>()->render(shader);
 		window->swapBuffers();
 		frames++;
@@ -145,6 +120,8 @@ int main()
 	// CLEAN UP -----------------------------------
 
 	delete triangle;
+	delete texture1;
+	delete texture2;
 	delete engine;
 
 	return 0;

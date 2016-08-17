@@ -69,7 +69,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Christopher\git\Bipolar\Dependencies\glew\include;C:\Users\Christopher\git\Bipolar\Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\FreeImage\include;C:\Users\Christopher\git\Bipolar\Dependencies\glew\include;C:\Users\Christopher\git\Bipolar\Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\Christopher\git\Bipolar\Dependencies\glfw\lib;C:\Users\Christopher\git\Bipolar\Dependencies\glew\lib;$(LibraryPath)</LibraryPath>
     <TargetName>BPLRCore</TargetName>
   </PropertyGroup>
@@ -88,6 +88,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -136,10 +137,12 @@
     <ClInclude Include="src\bplr\entity\Entity.h" />
     <ClInclude Include="src\bplr\entity\MeshComponent.h" />
     <ClInclude Include="src\bplr\entity\TransformComponent.h" />
+    <ClInclude Include="src\bplr\graphics\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\Application.cpp" />
     <ClCompile Include="src\bplr\graphics\Shader.cpp" />
+    <ClCompile Include="src\bplr\graphics\Texture.cpp" />
     <ClCompile Include="src\bplr\graphics\Window.cpp" />
     <ClCompile Include="src\bplr\math\mat4.cpp" />
     <ClCompile Include="src\bplr\math\vec2.cpp" />
