@@ -49,7 +49,6 @@ artifacts/
 *_i.h
 *.ilk
 *.meta
-*.obj
 *.pch
 *.pdb
 *.pgc
@@ -243,3 +242,9 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/Sandbox/res/models/nanosuit
+/Sandbox/res/models/hairball.obj
+/Sandbox/res/models/earth.png
+/Sandbox/res/models/earth.obj
+/Sandbox/res/models/earth.mtl
+/Sandbox/res/models/dragon.obj

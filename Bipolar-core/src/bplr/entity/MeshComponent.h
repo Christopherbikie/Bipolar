@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Component.h"
-#include "../graphics/VAO.h"
+#include "../graphics/Mesh.h"
+#include "scene.h"
 
 namespace bplr
 {
@@ -10,18 +11,25 @@ namespace bplr
 		class MeshComponent : public Component
 		{
 		public:
-			MeshComponent(graphics::VAO* vao);
+			MeshComponent(graphics::Mesh* mesh);
+			MeshComponent(std::string modelPath);
+			~MeshComponent();
 
-			graphics::VAO* getVAO();
-			void setVAO(graphics::VAO* vao);
+			void addMesh(graphics::Mesh* mesh);
 
-			void render(graphics::Shader shader) const;
+			void render(graphics::Shader* shader) const;
 
 			std::string getType() override;
 			static std::string getStaticType();
 			
 		private:
-			graphics::VAO m_vao;
+			std::vector<graphics::Mesh*> m_meshes;
+			std::vector<graphics::Texture*> m_textures;
+			std::string m_directory;
+
+			void processNode(aiNode* node, const aiScene* scene);
+			graphics::Mesh* processMesh(aiMesh* mesh, const aiScene* scene);
+			std::vector<graphics::Texture*> loadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType);
 		};
 	}
 }

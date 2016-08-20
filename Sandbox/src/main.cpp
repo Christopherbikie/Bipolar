@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include "Bipolar.h"
 
@@ -13,49 +12,21 @@ int main()
 	if (engine->init() != 0)
 		return -1;
 
-	graphics::window* window = engine->createWindow("Bipolar", 1024, 576);
+	graphics::window* window = engine->createWindow("Bipolar", 1366, 768);
 
 	if (engine->initGlew() != 0)
 		return -1;
 
-	// Prepare vertices
-	GLfloat vertices[] = {
-		-0.5f, 0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.5f, 0.5f, 0.0f,
-	};
-	GLuint indices[] = {
-		0,1,3,
-		3,1,2
-	};
-	GLfloat textureCoords[] = {
-		0,0,
-		0,1,
-		1,1,
-		1,0
-	};
-
-	// Load textures
-	graphics::Texture* texture1 = new graphics::Texture("res/images/test.png");
-	graphics::Texture* texture2 = new graphics::Texture("res/images/wall.jpg");
-
 	// Create Shader
-	graphics::Shader shader = graphics::Shader();
-	shader.addSource(graphics::VERTEX_SHADER, "res/shaders/vertex.vert");
-	shader.addSource(graphics::FRAGMENT_SHADER, "res/shaders/fragment.frag");
-	shader.link();
-
-	// Create VAO
-	graphics::VAO vao = graphics::VAO();
-	vao.storeInBuffer(&shader, "position", 3, sizeof(vertices) / sizeof(*vertices) / 3, vertices);
-	vao.storeInBuffer(&shader, "textureCoords", 2, sizeof(textureCoords) / sizeof(*textureCoords) / 2, textureCoords);
-	vao.storeInElementBuffer(sizeof(indices) / sizeof(*indices), indices);
+	graphics::Shader* shader = new graphics::Shader();
+	shader->addSource(graphics::VERTEX_SHADER, "res/shaders/vertex.vert");
+	shader->addSource(graphics::FRAGMENT_SHADER, "res/shaders/fragment.frag");
+	shader->link();
 
 	// Create Entity
-	entity::Entity* triangle = (new entity::Entity())
+	entity::Entity* entity = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))
-		->addComponent(new entity::MeshComponent(&vao));
+		->addComponent(new entity::MeshComponent("res/models/cube.obj"));
 
 	// Create projection matrix
 	math::mat4 projectionMatrix = math::mat4::perspective(65.0f, 16.0f / 9.0f, 1.0f, 1000.0f);
@@ -88,19 +59,20 @@ int main()
 			updates++;
 		}
 
+		// Rotate entity
+		entity->getComponent<entity::TransformComponent>()->rotation = math::vec3(sin(current) * 180, sin(current * 1.3f) * 180, sin(current * 0.8f) * 180);
+
 		// Load uniforms
-		shader.loadUniform("transform", triangle->getComponent<entity::TransformComponent>()->getTransform());
-		shader.loadUniform("view", math::mat4(1.0f).translate(-math::vec3(0.0f, 0.0f, 1.0)));
-		shader.loadUniform("projection", projectionMatrix);
+		shader->loadUniform("transform", entity->getComponent<entity::TransformComponent>()->getTransform());
+		shader->loadUniform("view", math::mat4(1.0f).translate(-math::vec3(0.0f, 0.0f, 2.0)));
+		shader->loadUniform("projection", projectionMatrix);
 
 		// Render
 		float colour = sin(current * 2) / 2 + 0.5f;
 		window->setBackgroundColour(0.4f * colour, 0.2f * colour, 0.4f * colour, 1.0f);
 
 		window->beginRender();
-		texture1->bind(&shader, "diffuseTexture1");
-		texture2->bind(&shader, "diffuseTexture2");
-		triangle->getComponent<entity::MeshComponent>()->render(shader);
+		entity->getComponent<entity::MeshComponent>()->render(shader);
 		window->swapBuffers();
 		frames++;
 
@@ -119,9 +91,8 @@ int main()
 
 	// CLEAN UP -----------------------------------
 
-	delete triangle;
-	delete texture1;
-	delete texture2;
+	delete entity;
+	delete shader;
 	delete engine;
 
 	return 0;

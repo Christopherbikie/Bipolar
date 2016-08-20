@@ -22,9 +22,20 @@
   <ItemGroup>
     <None Include="res\shaders\fragment.frag" />
     <None Include="res\shaders\vertex.vert" />
+    <None Include="res\models\cube.mtl" />
+    <None Include="res\models\earth.mtl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\container.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\models\container.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\models\earth.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\models\container.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

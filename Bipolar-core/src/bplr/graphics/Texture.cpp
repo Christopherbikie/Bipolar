@@ -1,11 +1,13 @@
 #include "Texture.h"
 #include <iostream>
+#include <types.h>
 
 namespace bplr
 {
 	namespace graphics
 	{
-		Texture::Texture(const char* filename, GLenum imageFormat, GLint internalFormat, GLint mipmapLevel, GLint border)
+		Texture::Texture(const char* filename, TextureType type, GLenum imageFormat, GLint internalFormat, GLint mipmapLevel, GLint border)
+			: m_type(type), m_path(filename)
 		{
 			FREE_IMAGE_FORMAT freeImageFormat = FIF_UNKNOWN;
 			freeImageFormat = FreeImage_GetFileType(filename);
@@ -39,13 +41,13 @@ namespace bplr
 
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-			
+
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			
+
 			glTexImage2D(GL_TEXTURE_2D, mipmapLevel, internalFormat, width, height, border, imageFormat, GL_UNSIGNED_BYTE, bits);
 			glGenerateMipmap(GL_TEXTURE_2D);
-			
+
 			glBindTexture(GL_TEXTURE_2D, 0);
 
 			unsigned int pitch = FreeImage_GetPitch(bitmap);
@@ -79,6 +81,16 @@ namespace bplr
 			glActiveTexture(GL_TEXTURE0 + location);
 			glBindTexture(GL_TEXTURE_2D, m_location);
 			glUniform1i(location, location);
+		}
+
+		TextureType Texture::getType() const
+		{
+			return m_type;
+		}
+
+		aiString Texture::getPath() const
+		{
+			return m_path;
 		}
 	}
 }

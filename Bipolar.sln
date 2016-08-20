@@ -50,6 +50,65 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{7EA4683F-70D
 		Dependencies\FreeImage\lib\FreeImage.lib = Dependencies\FreeImage\lib\FreeImage.lib
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assimp", "assimp", "{2C9AF58A-116E-43D5-8558-867FE6C9A256}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{B22EA82A-75DC-4FBA-8BB4-17EDF66CDB16}"
+	ProjectSection(SolutionItems) = preProject
+		Dependencies\assimp\lib\assimpd.dll = Dependencies\assimp\lib\assimpd.dll
+		Dependencies\assimp\lib\assimpd.lib = Dependencies\assimp\lib\assimpd.lib
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{C9F3AE5A-D016-474E-8180-EF513A8DAF1C}"
+	ProjectSection(SolutionItems) = preProject
+		Dependencies\assimp\include\ai_assert.h = Dependencies\assimp\include\ai_assert.h
+		Dependencies\assimp\include\anim.h = Dependencies\assimp\include\anim.h
+		Dependencies\assimp\include\camera.h = Dependencies\assimp\include\camera.h
+		Dependencies\assimp\include\cexport.h = Dependencies\assimp\include\cexport.h
+		Dependencies\assimp\include\cfileio.h = Dependencies\assimp\include\cfileio.h
+		Dependencies\assimp\include\cimport.h = Dependencies\assimp\include\cimport.h
+		Dependencies\assimp\include\color4.h = Dependencies\assimp\include\color4.h
+		Dependencies\assimp\include\color4.inl = Dependencies\assimp\include\color4.inl
+		Dependencies\assimp\include\config.h = Dependencies\assimp\include\config.h
+		Dependencies\assimp\include\DefaultLogger.hpp = Dependencies\assimp\include\DefaultLogger.hpp
+		Dependencies\assimp\include\defs.h = Dependencies\assimp\include\defs.h
+		Dependencies\assimp\include\Exporter.hpp = Dependencies\assimp\include\Exporter.hpp
+		Dependencies\assimp\include\Importer.hpp = Dependencies\assimp\include\Importer.hpp
+		Dependencies\assimp\include\importerdesc.h = Dependencies\assimp\include\importerdesc.h
+		Dependencies\assimp\include\IOStream.hpp = Dependencies\assimp\include\IOStream.hpp
+		Dependencies\assimp\include\IOSystem.hpp = Dependencies\assimp\include\IOSystem.hpp
+		Dependencies\assimp\include\light.h = Dependencies\assimp\include\light.h
+		Dependencies\assimp\include\Logger.hpp = Dependencies\assimp\include\Logger.hpp
+		Dependencies\assimp\include\LogStream.hpp = Dependencies\assimp\include\LogStream.hpp
+		Dependencies\assimp\include\material.h = Dependencies\assimp\include\material.h
+		Dependencies\assimp\include\material.inl = Dependencies\assimp\include\material.inl
+		Dependencies\assimp\include\matrix3x3.h = Dependencies\assimp\include\matrix3x3.h
+		Dependencies\assimp\include\matrix3x3.inl = Dependencies\assimp\include\matrix3x3.inl
+		Dependencies\assimp\include\matrix4x4.h = Dependencies\assimp\include\matrix4x4.h
+		Dependencies\assimp\include\matrix4x4.inl = Dependencies\assimp\include\matrix4x4.inl
+		Dependencies\assimp\include\mesh.h = Dependencies\assimp\include\mesh.h
+		Dependencies\assimp\include\metadata.h = Dependencies\assimp\include\metadata.h
+		Dependencies\assimp\include\NullLogger.hpp = Dependencies\assimp\include\NullLogger.hpp
+		Dependencies\assimp\include\postprocess.h = Dependencies\assimp\include\postprocess.h
+		Dependencies\assimp\include\ProgressHandler.hpp = Dependencies\assimp\include\ProgressHandler.hpp
+		Dependencies\assimp\include\quaternion.h = Dependencies\assimp\include\quaternion.h
+		Dependencies\assimp\include\quaternion.inl = Dependencies\assimp\include\quaternion.inl
+		Dependencies\assimp\include\scene.h = Dependencies\assimp\include\scene.h
+		Dependencies\assimp\include\texture.h = Dependencies\assimp\include\texture.h
+		Dependencies\assimp\include\types.h = Dependencies\assimp\include\types.h
+		Dependencies\assimp\include\vector2.h = Dependencies\assimp\include\vector2.h
+		Dependencies\assimp\include\vector2.inl = Dependencies\assimp\include\vector2.inl
+		Dependencies\assimp\include\vector3.h = Dependencies\assimp\include\vector3.h
+		Dependencies\assimp\include\vector3.inl = Dependencies\assimp\include\vector3.inl
+		Dependencies\assimp\include\version.h = Dependencies\assimp\include\version.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Compiler", "Compiler", "{95BBB422-01B6-4578-B8D8-D5013BC1867C}"
+	ProjectSection(SolutionItems) = preProject
+		Dependencies\assimp\include\Compiler\poppack1.h = Dependencies\assimp\include\Compiler\poppack1.h
+		Dependencies\assimp\include\Compiler\pstdint.h = Dependencies\assimp\include\Compiler\pstdint.h
+		Dependencies\assimp\include\Compiler\pushpack1.h = Dependencies\assimp\include\Compiler\pushpack1.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -109,5 +168,9 @@ Global
 		{CE961F79-F5CB-4FAF-A18F-D5302AE84757} = {A7BD52AB-0F26-4CA8-B69B-D3D4BE790CE1}
 		{66DF2AE8-0901-46C0-B293-271D0E381FE5} = {CE961F79-F5CB-4FAF-A18F-D5302AE84757}
 		{7EA4683F-70D8-46DF-9E36-681562D0850E} = {CE961F79-F5CB-4FAF-A18F-D5302AE84757}
+		{2C9AF58A-116E-43D5-8558-867FE6C9A256} = {A7BD52AB-0F26-4CA8-B69B-D3D4BE790CE1}
+		{B22EA82A-75DC-4FBA-8BB4-17EDF66CDB16} = {2C9AF58A-116E-43D5-8558-867FE6C9A256}
+		{C9F3AE5A-D016-474E-8180-EF513A8DAF1C} = {2C9AF58A-116E-43D5-8558-867FE6C9A256}
+		{95BBB422-01B6-4578-B8D8-D5013BC1867C} = {C9F3AE5A-D016-474E-8180-EF513A8DAF1C}
 	EndGlobalSection
 EndGlobal
