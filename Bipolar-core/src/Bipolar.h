@@ -9,15 +9,19 @@
 #include "bplr/Application.h"
 
 #include "bplr/entity/Entity.h"
-#include "bplr/entity/Component.h"
-#include "bplr/entity/MeshComponent.h"
-#include "bplr/entity/TransformComponent.h"
+#include "bplr/entity/components/CameraComponent.h"
+#include "bplr/entity/components/Component.h"
+#include "bplr/entity/components/MeshComponent.h"
+#include "bplr/entity/components/TransformComponent.h"
 
 #include "bplr/graphics/Mesh.h"
 #include "bplr/graphics/Shader.h"
 #include "bplr/graphics/Texture.h"
 #include "bplr/graphics/VAO.h"
 #include "bplr/graphics/Window.h"
+
+#include "bplr/input/Keyboard.h"
+#include "bplr/input/Mouse.h"
 
 #include "bplr/math/vec2.h"
 #include "bplr/math/vec3.h"

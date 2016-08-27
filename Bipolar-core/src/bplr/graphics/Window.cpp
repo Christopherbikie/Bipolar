@@ -1,5 +1,7 @@
 #include "Window.h"
 #include <iostream>
+#include "../input/Keyboard.h"
+#include "../input/Mouse.h"
 
 namespace bplr
 {
@@ -26,6 +28,10 @@ namespace bplr
 			glFrontFace(GL_CCW);
 
 			glfwSwapInterval(1);
+
+			glfwSetInputMode(m_window, GLFW_STICKY_KEYS, 1);
+			glfwSetKeyCallback(m_window, input::Keyboard::keyCallback);
+			glfwSetCursorPosCallback(m_window, input::Mouse::mouseMoveCallback);
 		}
 
 		window::~window()

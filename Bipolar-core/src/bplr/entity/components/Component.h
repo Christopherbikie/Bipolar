@@ -15,7 +15,7 @@ namespace bplr
 			{
 			}
 
-			void setEntity(Entity* entity) { m_entity = entity; }
+			virtual void setEntity(Entity* entity) { m_entity = entity; }
 			Entity* getEntity() const { return m_entity; }
 
 			virtual std::string getType() = 0;

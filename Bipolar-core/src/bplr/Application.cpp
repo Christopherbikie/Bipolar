@@ -3,9 +3,9 @@
 #include <GL/glew.h>
 #include <glfw3.h>
 #include <iostream>
-#include <string>
 #include "Application.h"
 #include "graphics/Window.h"
+#include "input/Mouse.h"
 
 namespace bplr
 {
@@ -51,6 +51,7 @@ namespace bplr
 
 	void Bipolar::getInput()
 	{
+		input::Mouse::update();
 		glfwPollEvents();
 	}
 

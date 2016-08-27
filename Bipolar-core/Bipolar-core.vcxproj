@@ -128,28 +128,35 @@
   <ItemGroup>
     <ClInclude Include="src\Bipolar.h" />
     <ClInclude Include="src\bplr\Application.h" />
+    <ClInclude Include="src\bplr\entity\components\CameraComponent.h" />
     <ClInclude Include="src\bplr\graphics\Mesh.h" />
     <ClInclude Include="src\bplr\graphics\Shader.h" />
     <ClInclude Include="src\bplr\graphics\VAO.h" />
     <ClInclude Include="src\bplr\graphics\Window.h" />
+    <ClInclude Include="src\bplr\input\Keyboard.h" />
+    <ClInclude Include="src\bplr\input\Mouse.h" />
     <ClInclude Include="src\bplr\math\mat4.h" />
+    <ClInclude Include="src\bplr\math\Math.h" />
     <ClInclude Include="src\bplr\math\vec2.h" />
     <ClInclude Include="src\bplr\math\vec3.h" />
     <ClInclude Include="src\bplr\math\vec4.h" />
     <ClInclude Include="src\bplr\util\Loader.h" />
     <ClInclude Include="src\bplr\util\Time.h" />
-    <ClInclude Include="src\bplr\entity\Component.h" />
+    <ClInclude Include="src\bplr\entity\components\Component.h" />
     <ClInclude Include="src\bplr\entity\Entity.h" />
-    <ClInclude Include="src\bplr\entity\MeshComponent.h" />
-    <ClInclude Include="src\bplr\entity\TransformComponent.h" />
+    <ClInclude Include="src\bplr\entity\components\MeshComponent.h" />
+    <ClInclude Include="src\bplr\entity\components\TransformComponent.h" />
     <ClInclude Include="src\bplr\graphics\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\Application.cpp" />
+    <ClCompile Include="src\bplr\entity\components\CameraComponent.cpp" />
     <ClCompile Include="src\bplr\graphics\Mesh.cpp" />
     <ClCompile Include="src\bplr\graphics\Shader.cpp" />
     <ClCompile Include="src\bplr\graphics\Texture.cpp" />
     <ClCompile Include="src\bplr\graphics\Window.cpp" />
+    <ClCompile Include="src\bplr\input\Keyboard.cpp" />
+    <ClCompile Include="src\bplr\input\Mouse.cpp" />
     <ClCompile Include="src\bplr\math\mat4.cpp" />
     <ClCompile Include="src\bplr\math\vec2.cpp" />
     <ClCompile Include="src\bplr\math\vec3.cpp" />
@@ -157,8 +164,8 @@
     <ClCompile Include="src\bplr\util\Loader.cpp" />
     <ClCompile Include="src\bplr\graphics\VAO.cpp" />
     <ClCompile Include="src\bplr\entity\Entity.cpp" />
-    <ClCompile Include="src\bplr\entity\MeshComponent.cpp" />
-    <ClCompile Include="src\bplr\entity\TransformComponent.cpp" />
+    <ClCompile Include="src\bplr\entity\components\MeshComponent.cpp" />
+    <ClCompile Include="src\bplr\entity\components\TransformComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

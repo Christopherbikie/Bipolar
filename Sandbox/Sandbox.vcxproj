@@ -69,7 +69,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\glfw\include;$(SolutionDir)Bipolar-core\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\glfw\include;$(SolutionDir)Sandbox\src;$(SolutionDir)Bipolar-core\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\assimp\lib;$(SolutionDir)Dependencies\FreeImage\lib;$(SolutionDir)Dependencies\glew\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)x64\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -88,7 +88,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\assimp\include;C:\Users\Christopher\git\Bipolar\Dependencies\FreeImage\include;$(SolutionDir)Bipolar-core\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Sandbox\src;$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Bipolar-core\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>BPLRCore.lib;glfw3.lib;glew32s.lib;opengl32.lib;FreeImage.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -148,6 +148,9 @@
     <Image Include="res\models\container.jpg" />
     <Image Include="res\models\container.png" />
     <Image Include="res\models\earth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

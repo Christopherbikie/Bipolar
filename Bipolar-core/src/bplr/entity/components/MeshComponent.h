@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Component.h"
-#include "../graphics/Mesh.h"
+#include "../../graphics/Mesh.h"
 #include "scene.h"
 
 namespace bplr

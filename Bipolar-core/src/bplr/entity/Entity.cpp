@@ -19,6 +19,7 @@ namespace bplr
 		Entity* Entity::addComponent(Component* c)
 		{
 			m_components.push_back(c);
+			c->setEntity(this);
 			return this;
 		}
 

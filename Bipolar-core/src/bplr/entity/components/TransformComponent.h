@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Component.h"
-#include "../math/vec3.h"
+#include "../../math/vec3.h"
 #include <GL/glew.h>
 
 namespace bplr

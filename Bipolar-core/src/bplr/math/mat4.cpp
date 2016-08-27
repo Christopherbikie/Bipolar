@@ -3,9 +3,7 @@
 #include "vec4.h"
 #include "mat4.h"
 #include <sstream>
-#include <iostream>
-
-#define PI 3.14159265358979f
+#include "Math.h"
 
 namespace bplr
 {
@@ -304,7 +302,7 @@ namespace bplr
 			zRot.elements[0 + 1 * 4] = sinZ;
 			zRot.elements[1 + 1 * 4] = cosZ;
 
-			return xRot * yRot * zRot;
+			return yRot * xRot * zRot;
 		}
 
 		mat4 mat4::scale(const vec3& scale)

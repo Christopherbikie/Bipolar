@@ -1,6 +1,6 @@
 #include "TransformComponent.h"
 #include <GL/glew.h>
-#include "../math/mat4.h"
+#include "../../math/mat4.h"
 
 namespace bplr
 {

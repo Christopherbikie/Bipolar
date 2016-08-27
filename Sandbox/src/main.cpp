@@ -1,5 +1,4 @@
-#include <string>
-#include "Bipolar.h"
+#include "main.h"
 
 int main()
 {
@@ -12,7 +11,7 @@ int main()
 	if (engine->init() != 0)
 		return -1;
 
-	graphics::window* window = engine->createWindow("Bipolar", 1366, 768);
+	m_window = engine->createWindow("Bipolar", 1366, 768);
 
 	if (engine->initGlew() != 0)
 		return -1;
@@ -28,8 +27,13 @@ int main()
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))
 		->addComponent(new entity::MeshComponent("res/models/cube.obj"));
 
+	// Create Camera
+	entity::Entity* camera = (new entity::Entity())
+		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 2.0f)))
+		->addComponent(new entity::CameraComponent());
+
 	// Create projection matrix
-	math::mat4 projectionMatrix = math::mat4::perspective(65.0f, 16.0f / 9.0f, 1.0f, 1000.0f);
+	math::mat4 projectionMatrix = math::mat4::perspective(50.0f, 1366.0f / 768.0f, 0.8f, 1000.0f);
 
 	// Timing vars
 	double previous = time::getTime();
@@ -37,6 +41,9 @@ int main()
 	double lastSecond = previous;
 	long frames = 0;
 	long updates = 0;
+
+	MouseCaptureHandler captureHandler = MouseCaptureHandler();
+	input::Keyboard::addKeyHandler(GLFW_KEY_ESCAPE, reinterpret_cast<input::KeyEventHandler*>(&captureHandler));
 
 	// GAME LOOP ----------------------------------
 
@@ -51,6 +58,8 @@ int main()
 		// Input
 		engine->getInput();
 
+		camera->getComponent<entity::CameraComponent>()->update(delta);
+
 		// Update
 		while (lag >= time::MS_PER_UPDATE)
 		{
@@ -60,26 +69,26 @@ int main()
 		}
 
 		// Rotate entity
-		entity->getComponent<entity::TransformComponent>()->rotation = math::vec3(sin(current) * 180, sin(current * 1.3f) * 180, sin(current * 0.8f) * 180);
+//		entity->getComponent<entity::TransformComponent>()->rotation = math::vec3(sin(current) * 180, sin(current * 1.3f) * 180, sin(current * 0.8f) * 180);
 
 		// Load uniforms
 		shader->loadUniform("transform", entity->getComponent<entity::TransformComponent>()->getTransform());
-		shader->loadUniform("view", math::mat4(1.0f).translate(-math::vec3(0.0f, 0.0f, 2.0)));
+		shader->loadUniform("view", camera->getComponent<entity::CameraComponent>()->getViewMatrix());
 		shader->loadUniform("projection", projectionMatrix);
 
 		// Render
 		float colour = sin(current * 2) / 2 + 0.5f;
-		window->setBackgroundColour(0.4f * colour, 0.2f * colour, 0.4f * colour, 1.0f);
+		m_window->setBackgroundColour(0.4f * colour, 0.2f * colour, 0.4f * colour, 1.0f);
 
-		window->beginRender();
+		m_window->beginRender();
 		entity->getComponent<entity::MeshComponent>()->render(shader);
-		window->swapBuffers();
+		m_window->swapBuffers();
 		frames++;
 
 		// Update FPS / UPS
 		if (current - lastSecond >= 1)
 		{
-			window->setTitle("Bipolar :: FPS: " + std::to_string(frames) + " UPS: " + std::to_string(updates));
+			m_window->setTitle("Bipolar :: FPS: " + std::to_string(frames) + " UPS: " + std::to_string(updates));
 			lastSecond = current;
 			frames = 0;
 			updates = 0;
@@ -92,8 +101,14 @@ int main()
 	// CLEAN UP -----------------------------------
 
 	delete entity;
+	delete camera;
 	delete shader;
 	delete engine;
 
 	return 0;
+}
+
+void MouseCaptureHandler::pressKey(GLuint key)
+{
+	bplr::input::Mouse::toggleCaptured(m_window);
 }
