@@ -2,7 +2,7 @@
 
 #include "Bipolar.h"
 
-bplr::graphics::window* m_window;
+bplr::graphics::Window* m_window;
 
 int main();
 

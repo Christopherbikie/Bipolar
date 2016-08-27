@@ -15,7 +15,7 @@ namespace bplr
 
 	Bipolar::~Bipolar()
 	{
-		for (graphics::window* window : m_windows)
+		for (graphics::Window* window : m_windows)
 			delete window;
 		glfwTerminate();
 	}
@@ -42,9 +42,9 @@ namespace bplr
 		return 0;
 	}
 
-	graphics::window* Bipolar::createWindow(std::string name, int width, int height)
+	graphics::Window* Bipolar::createWindow(std::string name, int width, int height)
 	{
-		graphics::window* window = new graphics::window(name, width, height);
+		graphics::Window* window = new graphics::Window(name, width, height);
 		m_windows.push_back(window);
 		return window;
 	}

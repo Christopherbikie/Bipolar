@@ -7,7 +7,7 @@ namespace bplr
 {
 	namespace graphics
 	{
-		window::window(std::string title, int width, int height)
+		Window::Window(std::string title, int width, int height)
 		{
 			m_window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
 			if (m_window == nullptr)
@@ -34,13 +34,13 @@ namespace bplr
 			glfwSetCursorPosCallback(m_window, input::Mouse::mouseMoveCallback);
 		}
 
-		window::~window()
+		Window::~Window()
 		{
 			glfwDestroyWindow(m_window);
 		}
 
 
-		void window::setBackgroundColour(float r, float g, float b, float a)
+		void Window::setBackgroundColour(float r, float g, float b, float a)
 		{
 			this->m_bgr = r;
 			this->m_bgg = g;
@@ -48,12 +48,12 @@ namespace bplr
 			this->m_bga = a;
 		}
 
-		void window::setTitle(std::string title) const
+		void Window::setTitle(std::string title) const
 		{
 			glfwSetWindowTitle(m_window, title.c_str());
 		}
 
-		void window::beginRender() const
+		void Window::beginRender() const
 		{
 			glfwMakeContextCurrent(m_window);
 
@@ -61,17 +61,17 @@ namespace bplr
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
 
-		void window::swapBuffers() const
+		void Window::swapBuffers() const
 		{
 			glfwSwapBuffers(m_window);
 		}
 
-		GLFWwindow* window::getGLFWwindow() const
+		GLFWwindow* Window::getGLFWwindow() const
 		{
 			return m_window;
 		}
 
-		bool window::isCloseRequested() const
+		bool Window::isCloseRequested() const
 		{
 			return glfwWindowShouldClose(m_window) == GL_FALSE ? false : true;
 		}

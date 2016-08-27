@@ -15,8 +15,8 @@ namespace bplr
 			static math::vec2 getPosition();
 			static math::vec2 getMovement();
 
-			static void setCaptured(graphics::window* window, bool value);
-			static void toggleCaptured(graphics::window* window); 
+			static void setCaptured(graphics::Window* window, bool value);
+			static void toggleCaptured(graphics::Window* window); 
 			static bool isCaptured();
 
 			static void update();

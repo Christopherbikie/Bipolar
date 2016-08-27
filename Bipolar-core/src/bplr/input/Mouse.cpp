@@ -21,7 +21,7 @@ namespace bplr
 			return m_difference;
 		}
 
-		void Mouse::setCaptured(graphics::window* window, bool value)
+		void Mouse::setCaptured(graphics::Window* window, bool value)
 		{
 			if (value)
 				glfwSetInputMode(window->getGLFWwindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -31,7 +31,7 @@ namespace bplr
 			m_captured = value;
 		}
 
-		void Mouse::toggleCaptured(graphics::window* window)
+		void Mouse::toggleCaptured(graphics::Window* window)
 		{
 			setCaptured(window, !m_captured);
 		}

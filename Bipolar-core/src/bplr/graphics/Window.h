@@ -7,11 +7,11 @@ namespace bplr
 {
 	namespace graphics
 	{
-		class window
+		class Window
 		{
 		public:
-			window(std::string title, int width, int height);
-			~window();
+			Window(std::string title, int width, int height);
+			~Window();
 
 			void beginRender() const;
 			void swapBuffers() const;
