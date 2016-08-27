@@ -43,8 +43,8 @@ namespace bplr
 
 			m_vao->bind();
 			m_vao->storeInBuffer(0, 3, positions.size(), (GLfloat*) &positions[0]);
-			m_vao->storeInBuffer(1, 2, textureCoords.size(), (GLfloat*)&textureCoords[0]);
-			m_vao->storeInBuffer(2, 3, normals.size(), (GLfloat*) &normals[0]);
+			m_vao->storeInBuffer(1, 3, normals.size(), (GLfloat*) &normals[0]);
+			m_vao->storeInBuffer(2, 2, textureCoords.size(), (GLfloat*)&textureCoords[0]);
 			m_vao->storeInElementBuffer(indices.size(), &indices[0]);
 			m_vao->unbind();
 		}

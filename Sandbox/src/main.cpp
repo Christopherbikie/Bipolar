@@ -12,6 +12,7 @@ int main()
 		return -1;
 
 	m_window = engine->createWindow("Bipolar", 1366, 768);
+	m_window->setBackgroundColour(0.3f, 0.1f, 0.45f, 1.0f);
 
 	if (engine->initGlew() != 0)
 		return -1;
@@ -25,12 +26,17 @@ int main()
 	// Create Entity
 	entity::Entity* entity = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))
-		->addComponent(new entity::MeshComponent("res/models/cube.obj"));
+		->addComponent(new entity::MeshComponent("res/models/earth.obj"));
 
 	// Create Camera
 	entity::Entity* camera = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 2.0f)))
 		->addComponent(new entity::CameraComponent());
+
+	// Create Light
+	entity::Entity* light = (new entity::Entity())
+		->addComponent(new entity::TransformComponent(math::vec3(-10.0f, 10.0f, 10.0f)))
+		->addComponent(new entity::LightSourceComponent());
 
 	// Create projection matrix
 	math::mat4 projectionMatrix = math::mat4::perspective(50.0f, 1366.0f / 768.0f, 0.8f, 1000.0f);
@@ -72,14 +78,16 @@ int main()
 //		entity->getComponent<entity::TransformComponent>()->rotation = math::vec3(sin(current) * 180, sin(current * 1.3f) * 180, sin(current * 0.8f) * 180);
 
 		// Load uniforms
-		shader->loadUniform("transform", entity->getComponent<entity::TransformComponent>()->getTransform());
+		shader->loadUniform("model", entity->getComponent<entity::TransformComponent>()->getTransform());
 		shader->loadUniform("view", camera->getComponent<entity::CameraComponent>()->getViewMatrix());
 		shader->loadUniform("projection", projectionMatrix);
 
-		// Render
-		float colour = sin(current * 2) / 2 + 0.5f;
-		m_window->setBackgroundColour(0.4f * colour, 0.2f * colour, 0.4f * colour, 1.0f);
+		shader->loadUniform("lightPosition", light->getComponent<entity::TransformComponent>()->position);
+		shader->loadUniform("lightColour", light->getComponent<entity::LightSourceComponent>()->getColour());
 
+		shader->loadUniform("cameraPosition", camera->getComponent<entity::TransformComponent>()->position);
+
+		// Render
 		m_window->beginRender();
 		entity->getComponent<entity::MeshComponent>()->render(shader);
 		m_window->swapBuffers();

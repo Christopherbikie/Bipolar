@@ -11,6 +11,7 @@
 #include "bplr/entity/Entity.h"
 #include "bplr/entity/components/CameraComponent.h"
 #include "bplr/entity/components/Component.h"
+#include "bplr/entity/components/LightSourceComponent.h"
 #include "bplr/entity/components/MeshComponent.h"
 #include "bplr/entity/components/TransformComponent.h"
 
