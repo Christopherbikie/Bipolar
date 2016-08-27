@@ -12,7 +12,7 @@ int main()
 		return -1;
 
 	m_window = engine->createWindow("Bipolar", 1366, 768);
-	m_window->setBackgroundColour(0.3f, 0.1f, 0.45f, 1.0f);
+	m_window->setBackgroundColour(math::vec3(0.3f, 0.1f, 0.45f));
 
 	if (engine->initGlew() != 0)
 		return -1;

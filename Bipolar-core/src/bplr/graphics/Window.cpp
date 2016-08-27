@@ -39,15 +39,6 @@ namespace bplr
 			glfwDestroyWindow(m_window);
 		}
 
-
-		void Window::setBackgroundColour(float r, float g, float b, float a)
-		{
-			this->m_bgr = r;
-			this->m_bgg = g;
-			this->m_bgb = b;
-			this->m_bga = a;
-		}
-
 		void Window::setTitle(std::string title) const
 		{
 			glfwSetWindowTitle(m_window, title.c_str());
@@ -57,13 +48,23 @@ namespace bplr
 		{
 			glfwMakeContextCurrent(m_window);
 
-			glClearColor(m_bgr, m_bgg, m_bgb, m_bga);
+			glClearColor(m_backgroundColour.x, m_backgroundColour.y, m_backgroundColour.z, m_backgroundColour.w);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
 
 		void Window::swapBuffers() const
 		{
 			glfwSwapBuffers(m_window);
+		}
+
+		void Window::setBackgroundColour(math::vec4 colour)
+		{
+			m_backgroundColour = colour;
+		}
+
+		void Window::setBackgroundColour(math::vec3 colour)
+		{
+			m_backgroundColour = math::vec4(colour, 1.0f);
 		}
 
 		GLFWwindow* Window::getGLFWwindow() const
