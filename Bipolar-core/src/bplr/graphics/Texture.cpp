@@ -6,7 +6,7 @@ namespace bplr
 {
 	namespace graphics
 	{
-		Texture::Texture(const char* filename, TextureType type, GLenum imageFormat, GLint internalFormat, GLint mipmapLevel, GLint border)
+		Texture::Texture(const char* filename, TextureType type, GLint mipmapLevel, GLint border)
 			: m_type(type), m_path(filename)
 		{
 			FREE_IMAGE_FORMAT freeImageFormat = FIF_UNKNOWN;
@@ -36,6 +36,10 @@ namespace bplr
 				return;
 			}
 
+			GLint bitsPerPixel = FreeImage_GetBPP(bitmap);
+			GLuint imageFormat = bitsPerPixel == 32 ? GL_BGRA : GL_BGR;
+			GLuint internalFormat = bitsPerPixel == 32 ? GL_RGBA : GL_RGB;
+
 			glGenTextures(1, &m_location);
 			glBindTexture(GL_TEXTURE_2D, m_location);
 
@@ -50,8 +54,6 @@ namespace bplr
 
 			glBindTexture(GL_TEXTURE_2D, 0);
 
-			unsigned int pitch = FreeImage_GetPitch(bitmap);
-
 			// Print pixel values (slow on big images)
 //			for (int y = 0; y < height; ++y)
 //			{
@@ -65,7 +67,7 @@ namespace bplr
 //			}
 
 			// Print bits per pixel
-//			std::cout << FreeImage_GetBPP(bitmap) << std::endl;
+//			std::cout << bitsPerPixel << std::endl;
 
 			FreeImage_Unload(bitmap);
 		}
