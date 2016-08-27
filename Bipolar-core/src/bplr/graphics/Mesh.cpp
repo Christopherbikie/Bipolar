@@ -90,5 +90,10 @@ namespace bplr
 			shader->drawElements(m_vao->getVertexCount());
 			m_vao->unbind();
 		}
+
+		void Mesh::addTexture(Texture* texture)
+		{
+			m_textures.push_back(texture);
+		}
 	}
 }

@@ -43,6 +43,13 @@ namespace bplr
 			m_meshes.push_back(mesh);
 		}
 
+		void MeshComponent::addTexture(std::string path, int meshIndex)
+		{
+			graphics::Texture* texture = new graphics::Texture(path.c_str());
+			m_meshes[meshIndex]->addTexture(texture);
+			m_textures.push_back(texture);
+		}
+
 		void MeshComponent::render(graphics::Shader *shader) const
 		{
 			for (graphics::Mesh* mesh : m_meshes)

@@ -25,6 +25,8 @@ namespace bplr
 
 			void render(Shader* shader) const;
 
+			void addTexture(Texture* texture);
+
 		private:
 			VAO* m_vao;
 			std::vector<Texture*> m_textures;

@@ -16,6 +16,7 @@ namespace bplr
 			~MeshComponent();
 
 			void addMesh(graphics::Mesh* mesh);
+			void addTexture(std::string path, int meshIndex = 0);
 
 			void render(graphics::Shader* shader) const;
 
