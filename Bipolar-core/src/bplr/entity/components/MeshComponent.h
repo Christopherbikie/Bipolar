@@ -30,7 +30,7 @@ namespace bplr
 
 			void processNode(aiNode* node, const aiScene* scene);
 			graphics::Mesh* processMesh(aiMesh* mesh, const aiScene* scene);
-			std::vector<graphics::Texture*> loadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType);
+			std::vector<graphics::Texture*> loadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType, graphics::Material* myMaterial);
 		};
 	}
 }

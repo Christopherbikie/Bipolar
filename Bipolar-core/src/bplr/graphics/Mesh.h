@@ -16,10 +16,19 @@ namespace bplr
 			math::vec2 textureCoord;
 		};
 
+		struct Material
+		{
+			math::vec3 ambient;
+			math::vec3 diffuse;
+			math::vec3 specular;
+			GLfloat shininess;
+			bool useSpecMap = true;
+		};
+
 		class Mesh {
 		public:
-			Mesh(Shader* shader, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures);
-			Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures);
+			Mesh(Shader* shader, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, Material material);
+			Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, Material material);
 			Mesh(VAO* vao);
 			~Mesh();
 
@@ -30,6 +39,7 @@ namespace bplr
 		private:
 			VAO* m_vao;
 			std::vector<Texture*> m_textures;
+			Material m_material;
 		};
 	}
 }

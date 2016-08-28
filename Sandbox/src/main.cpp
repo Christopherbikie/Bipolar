@@ -26,7 +26,7 @@ int main()
 	// Create Entity
 	entity::Entity* entity = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))
-		->addComponent(new entity::MeshComponent("res/models/earth.obj"));
+		->addComponent(new entity::MeshComponent("res/models/cube.obj"));
 
 	// Create Camera
 	entity::Entity* camera = (new entity::Entity())
@@ -36,7 +36,7 @@ int main()
 	// Create Light
 	entity::Entity* light = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(-10.0f, 10.0f, 10.0f)))
-		->addComponent(new entity::LightSourceComponent());
+		->addComponent(new entity::LightSourceComponent(math::vec3(0.9f), math::vec3(0.1f)));
 
 	// Create projection matrix
 	math::mat4 projectionMatrix = math::mat4::perspective(50.0f, 1366.0f / 768.0f, 0.8f, 1000.0f);
@@ -82,8 +82,7 @@ int main()
 		shader->loadUniform("view", camera->getComponent<entity::CameraComponent>()->getViewMatrix());
 		shader->loadUniform("projection", projectionMatrix);
 
-		shader->loadUniform("lightPosition", light->getComponent<entity::TransformComponent>()->position);
-		shader->loadUniform("lightColour", light->getComponent<entity::LightSourceComponent>()->getColour());
+		light->getComponent<entity::LightSourceComponent>()->loadUniforms(shader);
 
 		shader->loadUniform("cameraPosition", camera->getComponent<entity::TransformComponent>()->position);
 

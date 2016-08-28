@@ -1,6 +1,5 @@
 #pragma once
 
-#include "FreeImage.h"
 #include <GL/glew.h>
 #include "Shader.h"
 #include <types.h>
@@ -16,8 +15,8 @@ namespace bplr
 		};
 
 		static std::map<TextureType, std::string> typeNames = {
-			{ DiffuseMap, "diffuseMap" },
-			{ SpecularMap, "specularMap" },
+			{ DiffuseMap, "diffuse" },
+			{ SpecularMap, "specular" },
 		};
 
 		class Texture

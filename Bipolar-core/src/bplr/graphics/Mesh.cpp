@@ -5,8 +5,8 @@ namespace bplr
 {
 	namespace graphics
 	{
-		Mesh::Mesh(Shader* shader, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures)
-			: m_vao(new VAO), m_textures(textures)
+		Mesh::Mesh(Shader* shader, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, Material material)
+			: m_vao(new VAO), m_textures(textures), m_material(material)
 		{
 			std::vector<math::vec3> positions;
 			std::vector<math::vec3> normals;
@@ -27,8 +27,8 @@ namespace bplr
 			m_vao->unbind();
 		}
 
-		Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures)
-			: m_vao(new VAO), m_textures(textures)
+		Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, Material material)
+			: m_vao(new VAO), m_textures(textures), m_material(material)
 		{
 			std::vector<math::vec3> positions;
 			std::vector<math::vec3> normals;
@@ -66,23 +66,21 @@ namespace bplr
 			{
 				glActiveTexture(GL_TEXTURE0 + i);
 
-				std::stringstream ss;
+				TextureType type = m_textures[i]->getType();
+				if (++numberOfTypes[type] > 1)
+					continue;
 
-				switch (m_textures[i]->getType())
-				{
-				case DiffuseMap:
-					ss << typeNames[DiffuseMap] << numberOfTypes[DiffuseMap]++;
-					break;
-				case SpecularMap:
-					ss << typeNames[SpecularMap] << numberOfTypes[SpecularMap]++;
-					break;
-				default:
-					break;
-				}
+				std::string textureName = "material." + typeNames[type] + "Map";
 
-				m_textures[i]->bind(shader, ss.str().c_str());
+				m_textures[i]->bind(shader, textureName.c_str());
 			}
 			glActiveTexture(GL_TEXTURE0);
+
+			shader->loadUniform("material.ambient", m_material.ambient);
+			shader->loadUniform("material.diffuse", m_material.diffuse);
+			shader->loadUniform("material.specular", m_material.specular);
+			shader->loadUniform("material.shininess", m_material.shininess);
+			shader->loadUniform("material.useSpecMap", m_material.useSpecMap);
 
 			shader->use();
 			m_vao->bind();

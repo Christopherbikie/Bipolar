@@ -1,4 +1,5 @@
 #include "Texture.h"
+#include <FreeImage.h>
 #include <iostream>
 #include <types.h>
 

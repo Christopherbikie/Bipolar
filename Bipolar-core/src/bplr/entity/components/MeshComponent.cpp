@@ -114,45 +114,73 @@ namespace bplr
 					indices.push_back((face.mIndices[j]));
 			}
 
+			aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
+
+			graphics::Material myMaterial;
+
 			if (mesh->mMaterialIndex >= 0)
 			{
-				aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 				std::map<graphics::TextureType, std::vector<graphics::Texture*>> textureMaps;
 
-				textureMaps[graphics::DiffuseMap] = loadMaterialTextures(material, aiTextureType_DIFFUSE, graphics::DiffuseMap);
+				textureMaps[graphics::DiffuseMap] = loadMaterialTextures(material, aiTextureType_DIFFUSE, graphics::DiffuseMap, &myMaterial);
 				textures.insert(textures.end(), textureMaps[graphics::DiffuseMap].begin(), textureMaps[graphics::DiffuseMap].end());
 
-				textureMaps[graphics::SpecularMap] = loadMaterialTextures(material, aiTextureType_SPECULAR, graphics::SpecularMap);
+				textureMaps[graphics::SpecularMap] = loadMaterialTextures(material, aiTextureType_SPECULAR, graphics::SpecularMap, &myMaterial);
 				textures.insert(textures.end(), textureMaps[graphics::SpecularMap].begin(), textureMaps[graphics::SpecularMap].end());
 			}
 
-			return new graphics::Mesh(vertices, indices, textures);
+			aiColor3D ambient;
+			material->Get(AI_MATKEY_COLOR_AMBIENT, ambient);
+			myMaterial.ambient = math::vec3(ambient.r, ambient.g, ambient.b);
+
+			aiColor3D diffuse;
+			material->Get(AI_MATKEY_COLOR_DIFFUSE, diffuse);
+			myMaterial.diffuse = math::vec3(diffuse.r, diffuse.g, diffuse.b);
+
+			aiColor3D specular;
+			material->Get(AI_MATKEY_COLOR_SPECULAR, specular);
+			myMaterial.specular = math::vec3(specular.r, specular.g, specular.b);
+
+			GLfloat shininess;
+			material->Get(AI_MATKEY_SHININESS, shininess);
+			myMaterial.shininess = shininess;
+
+			return new graphics::Mesh(vertices, indices, textures, myMaterial);
 		}
 
-		std::vector<graphics::Texture*> MeshComponent::loadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType)
+		std::vector<graphics::Texture*> MeshComponent::loadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType, graphics::Material* myMaterial)
 		{
 			std::vector<graphics::Texture*> textures;
-			for (int i = 0; i < material->GetTextureCount(type); i++)
-			{
-				aiString string;
-				material->GetTexture(type, i, &string);
-				GLboolean skip = false;
-
-				for (int j = 0; j < m_textures.size(); ++j)
+			if (material->GetTextureCount(type) > 0)
+				for (int i = 0; i < material->GetTextureCount(type); i++)
 				{
-					if (m_textures[j]->getPath() == string)
+					aiString string;
+					material->GetTexture(type, i, &string);
+					GLboolean skip = false;
+
+					for (int j = 0; j < m_textures.size(); ++j)
 					{
-						textures.push_back(m_textures[j]);
-						skip = true;
-						break;
+						if (m_textures[j]->getPath() == string)
+						{
+							textures.push_back(m_textures[j]);
+							skip = true;
+							break;
+						}
+					}
+					if (!skip)
+					{
+						graphics::Texture* texture = new graphics::Texture((m_directory + "/" + string.C_Str()).c_str(), bplrType);
+						textures.push_back(texture);
+						m_textures.push_back(texture);
 					}
 				}
-				if (!skip)
-				{
-					graphics::Texture* texture = new graphics::Texture((m_directory + "/" + string.C_Str()).c_str(), bplrType);
-					textures.push_back(texture);
-					m_textures.push_back(texture);
-				}
+			else
+			{
+				graphics::Texture* texture = new graphics::Texture("res/images/white.png", bplrType);
+				m_textures.push_back(texture);
+				textures.push_back(texture);
+				if (bplrType == graphics::SpecularMap)
+					myMaterial->useSpecMap = false;
 			}
 			return textures;
 		}
