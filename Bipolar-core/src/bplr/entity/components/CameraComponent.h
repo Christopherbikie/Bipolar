@@ -20,7 +20,7 @@ namespace bplr
 			
 		private:
 			TransformComponent* m_transform;
-			float m_moveSpeed = 5.0f, m_sensitivity = 1.0f / 3;
+			float m_moveSpeed = 3.0f, m_sensitivity = 1.0f / 5;
 		};
 	}
 }

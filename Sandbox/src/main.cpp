@@ -39,7 +39,7 @@ int main()
 		->addComponent(new entity::LightSourceComponent(math::vec3(0.9f), math::vec3(0.1f)));
 
 	// Create projection matrix
-	math::mat4 projectionMatrix = math::mat4::perspective(50.0f, 1366.0f / 768.0f, 0.8f, 1000.0f);
+	math::mat4 projectionMatrix = math::mat4::perspective(60.0f, 1366.0f / 768.0f, 0.5f, 1000.0f);
 
 	// Timing vars
 	double previous = time::getTime();

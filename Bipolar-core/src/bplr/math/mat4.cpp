@@ -207,6 +207,11 @@ namespace bplr
 			return *this;
 		}
 
+		float& mat4::operator[](int index)
+		{
+			return elements[index];
+		}
+
 		mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far)
 		{
 			mat4 result(1.0f);
@@ -226,20 +231,17 @@ namespace bplr
 
 		mat4 mat4::perspective(float fov, float aspectRatio, float near, float far)
 		{
-			mat4 result(1.0f);
+			mat4 result;
+			float yScale = 1.0f / tan(fov / 2.0f * PI / 180) * aspectRatio;
+			float xScale = yScale / aspectRatio;
+			float frustumLength = far - near;
 
-			float q = 1.0f / tan((0.5f * fov) * (PI / 180.0f));
-			float a = q / aspectRatio;
-
-			float b = (near + far) / (near - far);
-			float c = (2.0f * near * far) / (near - far);
-
-			result.elements[0 + 0 * 4] = a;
-			result.elements[1 + 1 * 4] = q;
-			result.elements[2 + 2 * 4] = b;
-			result.elements[2 + 3 * 4] = -1.0f;
-			result.elements[3 + 2 * 4] = c;
-
+			result[0 + 0 * 4] = xScale;
+			result[1 + 1 * 4] = yScale;
+			result[2 + 2 * 4] = -((far + near) / frustumLength);
+			result[2 + 3 * 4] = -1;
+			result[3 + 2 * 4] = -((2 * near * far) / frustumLength);
+			result[3 + 3 * 4] = 0;
 			return result;
 		}
 
