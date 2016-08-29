@@ -3,24 +3,24 @@
 #include <GL/glew.h>
 #include <glfw3.h>
 #include <iostream>
-#include "Application.h"
+#include "Engine.h"
 #include "graphics/Window.h"
 #include "input/Mouse.h"
+#include <vector>
 
 namespace bplr
 {
-	Bipolar::Bipolar()
-	{
-	}
+	std::vector<graphics::Window*> m_windows;
+	bool isGlewInitialised = false;
 
-	Bipolar::~Bipolar()
+	void terminateEngine()
 	{
 		for (graphics::Window* window : m_windows)
 			delete window;
 		glfwTerminate();
 	}
 
-	int Bipolar::init()
+	int init()
 	{
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -31,7 +31,7 @@ namespace bplr
 		return 0;
 	}
 
-	int Bipolar::initGlew()
+	int initGlew()
 	{
 		glewExperimental = GL_TRUE;
 		if (glewInit() != GLEW_OK)
@@ -42,24 +42,22 @@ namespace bplr
 		return 0;
 	}
 
-	graphics::Window* Bipolar::createWindow(std::string name, int width, int height)
+	graphics::Window* createWindow(std::string name, int width, int height)
 	{
 		graphics::Window* window = new graphics::Window(name, width, height);
 		m_windows.push_back(window);
+		if (!isGlewInitialised)
+			initGlew();
 		return window;
 	}
 
-	void Bipolar::getInput()
+	void getInput()
 	{
 		input::Mouse::update();
 		glfwPollEvents();
 	}
 
-	void Bipolar::update()
-	{
-	}
-
-	void Bipolar::processCloseRequests()
+	void processCloseRequests()
 	{
 		for (int i = 0; i < m_windows.size(); ++i)
 			if (m_windows[i]->isCloseRequested())
@@ -69,7 +67,7 @@ namespace bplr
 			}
 	}
 
-	bool Bipolar::shouldApplicationClose() const
+	bool shouldApplicationClose()
 	{
 		return m_windows.size() > 0 ? false : true;
 	}

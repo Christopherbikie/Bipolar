@@ -6,16 +6,11 @@ int main()
 
 	// INIT ----------------------------------------
 
-	Bipolar* engine = new Bipolar();
-
-	if (engine->init() != 0)
+	if (init() != 0)
 		return -1;
 
-	m_window = engine->createWindow("Bipolar", 1366, 768);
+	m_window = createWindow("Bipolar", 1366, 768);
 	m_window->setBackgroundColour(math::vec3(0.3f, 0.1f, 0.45f));
-
-	if (engine->initGlew() != 0)
-		return -1;
 
 	// Create Shader
 	graphics::Shader* shader = new graphics::Shader();
@@ -53,7 +48,7 @@ int main()
 
 	// GAME LOOP ----------------------------------
 
-	while (!engine->shouldApplicationClose())
+	while (!shouldApplicationClose())
 	{
 		// Timing math
 		double current = time::getTime();
@@ -62,14 +57,13 @@ int main()
 		lag += delta;
 
 		// Input
-		engine->getInput();
+		getInput();
 
 		camera->getComponent<entity::CameraComponent>()->update(delta);
 
 		// Update
 		while (lag >= time::MS_PER_UPDATE)
 		{
-			engine->update();
 			lag -= time::MS_PER_UPDATE;
 			updates++;
 		}
@@ -102,7 +96,7 @@ int main()
 		}
 
 		// Close windows
-		engine->processCloseRequests();
+		processCloseRequests();
 	}
 
 	// CLEAN UP -----------------------------------
@@ -110,7 +104,8 @@ int main()
 	delete entity;
 	delete camera;
 	delete shader;
-	delete engine;
+
+	terminateEngine();
 
 	return 0;
 }

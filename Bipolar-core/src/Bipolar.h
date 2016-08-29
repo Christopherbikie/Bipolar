@@ -6,7 +6,7 @@
 
 #include <GL/glew.h>
 
-#include "bplr/Application.h"
+#include "bplr/Engine.h"
 
 #include "bplr/entity/Entity.h"
 #include "bplr/entity/components/CameraComponent.h"
