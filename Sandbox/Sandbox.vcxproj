@@ -69,8 +69,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\glfw\include;$(SolutionDir)Sandbox\src;$(SolutionDir)Bipolar-core\src;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencies\assimp\lib;$(SolutionDir)Dependencies\FreeImage\lib;$(SolutionDir)Dependencies\glew\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\glfw\include;$(SolutionDir)Sandbox\src;$(SolutionDir)Bipolar-core\src;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\assimp\lib;$(SolutionDir)Dependencies\FreeImage\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\glew\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)x64\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\glfw\include;$(SolutionDir)Bipolar-core\src;$(IncludePath)</IncludePath>
