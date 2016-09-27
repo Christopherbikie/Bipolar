@@ -26,6 +26,12 @@ namespace bplr
 
 		void Shader::addSource(ShaderType type, const GLchar* path)
 		{
+			if (m_linked)
+			{
+				std::cout << "Could not add source located at " << path << " to program, program is already linked!" << std::endl;
+				return;
+			}
+
 			std::string shaderSourceStdString = util::loadFileAsString(path);
 			const GLchar* shaderSource = shaderSourceStdString.c_str();
 
@@ -48,6 +54,12 @@ namespace bplr
 
 		void Shader::link()
 		{
+			if (m_linked)
+			{
+				std::cout << "Could not link program, program is already linked!" << std::endl;
+				return;
+			}
+
 			glLinkProgram(m_program);
 
 			GLchar infolog[512];
@@ -64,6 +76,8 @@ namespace bplr
 				glDetachShader(m_program, shader);
 				glDeleteShader(shader);
 			}
+
+			m_linked = true;
 		}
 
 		void Shader::use() const

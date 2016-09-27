@@ -20,6 +20,7 @@ namespace bplr
 			GEOMETRY_SHADER = GL_GEOMETRY_SHADER,
 			FRAGMENT_SHADER = GL_FRAGMENT_SHADER,
 		};
+
 		extern const std::map<GLuint, GLchar*> shaderTypeNames;
 
 		class Shader
@@ -45,10 +46,11 @@ namespace bplr
 			void drawElements(GLint count);
 
 			GLuint getLocation() const;
-		
+
 		private:
 			GLuint m_program;
 			std::vector<GLuint> m_shaders;
+			GLboolean m_linked = false;
 		};
 	}
 }
