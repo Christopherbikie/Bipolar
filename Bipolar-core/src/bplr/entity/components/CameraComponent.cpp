@@ -53,6 +53,11 @@ namespace bplr
 			return math::mat4(1.0f).translate(-m_transform->position) * math::mat4(1.0f).rotate(m_transform->rotation);
 		}
 
+		math::mat4 CameraComponent::getViewMatrixNoTranslate() const
+		{
+			return math::mat4(1.0f).rotate(m_transform->rotation);
+		}
+
 		std::string CameraComponent::getType()
 		{
 			return getStaticType();

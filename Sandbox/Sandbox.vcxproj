@@ -139,12 +139,20 @@
     <None Include="res\shaders\fragment.frag">
       <FileType>Document</FileType>
     </None>
+    <None Include="res\shaders\skybox.frag" />
+    <None Include="res\shaders\skybox.vert" />
     <None Include="res\shaders\vertex.vert">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\container.jpg" />
+    <Image Include="res\images\skybox\negx.jpg" />
+    <Image Include="res\images\skybox\negy.jpg" />
+    <Image Include="res\images\skybox\negz.jpg" />
+    <Image Include="res\images\skybox\posx.jpg" />
+    <Image Include="res\images\skybox\posy.jpg" />
+    <Image Include="res\images\skybox\posz.jpg" />
     <Image Include="res\models\container.jpg" />
     <Image Include="res\models\container.png" />
     <Image Include="res\models\earth.png" />

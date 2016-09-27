@@ -24,6 +24,8 @@
     <None Include="res\shaders\vertex.vert" />
     <None Include="res\models\cube.mtl" />
     <None Include="res\models\earth.mtl" />
+    <None Include="res\shaders\skybox.frag" />
+    <None Include="res\shaders\skybox.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\container.jpg">
@@ -36,6 +38,24 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\models\container.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\images\skybox\negx.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\images\skybox\negy.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\images\skybox\negz.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\images\skybox\posx.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\images\skybox\posy.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\images\skybox\posz.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

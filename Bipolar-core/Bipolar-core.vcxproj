@@ -130,6 +130,7 @@
     <ClInclude Include="src\bplr\Engine.h" />
     <ClInclude Include="src\bplr\entity\components\CameraComponent.h" />
     <ClInclude Include="src\bplr\entity\components\LightSourceComponent.h" />
+    <ClInclude Include="src\bplr\graphics\CubeMap.h" />
     <ClInclude Include="src\bplr\graphics\Mesh.h" />
     <ClInclude Include="src\bplr\graphics\Shader.h" />
     <ClInclude Include="src\bplr\graphics\VAO.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="src\bplr\Engine.cpp" />
     <ClCompile Include="src\bplr\entity\components\CameraComponent.cpp" />
     <ClCompile Include="src\bplr\entity\components\LightSourceComponent.cpp" />
+    <ClCompile Include="src\bplr\graphics\CubeMap.cpp" />
     <ClCompile Include="src\bplr\graphics\Mesh.cpp" />
     <ClCompile Include="src\bplr\graphics\Shader.cpp" />
     <ClCompile Include="src\bplr\graphics\Texture.cpp" />

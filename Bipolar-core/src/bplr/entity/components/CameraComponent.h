@@ -13,6 +13,7 @@ namespace bplr
 		public:
 			void update(float delta) const;
 			math::mat4 getViewMatrix() const;
+			math::mat4 getViewMatrixNoTranslate() const;
 
 			std::string getType() override;
 			static std::string getStaticType();
