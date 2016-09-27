@@ -3,6 +3,7 @@
 #include <GL/glew.h>
 #include "Shader.h"
 #include <types.h>
+#include <FreeImage.h>
 
 namespace bplr
 {
@@ -34,6 +35,30 @@ namespace bplr
 			TextureType m_type;
 			aiString m_path;
 			GLuint m_location;
+		};
+
+		class TextureData
+		{
+		public:
+			TextureData(const char* filename);
+			~TextureData();
+
+			BYTE* getBits() const;
+			GLuint getWidth() const;
+			GLuint getHeight() const;
+			GLenum getFormat() const;
+			GLenum getInternalFormat() const;
+			GLint getBitsPerPixel() const;
+		
+		private:
+			BYTE* m_bits;
+			GLuint m_width;
+			GLuint m_height;
+			GLenum m_format;
+			GLenum m_internalFormat;
+			GLint m_bitsPerPixel;
+
+			FIBITMAP* m_bitmap;
 		};
 	}
 }
