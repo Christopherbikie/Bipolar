@@ -11,19 +11,23 @@ namespace bplr
 	{
 		enum TextureType
 		{
-			DiffuseMap,
+			AlbedoMap,
+			GlossMap,
+			NormalMap,
 			SpecularMap,
 		};
 
 		static std::map<TextureType, std::string> typeNames = {
-			{ DiffuseMap, "diffuse" },
+			{ AlbedoMap, "albedo" },
+			{ GlossMap, "gloss" },
+			{ NormalMap, "normal" },
 			{ SpecularMap, "specular" },
 		};
 
 		class Texture
 		{
 		public:
-			Texture(const char* filename, TextureType type = DiffuseMap, GLint mipmapLevel = 0, GLint border = 0);
+			Texture(const char* filename, TextureType type = AlbedoMap, GLint mipmapLevel = 0, GLint border = 0);
 			~Texture();
 
 			void bind(Shader *shader, const char *uniformName) const;

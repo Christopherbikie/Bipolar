@@ -77,7 +77,7 @@ namespace bplr
 			glActiveTexture(GL_TEXTURE0);
 
 			shader->loadUniform("material.ambient", m_material.ambient);
-			shader->loadUniform("material.diffuse", m_material.diffuse);
+			shader->loadUniform("material.albedo", m_material.albedo);
 			shader->loadUniform("material.specular", m_material.specular);
 			shader->loadUniform("material.shininess", m_material.shininess);
 			shader->loadUniform("material.useSpecMap", m_material.useSpecMap);

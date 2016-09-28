@@ -18,8 +18,8 @@ namespace bplr
 
 		struct Material
 		{
+			math::vec3 albedo;
 			math::vec3 ambient;
-			math::vec3 diffuse;
 			math::vec3 specular;
 			GLfloat shininess;
 			bool useSpecMap = true;
