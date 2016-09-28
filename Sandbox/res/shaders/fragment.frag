@@ -2,15 +2,19 @@
 
 struct Material
 {
+	float usingAlbedoMap;
+	float usingGlossMap;
+	float usingNormalMap;
+	float usingSpecularMap;
+
 	sampler2D albedoMap;
+	sampler2D glossMap;
+	sampler2D normalMap;
 	sampler2D specularMap;
 
 	vec3 albedo;
-	vec3 ambient;
 	vec3 specular;
-	float shininess;
-
-	bool useSpecMap;
+	float gloss;
 };
 
 struct Light
@@ -33,12 +37,10 @@ uniform samplerCube skybox;
 
 void main()
 {
-	vec3 albedoColour = texture(material.albedoMap, pass_textureCoords).xyz * material.albedo;
-	vec3 specularColour;
-	if (material.useSpecMap)
-		specularColour = texture(material.specularMap, pass_textureCoords).xyz * material.specular;
-	else
-		specularColour = material.specular;
+	// Get albedo, specular and gloss values from texture if they exist, otherwise from their vec3 / float
+	vec3 albedoColour = material.albedo * (1.0f - material.usingAlbedoMap) + texture(material.albedoMap, pass_textureCoords).xyz * material.usingAlbedoMap;
+	vec3 specularColour = material.specular * (1.0f - material.usingSpecularMap) + texture(material.specularMap, pass_textureCoords).xyz * material.usingSpecularMap;
+	float gloss = material.gloss * (1.0f - material.usingGlossMap) + texture(material.glossMap, pass_textureCoords).x * material.usingGlossMap;
 
 	vec3 ambient = light.ambient * albedoColour;
 
@@ -49,7 +51,7 @@ void main()
 
 	vec3 viewDirection = normalize(cameraPosition - fragmentPosition);
 	vec3 reflectDirection = reflect(-lightDirection, normalisedNormal);
-	float specularIntensity = pow(max(dot(viewDirection, reflectDirection), 0.0f), material.shininess / 16);
+	float specularIntensity = pow(max(dot(viewDirection, reflectDirection), 0.0f), 20); // <- Random constant, will fix
 	vec3 incomingDirection = fragmentPosition - cameraPosition;
 	vec3 reflection = reflect(incomingDirection, pass_normal);
 	vec3 reflectionColor = texture(skybox, reflection).xyz * specularColour;

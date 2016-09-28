@@ -150,21 +150,25 @@ namespace bplr
 			{
 				glActiveTexture(GL_TEXTURE0);
 				m_albedoMap->bind(shader, (structName + ".albedoMap").c_str());
+				shader->loadUniform((structName + ".usingAlbedoMap").c_str(), 1.0f);
 			}
 			if (m_glossMap != nullptr)
 			{
 				glActiveTexture(GL_TEXTURE1);
 				m_glossMap->bind(shader, (structName + ".glossMap").c_str());
+				shader->loadUniform((structName + ".usingGlossMap").c_str(), 1.0f);
 			}
 			if (m_normalMap != nullptr)
 			{
 				glActiveTexture(GL_TEXTURE2);
 				m_normalMap->bind(shader, (structName + ".normalMap").c_str());
+				shader->loadUniform((structName + ".usingNormalMap").c_str(), 1.0f);
 			}
 			if (m_specularMap != nullptr)
 			{
 				glActiveTexture(GL_TEXTURE3);
 				m_specularMap->bind(shader, (structName + ".specularMap").c_str());
+				shader->loadUniform((structName + ".usingSpecularMap").c_str(), 1.0f);
 			}
 
 			shader->loadUniform(structName + ".albedo", m_albedo);
