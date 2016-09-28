@@ -398,6 +398,7 @@ copy /Y Source\FreeImage.h include
   <ItemGroup>
     <ClInclude Include="Source\CacheFile.h" />
     <ClInclude Include="Source\DeprecationManager\DeprecationMgr.h" />
+    <ClInclude Include="Source\LibJXR\image\x86\x86.h" />
     <ClInclude Include="Source\MapIntrospector.h" />
     <ClInclude Include="Source\Metadata\FIRational.h" />
     <ClInclude Include="Source\FreeImage.h" />
