@@ -136,6 +136,7 @@
   <ItemGroup>
     <None Include="res\models\cube.mtl" />
     <None Include="res\models\earth.mtl" />
+    <None Include="res\materials\red.mat" />
     <None Include="res\shaders\fragment.frag">
       <FileType>Document</FileType>
     </None>

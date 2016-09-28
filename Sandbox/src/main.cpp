@@ -23,6 +23,8 @@ int main()
 	skyboxShader->addSource(graphics::FRAGMENT_SHADER, "res/shaders/skybox.frag");
 	skyboxShader->link();
 
+	graphics::Material* red = new graphics::Material("res/materials/red.mat");
+
 	// Create Entity
 	entity::Entity* entity = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))

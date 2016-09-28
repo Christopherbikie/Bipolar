@@ -60,7 +60,7 @@ namespace bplr
 					GLfloat r = stof(lineWords[1]);
 					GLfloat g = stof(lineWords[2]);
 					GLfloat b = stof(lineWords[3]);
-					setAlbedo(math::vec3(r, g, b));
+					m_albedo = math::vec3(r, g, b);
 				}
 				else if (statement == "specular")
 				{
@@ -73,7 +73,7 @@ namespace bplr
 					GLfloat r = stof(lineWords[1]);
 					GLfloat g = stof(lineWords[2]);
 					GLfloat b = stof(lineWords[3]);
-					setSpecular(math::vec3(r, g, b));
+					m_specular = math::vec3(r, g, b);
 				}
 				else if (statement == "gloss")
 				{
@@ -84,7 +84,7 @@ namespace bplr
 						continue;
 					}
 					GLfloat value = stof(lineWords[1]);
-					setSpecular(value);
+					m_gloss = value;
 				}
 				else if (statement == "albedoMap")
 				{
@@ -95,7 +95,7 @@ namespace bplr
 						continue;
 					}
 					std::string path = lineWords[1];
-					setAlbedoMap(new Texture(path.c_str(), AlbedoMap));
+					m_albedoMap = new Texture(path.c_str(), AlbedoMap);
 				}
 				else if (statement == "glossMap")
 				{
@@ -106,7 +106,7 @@ namespace bplr
 						continue;
 					}
 					std::string path = lineWords[1];
-					setGlossMap(new Texture(path.c_str(), GlossMap));
+					m_glossMap = new Texture(path.c_str(), GlossMap);
 				}
 				else if (statement == "normalMap")
 				{
@@ -117,7 +117,7 @@ namespace bplr
 						continue;
 					}
 					std::string path = lineWords[1];
-					setNormalMap(new Texture(path.c_str(), AlbedoMap));
+					m_normalMap = new Texture(path.c_str(), NormalMap);
 				}
 				else if (statement == "specularMap")
 				{
@@ -128,7 +128,7 @@ namespace bplr
 						continue;
 					}
 					std::string path = lineWords[1];
-					setSpecularMap(new Texture(path.c_str(), SpecularMap));
+					m_specularMap = new Texture(path.c_str(), SpecularMap);
 				}
 			}
 
