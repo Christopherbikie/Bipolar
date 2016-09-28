@@ -13,7 +13,7 @@ namespace bplr
 		{
 		}
 
-		Material::Material(const char* path)
+		Material::Material(std::string path)
 		{
 			std::ifstream matFile(path);
 			

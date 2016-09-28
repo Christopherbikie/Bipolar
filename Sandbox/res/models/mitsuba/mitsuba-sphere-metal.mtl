@@ -1,0 +1,20 @@
+# Blender MTL File: 'mitsuba.blend'
+# Material Count: 2
+
+newmtl case
+Ns 21.568627
+Ka 0.412337 0.021112 0.133222
+Kd 0 0 0
+Ks 01 0.85546875 0.57421875
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl inside
+Ns 27.450980
+Ka 0.013518 0.013518 0.013518
+Kd 0.013518 0.013518 0.013518
+Ks 0.212231 0.212231 0.212231
+Ni 1.000000
+d 1.000000
+illum 2

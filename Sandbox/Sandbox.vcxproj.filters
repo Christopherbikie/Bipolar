@@ -26,7 +26,8 @@
     <None Include="res\models\earth.mtl" />
     <None Include="res\shaders\skybox.frag" />
     <None Include="res\shaders\skybox.vert" />
-    <None Include="res\materials\red.mat" />
+    <None Include="res\materials\gold.mat" />
+    <None Include="res\materials\rubber.mat" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\container.jpg">

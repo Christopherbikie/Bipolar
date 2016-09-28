@@ -5,6 +5,7 @@
 #include <vector>
 #include "Texture.h"
 #include "VAO.h"
+#include "Material.h"
 
 namespace bplr
 {
@@ -16,30 +17,17 @@ namespace bplr
 			math::vec2 textureCoord;
 		};
 
-		struct MaterialStruct
-		{
-			math::vec3 albedo;
-			math::vec3 ambient;
-			math::vec3 specular;
-			GLfloat shininess;
-			bool useSpecMap = true;
-		};
-
 		class Mesh {
 		public:
-			Mesh(Shader* shader, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, MaterialStruct material);
-			Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, MaterialStruct material);
-			Mesh(VAO* vao);
+			Mesh(std::string objPath, std::string matPath);
+			Mesh(std::string objPath, Material* material = new Material());
 			~Mesh();
 
 			void render(Shader* shader) const;
 
-			void addTexture(Texture* texture);
-
 		private:
 			VAO* m_vao;
-			std::vector<Texture*> m_textures;
-			MaterialStruct m_material;
+			Material* m_material;
 		};
 	}
 }

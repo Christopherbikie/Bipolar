@@ -2,7 +2,6 @@
 
 #include "Component.h"
 #include "../../graphics/Mesh.h"
-#include "scene.h"
 
 namespace bplr
 {
@@ -12,11 +11,9 @@ namespace bplr
 		{
 		public:
 			MeshComponent(graphics::Mesh* mesh);
-			MeshComponent(std::string modelPath);
 			~MeshComponent();
 
 			void addMesh(graphics::Mesh* mesh);
-			void addTexture(std::string path, int meshIndex = 0);
 
 			void render(graphics::Shader* shader) const;
 
@@ -25,12 +22,6 @@ namespace bplr
 			
 		private:
 			std::vector<graphics::Mesh*> m_meshes;
-			std::vector<graphics::Texture*> m_textures;
-			std::string m_directory;
-
-			void processNode(aiNode* node, const aiScene* scene);
-			graphics::Mesh* processMesh(aiMesh* mesh, const aiScene* scene);
-			std::vector<graphics::Texture*> loadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType, graphics::MaterialStruct* myMaterial);
 		};
 	}
 }

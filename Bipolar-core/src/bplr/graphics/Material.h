@@ -9,7 +9,7 @@ namespace bplr
 		{
 		public:
 			Material();
-			Material(const char* path);
+			Material(std::string path);
 			~Material();
 
 			void loadUniforms(Shader* shader, std::string structName = "material") const;

@@ -23,13 +23,17 @@ int main()
 	skyboxShader->addSource(graphics::FRAGMENT_SHADER, "res/shaders/skybox.frag");
 	skyboxShader->link();
 
-	graphics::Material* red = new graphics::Material("res/materials/red.mat");
-	red->loadUniforms(shader);
+	graphics::Material* gold = new graphics::Material("res/materials/gold.mat");
+	graphics::Material* rubber = new graphics::Material("res/materials/rubber.mat");
+
+	graphics::Mesh* inner = new graphics::Mesh("res/models/mitsuba/mitsuba-sphere-inner.obj", "res/materials/rubber.mat");
+	graphics::Mesh* outer = new graphics::Mesh("res/models/mitsuba/mitsuba-sphere-outer.obj", "res/materials/gold.mat");
 
 	// Create Entity
 	entity::Entity* entity = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))
-		->addComponent(new entity::MeshComponent("res/models/mitsuba-sphere-metal.obj"));
+		->addComponent(new entity::MeshComponent(inner));
+	entity->getComponent<entity::MeshComponent>()->addMesh(outer);
 
 	// Create Camera
 	entity::Entity* camera = (new entity::Entity())
@@ -126,6 +130,8 @@ int main()
 
 	// CLEAN UP -----------------------------------
 
+	delete gold;
+	delete rubber;
 	delete entity;
 	delete camera;
 	delete shader;
