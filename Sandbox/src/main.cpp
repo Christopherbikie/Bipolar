@@ -24,6 +24,7 @@ int main()
 	skyboxShader->link();
 
 	graphics::Material* red = new graphics::Material("res/materials/red.mat");
+	red->loadUniforms(shader);
 
 	// Create Entity
 	entity::Entity* entity = (new entity::Entity())
