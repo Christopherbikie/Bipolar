@@ -5,7 +5,7 @@ namespace bplr
 {
 	namespace graphics
 	{
-		Mesh::Mesh(Shader* shader, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, Material material)
+		Mesh::Mesh(Shader* shader, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, MaterialStruct material)
 			: m_vao(new VAO), m_textures(textures), m_material(material)
 		{
 			std::vector<math::vec3> positions;
@@ -27,7 +27,7 @@ namespace bplr
 			m_vao->unbind();
 		}
 
-		Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, Material material)
+		Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, MaterialStruct material)
 			: m_vao(new VAO), m_textures(textures), m_material(material)
 		{
 			std::vector<math::vec3> positions;

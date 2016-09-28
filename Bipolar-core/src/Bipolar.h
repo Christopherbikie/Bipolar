@@ -16,6 +16,7 @@
 #include "bplr/entity/components/TransformComponent.h"
 
 #include "bplr/graphics/CubeMap.h"
+#include "bplr/graphics/Material.h"
 #include "bplr/graphics/Mesh.h"
 #include "bplr/graphics/Shader.h"
 #include "bplr/graphics/Texture.h"

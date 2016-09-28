@@ -16,7 +16,7 @@ namespace bplr
 			math::vec2 textureCoord;
 		};
 
-		struct Material
+		struct MaterialStruct
 		{
 			math::vec3 albedo;
 			math::vec3 ambient;
@@ -27,8 +27,8 @@ namespace bplr
 
 		class Mesh {
 		public:
-			Mesh(Shader* shader, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, Material material);
-			Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, Material material);
+			Mesh(Shader* shader, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, MaterialStruct material);
+			Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture*> textures, MaterialStruct material);
 			Mesh(VAO* vao);
 			~Mesh();
 
@@ -39,7 +39,7 @@ namespace bplr
 		private:
 			VAO* m_vao;
 			std::vector<Texture*> m_textures;
-			Material m_material;
+			MaterialStruct m_material;
 		};
 	}
 }

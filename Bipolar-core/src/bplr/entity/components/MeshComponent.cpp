@@ -116,14 +116,14 @@ namespace bplr
 
 			aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
-			graphics::Material myMaterial;
+			graphics::MaterialStruct myMaterial;
 
 			if (mesh->mMaterialIndex >= 0)
 			{
 				std::map<graphics::TextureType, std::vector<graphics::Texture*>> textureMaps;
 
-				textureMaps[graphics::DiffuseMap] = loadMaterialTextures(material, aiTextureType_DIFFUSE, graphics::DiffuseMap, &myMaterial);
-				textures.insert(textures.end(), textureMaps[graphics::DiffuseMap].begin(), textureMaps[graphics::DiffuseMap].end());
+				textureMaps[graphics::AlbedoMap] = loadMaterialTextures(material, aiTextureType_DIFFUSE, graphics::AlbedoMap, &myMaterial);
+				textures.insert(textures.end(), textureMaps[graphics::AlbedoMap].begin(), textureMaps[graphics::AlbedoMap].end());
 
 				textureMaps[graphics::SpecularMap] = loadMaterialTextures(material, aiTextureType_SPECULAR, graphics::SpecularMap, &myMaterial);
 				textures.insert(textures.end(), textureMaps[graphics::SpecularMap].begin(), textureMaps[graphics::SpecularMap].end());
@@ -135,7 +135,7 @@ namespace bplr
 
 			aiColor3D diffuse;
 			material->Get(AI_MATKEY_COLOR_DIFFUSE, diffuse);
-			myMaterial.diffuse = math::vec3(diffuse.r, diffuse.g, diffuse.b);
+			myMaterial.albedo = math::vec3(diffuse.r, diffuse.g, diffuse.b);
 
 			aiColor3D specular;
 			material->Get(AI_MATKEY_COLOR_SPECULAR, specular);
@@ -148,7 +148,7 @@ namespace bplr
 			return new graphics::Mesh(vertices, indices, textures, myMaterial);
 		}
 
-		std::vector<graphics::Texture*> MeshComponent::loadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType, graphics::Material* myMaterial)
+		std::vector<graphics::Texture*> MeshComponent::loadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType, graphics::MaterialStruct* myMaterial)
 		{
 			std::vector<graphics::Texture*> textures;
 			if (material->GetTextureCount(type) > 0)
