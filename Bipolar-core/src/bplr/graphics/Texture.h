@@ -2,7 +2,6 @@
 
 #include <GL/glew.h>
 #include "Shader.h"
-#include <types.h>
 #include <FreeImage.h>
 
 namespace bplr
@@ -33,11 +32,9 @@ namespace bplr
 			void bind(Shader *shader, const char *uniformName) const;
 
 			TextureType getType() const;
-			aiString getPath() const;
 
 		private:
 			TextureType m_type;
-			aiString m_path;
 			GLuint m_location;
 		};
 

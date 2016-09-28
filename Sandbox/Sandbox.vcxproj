@@ -69,8 +69,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)Dependencies\tinyobjloader;$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\glfw\include;$(SolutionDir)Sandbox\src;$(SolutionDir)Bipolar-core\src;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencies\assimp\lib;$(SolutionDir)Dependencies\FreeImage\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\glew\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencies\tinyobjloader;$(SolutionDir)Dependencies\FreeImage\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\glfw\include;$(SolutionDir)Sandbox\src;$(SolutionDir)Bipolar-core\src;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\FreeImage\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\glew\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)x64\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\glfw\include;$(SolutionDir)Bipolar-core\src;$(IncludePath)</IncludePath>
@@ -88,10 +88,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\tinyobjloader;$(SolutionDir)Sandbox\src;$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Bipolar-core\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\tinyobjloader;$(SolutionDir)Sandbox\src;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Bipolar-core\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>BPLRCore.lib;glfw3.lib;glew32s.lib;opengl32.lib;FreeImage.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>BPLRCore.lib;glfw3.lib;glew32s.lib;opengl32.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Users\Christopher\git\Bipolar\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

@@ -1,14 +1,13 @@
 #include "Texture.h"
 #include <FreeImage.h>
 #include <iostream>
-#include <types.h>
 
 namespace bplr
 {
 	namespace graphics
 	{
 		Texture::Texture(const char* filename, TextureType type, GLint mipmapLevel, GLint border)
-			: m_type(type), m_path(filename)
+			: m_type(type)
 		{
 			TextureData data = TextureData(filename);
 
@@ -58,11 +57,6 @@ namespace bplr
 		TextureType Texture::getType() const
 		{
 			return m_type;
-		}
-
-		aiString Texture::getPath() const
-		{
-			return m_path;
 		}
 
 		TextureData::TextureData(const char* filename)

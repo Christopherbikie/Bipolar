@@ -4,6 +4,7 @@
 #include <functional>
 #include <locale>
 #include <sstream>
+#include <algorithm>
 
 namespace bplr
 {
