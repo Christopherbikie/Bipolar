@@ -26,7 +26,7 @@ int main()
 	// Create Entity
 	entity::Entity* entity = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))
-		->addComponent(new entity::MeshComponent("res/models/cube.obj"));
+		->addComponent(new entity::MeshComponent("res/models/mitsuba-sphere-metal.obj"));
 
 	// Create Camera
 	entity::Entity* camera = (new entity::Entity())
@@ -97,10 +97,14 @@ int main()
 
 		// Render
 		m_window->beginRender();
+
 		skyboxShader->use();
 		skybox->render(skyboxShader);
+
 		shader->use();
+		skybox->bind();
 		entity->getComponent<entity::MeshComponent>()->render(shader);
+
 		m_window->swapBuffers();
 		frames++;
 

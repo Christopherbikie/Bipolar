@@ -101,5 +101,10 @@ namespace bplr
 			m_vao->unbind();
 			glDepthMask(GL_TRUE);
 		}
+
+		void CubeMap::bind() const
+		{
+			glBindTexture(GL_TEXTURE_CUBE_MAP, m_location);
+		}
 	}
 }

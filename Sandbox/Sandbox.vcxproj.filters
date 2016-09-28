@@ -40,22 +40,22 @@
     <Image Include="res\models\container.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\images\skybox\negx.jpg">
+    <Image Include="res\images\skybox\top.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\images\skybox\negy.jpg">
+    <Image Include="res\images\skybox\back.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\images\skybox\negz.jpg">
+    <Image Include="res\images\skybox\bottom.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\images\skybox\posx.jpg">
+    <Image Include="res\images\skybox\front.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\images\skybox\posy.jpg">
+    <Image Include="res\images\skybox\left.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\images\skybox\posz.jpg">
+    <Image Include="res\images\skybox\right.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

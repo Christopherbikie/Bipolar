@@ -147,12 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\container.jpg" />
-    <Image Include="res\images\skybox\negx.jpg" />
-    <Image Include="res\images\skybox\negy.jpg" />
-    <Image Include="res\images\skybox\negz.jpg" />
-    <Image Include="res\images\skybox\posx.jpg" />
-    <Image Include="res\images\skybox\posy.jpg" />
-    <Image Include="res\images\skybox\posz.jpg" />
+    <Image Include="res\images\skybox\back.jpg" />
+    <Image Include="res\images\skybox\bottom.jpg" />
+    <Image Include="res\images\skybox\front.jpg" />
+    <Image Include="res\images\skybox\left.jpg" />
+    <Image Include="res\images\skybox\right.jpg" />
+    <Image Include="res\images\skybox\top.jpg" />
     <Image Include="res\models\container.jpg" />
     <Image Include="res\models\container.png" />
     <Image Include="res\models\earth.png" />

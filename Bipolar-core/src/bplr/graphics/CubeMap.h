@@ -13,6 +13,7 @@ namespace bplr
 			~CubeMap();
 
 			void render(Shader* shader) const;
+			void bind() const;
 
 		private:
 			GLuint m_location;

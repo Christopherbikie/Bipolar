@@ -29,6 +29,7 @@ out vec4 color;
 uniform Material material;
 uniform Light light;
 uniform vec3 cameraPosition;
+uniform samplerCube skybox;
 
 void main()
 {
@@ -49,7 +50,11 @@ void main()
 	vec3 viewDirection = normalize(cameraPosition - fragmentPosition);
 	vec3 reflectDirection = reflect(-lightDirection, normalisedNormal);
 	float specularIntensity = pow(max(dot(viewDirection, reflectDirection), 0.0f), material.shininess / 16);
+	vec3 incomingDirection = fragmentPosition - cameraPosition;
+	vec3 reflection = reflect(incomingDirection, pass_normal);
+	vec3 reflectionColor = texture(skybox, reflection).xyz * specularColour;
+
 	vec3 specular = specularIntensity * light.colour * specularColour;
 
-	color = vec4(ambient + diffuse + specular, 1.0f);
+	color = vec4(ambient + diffuse + specular + reflectionColor, 1.0f);
 } 
