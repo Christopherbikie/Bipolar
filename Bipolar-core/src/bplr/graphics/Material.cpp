@@ -135,6 +135,14 @@ namespace bplr
 			matFile.close();
 		}
 
+		Material::~Material()
+		{
+			delete m_albedoMap;
+			delete m_glossMap;
+			delete m_normalMap;
+			delete m_specularMap;
+		}
+
 		void Material::loadUniforms(Shader* shader, std::string structName) const
 		{
 			glActiveTexture(GL_TEXTURE0);
