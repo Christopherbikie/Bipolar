@@ -13,14 +13,14 @@ int main()
 	m_window->setBackgroundColour(math::vec3(0.3f, 0.1f, 0.45f));
 
 	// Create Shader
-	graphics::Shader* shader = new graphics::Shader();
-	shader->addSource(graphics::VERTEX_SHADER, "res/shaders/vertex.vert");
-	shader->addSource(graphics::FRAGMENT_SHADER, "res/shaders/fragment.frag");
+	shader = new graphics::Shader();
+	shader->addSource(graphics::VERTEX_SHADER, vertShaderPath.c_str());
+	shader->addSource(graphics::FRAGMENT_SHADER, fragShaderPath.c_str());
 	shader->link();
 
-	graphics::Shader* skyboxShader = new graphics::Shader();
-	skyboxShader->addSource(graphics::VERTEX_SHADER, "res/shaders/skybox.vert");
-	skyboxShader->addSource(graphics::FRAGMENT_SHADER, "res/shaders/skybox.frag");
+	skyboxShader = new graphics::Shader();
+	skyboxShader->addSource(graphics::VERTEX_SHADER, skyboxVertShaderPath.c_str());
+	skyboxShader->addSource(graphics::FRAGMENT_SHADER, skyboxFragShaderPath.c_str());
 	skyboxShader->link();
 
 	graphics::Material* gold = new graphics::Material("res/materials/gold.mat");
@@ -62,8 +62,9 @@ int main()
 	long frames = 0;
 	long updates = 0;
 
-	MouseCaptureHandler captureHandler = MouseCaptureHandler();
+	InputHandler captureHandler = InputHandler();
 	input::Keyboard::addKeyHandler(GLFW_KEY_ESCAPE, reinterpret_cast<input::KeyEventHandler*>(&captureHandler));
+	input::Keyboard::addKeyHandler(GLFW_KEY_R, reinterpret_cast<input::KeyEventHandler*>(&captureHandler));
 
 	// GAME LOOP ----------------------------------
 
@@ -142,7 +143,16 @@ int main()
 	return 0;
 }
 
-void MouseCaptureHandler::pressKey(GLuint key)
+void reloadShaders()
 {
-	bplr::input::Mouse::toggleCaptured(m_window);
+	shader->reload();
+	skyboxShader->reload();
+}
+
+void InputHandler::pressKey(GLuint key)
+{
+	if (key == GLFW_KEY_ESCAPE)
+		bplr::input::Mouse::toggleCaptured(m_window);
+	else if (key == GLFW_KEY_R)
+		reloadShaders();
 }

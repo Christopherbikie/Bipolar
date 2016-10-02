@@ -14,6 +14,16 @@ namespace bplr
 			{GL_FRAGMENT_SHADER, "fragment"},
 		};
 
+		ShaderSource::ShaderSource(ShaderType type, std::string path)
+			: type(type), path(path)
+		{
+		}
+
+		bool ShaderSource::operator==(const ShaderSource& other) const
+		{
+			return path == other.path;
+		}
+
 		Shader::Shader()
 		{
 			m_program = glCreateProgram();
@@ -31,6 +41,10 @@ namespace bplr
 				std::cout << "Could not add source located at " << path << " to program, program is already linked!" << std::endl;
 				return;
 			}
+			
+			ShaderSource source = ShaderSource(type, path);
+			if (!(std::find(m_sources.begin(), m_sources.end(), source) != m_sources.end()))
+				m_sources.push_back(source);
 
 			std::string shaderSourceStdString = util::loadFileAsString(path);
 			const GLchar* shaderSource = shaderSourceStdString.c_str();
@@ -83,6 +97,18 @@ namespace bplr
 		void Shader::use() const
 		{
 			glUseProgram(m_program);
+		}
+
+		void Shader::reload()
+		{
+			glDeleteProgram(m_program);
+			m_program = glCreateProgram();
+			m_linked = false;
+
+			for (ShaderSource source : m_sources)
+				this->addSource(source.type, source.path.c_str());
+			
+			this->link();
 		}
 
 		void Shader::loadUniform(std::string name, GLboolean value) const

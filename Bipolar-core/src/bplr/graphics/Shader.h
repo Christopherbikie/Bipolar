@@ -21,6 +21,17 @@ namespace bplr
 			FRAGMENT_SHADER = GL_FRAGMENT_SHADER,
 		};
 
+		class ShaderSource
+		{
+		public:
+			ShaderSource(ShaderType type, std::string path);
+
+			const ShaderType type;
+			const std::string path;
+
+			bool operator==(const ShaderSource& other) const;
+		};
+
 		extern const std::map<GLuint, GLchar*> shaderTypeNames;
 
 		class Shader
@@ -32,6 +43,7 @@ namespace bplr
 			void addSource(ShaderType type, const GLchar* path);
 			void link();
 			void use() const;
+			void reload();
 
 			void loadUniform(std::string name, GLboolean value) const;
 			void loadUniform(std::string name, GLint value) const;
@@ -50,6 +62,7 @@ namespace bplr
 		private:
 			GLuint m_program;
 			std::vector<GLuint> m_shaders;
+			std::vector<ShaderSource> m_sources;
 			GLboolean m_linked = false;
 		};
 	}
