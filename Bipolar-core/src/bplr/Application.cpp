@@ -4,7 +4,7 @@
 
 namespace bplr
 {
-	Application::Application(std::string title, int width, int height)
+	Application::Application(std::string title, GLint width, GLint height)
 	{
 		bplr::init();
 		
@@ -30,17 +30,17 @@ namespace bplr
 	void Application::start()
 	{
 		// Timing vars
-		double previous = time::getTime();
-		double lag = 0.0;
-		double lastSecond = previous;
-		long frames = 0;
-		long updates = 0;
+		GLfloat previous = time::getTime();
+		GLfloat lag = 0.0;
+		GLfloat lastSecond = previous;
+		GLint frames = 0;
+		GLint updates = 0;
 
 		while (!shouldApplicationClose())
 		{
 			// Timing math
-			double current = time::getTime();
-			double delta = current - previous;
+			GLfloat current = time::getTime();
+			GLfloat delta = current - previous;
 			previous = current;
 			lag += delta;
 

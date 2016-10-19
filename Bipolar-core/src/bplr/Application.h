@@ -9,7 +9,7 @@ namespace bplr
 	class Application
 	{
 	public:
-		Application(std::string title, int width, int height);
+		Application(std::string title, GLint width, GLint height);
 		~Application();
 
 		void addLayer(graphics::Layer* layer);
