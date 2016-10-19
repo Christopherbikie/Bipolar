@@ -74,7 +74,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\glfw\include;$(SolutionDir)Bipolar-core\src;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencies\assimp\lib;$(SolutionDir)Dependencies\FreeImage\lib;$(SolutionDir)Dependencies\glew\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)x64\Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Dependencies\FreeImage\Dist\$(Platform);$(SolutionDir)Dependencies\glew\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)x64\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -121,12 +121,13 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>BPLRCore.lib;glfw3.lib;glew32s.lib;opengl32.lib;FreeImage.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>BPLRCore.lib;glfw3.lib;glew32s.lib;opengl32.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Users\Christopher\git\Bipolar\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Test3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bipolar-core\Bipolar-core.vcxproj">
@@ -160,7 +161,7 @@
     <Image Include="res\models\earth.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\main.h" />
+    <ClInclude Include="src\Test3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

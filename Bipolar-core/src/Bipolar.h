@@ -7,6 +7,7 @@
 #include <GL/glew.h>
 
 #include "bplr/Engine.h"
+#include "bplr/Application.h"
 
 #include "bplr/entity/Entity.h"
 #include "bplr/entity/components/CameraComponent.h"
@@ -22,6 +23,8 @@
 #include "bplr/graphics/Texture.h"
 #include "bplr/graphics/VAO.h"
 #include "bplr/graphics/Window.h"
+
+#include "bplr/graphics/layers/Layer.h"
 
 #include "bplr/input/Keyboard.h"
 #include "bplr/input/Mouse.h"
