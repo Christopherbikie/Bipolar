@@ -2,6 +2,7 @@
 #include <iostream>
 #include <FreeImage.h>
 #include "Texture.h"
+#include "Shader3D.h"
 
 namespace bplr
 {
@@ -89,7 +90,7 @@ namespace bplr
 			delete m_vao;
 		}
 
-		void CubeMap::render(Shader* shader) const
+		void CubeMap::render(Shader3D* shader) const
 		{
 			glDepthMask(GL_FALSE);
 			shader->use();

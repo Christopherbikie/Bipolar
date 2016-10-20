@@ -79,7 +79,7 @@ namespace bplr
 			delete m_material;
 		}
 
-		void Mesh::render(Shader* shader) const
+		void Mesh::render(Shader3D* shader) const
 		{
 			m_material->loadUniforms(shader);
 

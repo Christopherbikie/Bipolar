@@ -20,7 +20,7 @@ namespace bplr
 			m_meshes.push_back(mesh);
 		}
 
-		void MeshComponent::render(graphics::Shader *shader) const
+		void MeshComponent::render(graphics::Shader3D *shader) const
 		{
 			for (graphics::Mesh* mesh : m_meshes)
 				mesh->render(shader);

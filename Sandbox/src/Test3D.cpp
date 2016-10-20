@@ -13,12 +13,12 @@ void Test3D::init(graphics::Window* window)
 	m_window = window;
 
 	// Create Shader
-	shader = new graphics::Shader();
+	shader = new graphics::Shader3D();
 	shader->addSource(graphics::VERTEX_SHADER, vertShaderPath.c_str());
 	shader->addSource(graphics::FRAGMENT_SHADER, fragShaderPath.c_str());
 	shader->link();
 
-	skyboxShader = new graphics::Shader();
+	skyboxShader = new graphics::Shader3D();
 	skyboxShader->addSource(graphics::VERTEX_SHADER, skyboxVertShaderPath.c_str());
 	skyboxShader->addSource(graphics::FRAGMENT_SHADER, skyboxFragShaderPath.c_str());
 	skyboxShader->link();

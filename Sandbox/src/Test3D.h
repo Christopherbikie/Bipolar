@@ -21,8 +21,8 @@ public:
 	void reloadShaders() const;
 
 private:
-	graphics::Shader* shader;
-	graphics::Shader* skyboxShader;
+	graphics::Shader3D* shader;
+	graphics::Shader3D* skyboxShader;
 
 	entity::Entity* entity;
 	entity::Entity* camera;

@@ -15,7 +15,7 @@ namespace bplr
 
 			void addMesh(graphics::Mesh* mesh);
 
-			void render(graphics::Shader* shader) const;
+			void render(graphics::Shader3D* shader) const;
 
 			std::string getType() override;
 			static std::string getStaticType();

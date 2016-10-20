@@ -159,16 +159,6 @@ namespace bplr
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, matrix.elements);
 		}
 
-		void Shader::drawArrays(GLint first, GLint count) const
-		{
-			glDrawArrays(GL_TRIANGLES, first, count);
-		}
-
-		void Shader::drawElements(GLint count)
-		{
-			glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, 0);
-		}
-
 		GLuint Shader::getLocation() const
 		{
 			return m_program;
