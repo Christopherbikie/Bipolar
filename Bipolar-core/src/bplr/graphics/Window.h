@@ -24,6 +24,9 @@ namespace bplr
 			GLFWwindow* getGLFWwindow() const;
 			bool isCloseRequested() const;
 
+			int getWidth() const;
+			int getHeight() const;
+
 		private:
 			GLFWwindow* m_window;
 			int m_width, m_height;
