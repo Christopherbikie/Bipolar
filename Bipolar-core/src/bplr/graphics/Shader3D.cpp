@@ -4,14 +4,14 @@ namespace bplr
 {
 	namespace graphics
 	{
-		void Shader3D::drawArrays(GLint first, GLint count) const
+		void Shader3D::drawArrays(GLint first, GLint count, GLenum primitiveType) const
 		{
-			glDrawArrays(GL_TRIANGLES, first, count);
+			glDrawArrays(primitiveType, first, count);
 		}
 
-		void Shader3D::drawElements(GLint count)
+		void Shader3D::drawElements(GLint count, GLenum primitiveType) const
 		{
-			glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, 0);
+			glDrawElements(primitiveType, count, GL_UNSIGNED_INT, 0);
 		}
 	}
 }

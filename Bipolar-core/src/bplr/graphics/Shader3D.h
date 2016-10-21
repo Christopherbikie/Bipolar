@@ -9,8 +9,8 @@ namespace bplr
 		class Shader3D : public Shader
 		{
 		public:
-			void drawArrays(GLint first, GLint count) const;
-			void drawElements(GLint count);
+			void drawArrays(GLint first, GLint count, GLenum primitiveType = GL_TRIANGLES) const;
+			void drawElements(GLint count, GLenum primitiveType = GL_TRIANGLES) const;
 		};
 	}
 }
