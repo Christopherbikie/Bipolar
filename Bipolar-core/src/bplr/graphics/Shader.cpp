@@ -92,6 +92,8 @@ namespace bplr
 			}
 
 			m_linked = true;
+
+			postLink();
 		}
 
 		void Shader::use() const
@@ -162,6 +164,10 @@ namespace bplr
 		GLuint Shader::getLocation() const
 		{
 			return m_program;
+		}
+
+		void Shader::postLink()
+		{
 		}
 	}
 }

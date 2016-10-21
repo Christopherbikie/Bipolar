@@ -56,6 +56,8 @@ namespace bplr
 
 			GLuint getLocation() const;
 
+			virtual void postLink();
+
 		private:
 			GLuint m_program;
 			std::vector<GLuint> m_shaders;

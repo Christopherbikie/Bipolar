@@ -21,6 +21,9 @@
     <ClCompile Include="src\Test3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Test2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\fragment.frag" />
@@ -31,6 +34,8 @@
     <None Include="res\shaders\skybox.vert" />
     <None Include="res\materials\gold.mat" />
     <None Include="res\materials\rubber.mat" />
+    <None Include="res\shaders\test2d.vert" />
+    <None Include="res\shaders\test2d.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\container.jpg">
@@ -66,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Test3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Test2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

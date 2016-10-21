@@ -127,6 +127,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Test2D.cpp" />
     <ClCompile Include="src\Test3D.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,8 @@
     </None>
     <None Include="res\shaders\skybox.frag" />
     <None Include="res\shaders\skybox.vert" />
+    <None Include="res\shaders\test2d.frag" />
+    <None Include="res\shaders\test2d.vert" />
     <None Include="res\shaders\vertex.vert">
       <FileType>Document</FileType>
     </None>
@@ -161,6 +164,7 @@
     <Image Include="res\models\earth.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Test2D.h" />
     <ClInclude Include="src\Test3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

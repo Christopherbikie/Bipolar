@@ -170,5 +170,8 @@
     <ClCompile Include="src\bplr\graphics\Shader3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\bplr\graphics\Shader2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

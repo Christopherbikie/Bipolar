@@ -166,6 +166,7 @@
     <ClCompile Include="src\bplr\graphics\Material.cpp" />
     <ClCompile Include="src\bplr\graphics\Mesh.cpp" />
     <ClCompile Include="src\bplr\graphics\Shader.cpp" />
+    <ClCompile Include="src\bplr\graphics\Shader2D.cpp" />
     <ClCompile Include="src\bplr\graphics\Shader3D.cpp" />
     <ClCompile Include="src\bplr\graphics\Texture.cpp" />
     <ClCompile Include="src\bplr\graphics\Window.cpp" />

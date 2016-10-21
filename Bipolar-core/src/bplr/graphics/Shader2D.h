@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Shader.h"
+#include "VAO.h"
 
 namespace bplr
 {
@@ -9,7 +10,13 @@ namespace bplr
 		class Shader2D : public Shader
 		{
 		public:
-			void drawPoint(math::vec2 position, math::vec3 colour = math::vec3(1.0f), GLfloat radius);
+			void postLink() override;
+
+			void drawRect() const;
+		
+		private:
+			static GLboolean isGeometryInitialised;
+			static VAO* rectangleVAO;
 		};
 	}
 }
