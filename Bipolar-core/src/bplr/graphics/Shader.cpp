@@ -166,6 +166,11 @@ namespace bplr
 			return m_program;
 		}
 
+		GLuint Shader::getAttribLocation(std::string attribName) const
+		{
+			return glGetAttribLocation(m_program, attribName.c_str());
+		}
+
 		void Shader::postLink()
 		{
 		}

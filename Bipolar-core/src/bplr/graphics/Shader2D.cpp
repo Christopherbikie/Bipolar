@@ -22,7 +22,7 @@ namespace bplr
 
 			rectangleVAO = new VAO();
 			rectangleVAO->bind();
-			rectangleVAO->storeInBuffer(this, "position", 3, 4, vertices);
+			rectangleVAO->storeInBuffer(getAttribLocation("position"), 3, 4, vertices);
 			rectangleVAO->storeInElementBuffer(6, indices);
 			rectangleVAO->unbind();
 		}

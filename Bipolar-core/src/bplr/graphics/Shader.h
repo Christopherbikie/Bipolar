@@ -55,6 +55,7 @@ namespace bplr
 			void loadUniform(std::string name, math::mat4 matrix) const;
 
 			GLuint getLocation() const;
+			GLuint getAttribLocation(std::string attribName) const;
 
 			virtual void postLink();
 

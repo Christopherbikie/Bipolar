@@ -26,12 +26,6 @@ namespace bplr
 			glBindVertexArray(0);
 		}
 
-		void VAO::storeInBuffer(Shader *program, GLchar *attribName, GLuint componentsPerVertex, GLint vertexCount, GLfloat *data, DataUsage usage)
-		{
-			GLint location = glGetAttribLocation(program->getLocation(), attribName);
-			storeInBuffer(location, componentsPerVertex, vertexCount, data, usage);
-		}
-
 		void VAO::storeInBuffer(GLuint location, GLuint componentsPerVertex, GLint vertexCount, GLfloat* data, DataUsage usage)
 		{
 			bind();
