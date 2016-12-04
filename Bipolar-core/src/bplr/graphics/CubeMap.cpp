@@ -1,6 +1,5 @@
 #include "CubeMap.h"
 #include <iostream>
-#include <FreeImage.h>
 #include "Texture.h"
 
 namespace bplr
