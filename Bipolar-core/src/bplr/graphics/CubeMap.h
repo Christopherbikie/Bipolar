@@ -1,6 +1,7 @@
 #pragma once
 
 #include "VAO.h"
+#include "Shader3D.h"
 
 namespace bplr
 {
@@ -12,7 +13,7 @@ namespace bplr
 			CubeMap(std::string right, std::string left, std::string top, std::string bottom, std::string back, std::string front);
 			~CubeMap();
 
-			void render(Shader* shader) const;
+			void render(Shader3D* shader) const;
 			void bind() const;
 
 		private:

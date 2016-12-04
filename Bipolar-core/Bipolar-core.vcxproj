@@ -137,6 +137,8 @@
     <ClInclude Include="src\bplr\graphics\Material.h" />
     <ClInclude Include="src\bplr\graphics\Mesh.h" />
     <ClInclude Include="src\bplr\graphics\Shader.h" />
+    <ClInclude Include="src\bplr\graphics\Shader2D.h" />
+    <ClInclude Include="src\bplr\graphics\Shader3D.h" />
     <ClInclude Include="src\bplr\graphics\VAO.h" />
     <ClInclude Include="src\bplr\graphics\Window.h" />
     <ClInclude Include="src\bplr\input\Keyboard.h" />
@@ -164,6 +166,8 @@
     <ClCompile Include="src\bplr\graphics\Material.cpp" />
     <ClCompile Include="src\bplr\graphics\Mesh.cpp" />
     <ClCompile Include="src\bplr\graphics\Shader.cpp" />
+    <ClCompile Include="src\bplr\graphics\Shader2D.cpp" />
+    <ClCompile Include="src\bplr\graphics\Shader3D.cpp" />
     <ClCompile Include="src\bplr\graphics\Texture.cpp" />
     <ClCompile Include="src\bplr\graphics\Window.cpp" />
     <ClCompile Include="src\bplr\input\Keyboard.cpp" />

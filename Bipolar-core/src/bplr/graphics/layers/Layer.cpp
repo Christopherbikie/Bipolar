@@ -21,7 +21,7 @@ namespace bplr
 		{
 		}
 
-		void Layer::update(float delta)
+		void Layer::update(GLfloat delta)
 		{
 		}
 
@@ -34,7 +34,7 @@ namespace bplr
 			return m_visible;
 		}
 
-		void Layer::setVisible(bool visible)
+		void Layer::setVisible(GLboolean visible)
 		{
 			m_visible = visible;
 		}

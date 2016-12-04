@@ -54,10 +54,9 @@ namespace bplr
 			void loadUniform(std::string name, math::vec4 vector) const;
 			void loadUniform(std::string name, math::mat4 matrix) const;
 
-			void drawArrays(GLint first, GLint count) const;
-			void drawElements(GLint count);
-
 			GLuint getLocation() const;
+
+			virtual void postLink();
 
 		private:
 			GLuint m_program;

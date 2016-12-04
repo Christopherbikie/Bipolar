@@ -3,7 +3,7 @@
 #include "../math/vec2.h"
 #include "../math/vec3.h"
 #include <vector>
-#include "Texture.h"
+#include "Shader3D.h"
 #include "VAO.h"
 #include "Material.h"
 
@@ -23,7 +23,7 @@ namespace bplr
 			Mesh(std::string objPath, Material* material = new Material());
 			~Mesh();
 
-			void render(Shader* shader) const;
+			void render(Shader3D* shader) const;
 
 		private:
 			VAO* m_vao;

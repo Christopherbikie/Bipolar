@@ -76,5 +76,15 @@ namespace bplr
 		{
 			return glfwWindowShouldClose(m_window) == GL_FALSE ? false : true;
 		}
+
+		int Window::getWidth() const
+		{
+			return m_width;
+		}
+
+		int Window::getHeight() const
+		{
+			return m_height;
+		}
 	}
 }

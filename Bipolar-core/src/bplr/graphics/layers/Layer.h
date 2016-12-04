@@ -10,7 +10,7 @@ namespace bplr
 		{
 		protected:
 			Window* m_window;
-			bool m_visible = true;
+			GLboolean m_visible = true;
 
 		public:
 			Layer();
@@ -18,11 +18,11 @@ namespace bplr
 
 			virtual void init(Window* window);
 			virtual void getInput();
-			virtual void update(float delta);
+			virtual void update(GLfloat delta);
 			virtual void render();
 
 			bool isVisible() const;
-			void setVisible(bool visible);
+			void setVisible(GLboolean visible);
 
 			Window* getWindow() const;
 		};
