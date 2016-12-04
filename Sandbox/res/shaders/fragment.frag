@@ -51,9 +51,8 @@ void main()
 
 	vec3 viewDirection = normalize(cameraPosition - fragmentPosition);
 	vec3 reflectDirection = reflect(-lightDirection, normalisedNormal);
-	float specularIntensity = pow(max(dot(viewDirection, reflectDirection), 0.0f), pow(2, 10 * gloss) * 2); // <- Random constant, will fix
+	float specularIntensity = pow(max(dot(viewDirection, reflectDirection), 0.0f), 20); // <- Random constant, will fix
 	vec3 incomingDirection = fragmentPosition - cameraPosition;
-
 	vec3 reflection = reflect(incomingDirection, pass_normal);
 	vec3 reflectionColor = texture(skybox, reflection).xyz * specularColour * gloss;
 
