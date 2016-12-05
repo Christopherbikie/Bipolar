@@ -9,6 +9,9 @@ namespace bplr
 		bplr::init();
 		
 		m_window = createWindow(title, width, height);
+
+		m_debugLayer = new ui::DebugLayer();
+		m_debugLayer->init(m_window);
 	}
 
 	Application::~Application()
@@ -17,6 +20,7 @@ namespace bplr
 
 		for (graphics::Layer* layer : m_layers)
 			delete layer;
+		delete m_debugLayer;
 
 		terminateEngine();
 	}
@@ -44,6 +48,8 @@ namespace bplr
 			previous = current;
 			lag += delta;
 
+			m_debugLayer->update(delta);
+
 			// Get input
 			bplr::getInput();
 			for (graphics::Layer* layer : m_layers)
@@ -63,6 +69,7 @@ namespace bplr
 			for (graphics::Layer* layer : m_layers)
 				if (layer->isVisible())
 					layer->render();
+			m_debugLayer->render();
 			m_window->swapBuffers();
 			frames++;
 

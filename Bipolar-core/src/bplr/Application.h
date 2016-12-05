@@ -3,6 +3,7 @@
 #include <vector>
 #include "graphics/layers/Layer.h"
 #include "graphics/Window.h"
+#include "ui/DebugLayer.h"
 
 namespace bplr
 {
@@ -18,6 +19,7 @@ namespace bplr
 
 	protected:
 		std::vector<graphics::Layer*> m_layers;
+		ui::DebugLayer* m_debugLayer;
 		graphics::Window* m_window;
 	};
 }

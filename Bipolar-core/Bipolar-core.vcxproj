@@ -148,6 +148,14 @@
     <ClInclude Include="src\bplr\math\vec2.h" />
     <ClInclude Include="src\bplr\math\vec3.h" />
     <ClInclude Include="src\bplr\math\vec4.h" />
+    <ClInclude Include="src\bplr\ui\DebugLayer.h" />
+    <ClInclude Include="src\bplr\ui\imgui\imconfig.h" />
+    <ClInclude Include="src\bplr\ui\imgui\imgui.h" />
+    <ClInclude Include="src\bplr\ui\imgui\imgui_impl_glfw_gl3.h" />
+    <ClInclude Include="src\bplr\ui\imgui\imgui_internal.h" />
+    <ClInclude Include="src\bplr\ui\imgui\stb_rect_pack.h" />
+    <ClInclude Include="src\bplr\ui\imgui\stb_textedit.h" />
+    <ClInclude Include="src\bplr\ui\imgui\stb_truetype.h" />
     <ClInclude Include="src\bplr\util\Loader.h" />
     <ClInclude Include="src\bplr\util\Time.h" />
     <ClInclude Include="src\bplr\entity\components\Component.h" />
@@ -176,6 +184,11 @@
     <ClCompile Include="src\bplr\math\vec2.cpp" />
     <ClCompile Include="src\bplr\math\vec3.cpp" />
     <ClCompile Include="src\bplr\math\vec4.cpp" />
+    <ClCompile Include="src\bplr\ui\DebugLayer.cpp" />
+    <ClCompile Include="src\bplr\ui\imgui\imgui.cpp" />
+    <ClCompile Include="src\bplr\ui\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\bplr\ui\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\bplr\ui\imgui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\bplr\util\Loader.cpp" />
     <ClCompile Include="src\bplr\graphics\VAO.cpp" />
     <ClCompile Include="src\bplr\entity\Entity.cpp" />

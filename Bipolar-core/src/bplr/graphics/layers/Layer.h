@@ -10,7 +10,7 @@ namespace bplr
 		{
 		protected:
 			Window* m_window;
-			GLboolean m_visible = true;
+			bool m_visible = true;
 
 		public:
 			Layer();
