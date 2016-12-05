@@ -7,6 +7,7 @@
 #include "../math/vec3.h"
 #include "../math/vec4.h"
 #include "../math/mat4.h"
+#include "VAO.h"
 
 namespace bplr
 {
@@ -57,13 +58,16 @@ namespace bplr
 			GLuint getLocation() const;
 			GLuint getAttribLocation(std::string attribName) const;
 
-			virtual void postLink();
+			static GLboolean isGeometryInitialised;
+			static VAO* rectangleVAO;
 
 		private:
 			GLuint m_program;
 			std::vector<GLuint> m_shaders;
 			std::vector<ShaderSource> m_sources;
 			GLboolean m_linked = false;
+
+			void initGeometry() const;
 		};
 	}
 }

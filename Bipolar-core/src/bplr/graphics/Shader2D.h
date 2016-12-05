@@ -10,13 +10,7 @@ namespace bplr
 		class Shader2D : public Shader
 		{
 		public:
-			void postLink() override;
-
 			void drawRect() const;
-		
-		private:
-			static GLboolean isGeometryInitialised;
-			static VAO* rectangleVAO;
 		};
 	}
 }

@@ -2,7 +2,6 @@
 
 #include <GL/glew.h>
 #include <map>
-#include "Shader.h"
 
 namespace bplr
 {

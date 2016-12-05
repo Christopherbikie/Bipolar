@@ -24,6 +24,9 @@ namespace bplr
 			return path == other.path;
 		}
 
+		VAO* Shader::rectangleVAO = nullptr;
+		GLboolean Shader::isGeometryInitialised = false;
+
 		Shader::Shader()
 		{
 			m_program = glCreateProgram();
@@ -93,7 +96,8 @@ namespace bplr
 
 			m_linked = true;
 
-			postLink();
+			if (!isGeometryInitialised)
+				initGeometry();
 		}
 
 		void Shader::use() const
@@ -171,8 +175,24 @@ namespace bplr
 			return glGetAttribLocation(m_program, attribName.c_str());
 		}
 
-		void Shader::postLink()
+		void Shader::initGeometry() const
 		{
+			GLfloat vertices[] = {
+				0.5f,  0.5f, 0.0f,  // Top Right
+				0.5f, -0.5f, 0.0f,  // Bottom Right
+				-0.5f, -0.5f, 0.0f,  // Bottom Left
+				-0.5f,  0.5f, 0.0f,  // Top Left 
+			};
+			GLuint indices[] = {
+				3, 1, 0,  // First Triangle
+				3, 2, 1,  // Second Triangle
+			};
+
+			rectangleVAO = new VAO();
+			rectangleVAO->bind();
+			rectangleVAO->storeInBuffer(getAttribLocation("position"), 3, 4, vertices);
+			rectangleVAO->storeInElementBuffer(6, indices);
+			rectangleVAO->unbind();
 		}
 	}
 }
