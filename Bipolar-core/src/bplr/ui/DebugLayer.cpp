@@ -36,8 +36,11 @@ namespace bplr
 			{
 				ImGui_ImplGlfwGL3_NewFrame();
 
-				ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiSetCond_FirstUseEver);
-				ImGui::ShowTestWindow(&m_visible);
+				GLfloat framerate = ImGui::GetIO().Framerate;
+
+				ImGui::Begin("Debug", &m_visible);
+				ImGui::Text("Application average: %.3f ms/frame (%.1f FPS)", 1000.0f / framerate, framerate);
+				ImGui::End();
 			}
 		}
 
