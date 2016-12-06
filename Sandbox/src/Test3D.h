@@ -18,8 +18,6 @@ public:
 	void update(float delta) override;
 	void render() override;
 
-	void reloadShaders() const;
-
 private:
 	graphics::Shader3D* shader;
 	graphics::Shader3D* skyboxShader;

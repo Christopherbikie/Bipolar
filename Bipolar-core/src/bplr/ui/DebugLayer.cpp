@@ -1,3 +1,4 @@
+#include "../graphics/Shader.h"
 #include "DebugLayer.h"
 #include "../input/Keyboard.h"
 #include "imgui/imgui_impl_glfw_gl3.h"
@@ -40,6 +41,8 @@ namespace bplr
 
 				ImGui::Begin("Debug", &m_visible);
 				ImGui::Text("Application average: %.3f ms/frame (%.1f FPS)", 1000.0f / framerate, framerate);
+				if (ImGui::Button("Reload shaders"))
+					graphics::reloadShaders();
 				ImGui::End();
 			}
 		}

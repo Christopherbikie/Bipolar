@@ -69,5 +69,7 @@ namespace bplr
 
 			void initGeometry() const;
 		};
+
+		void reloadShaders();
 	}
 }

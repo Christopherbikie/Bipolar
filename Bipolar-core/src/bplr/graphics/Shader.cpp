@@ -27,6 +27,8 @@ namespace bplr
 		VAO* Shader::rectangleVAO = nullptr;
 		GLboolean Shader::isGeometryInitialised = false;
 
+		std::vector<Shader*> linkedShaders;
+
 		Shader::Shader()
 		{
 			m_program = glCreateProgram();
@@ -35,6 +37,15 @@ namespace bplr
 		Shader::~Shader()
 		{
 			glDeleteProgram(m_program);
+			for (int i = 0; i < linkedShaders.size(); ++i)
+			{
+				std::vector<Shader*>::iterator iterator = find(linkedShaders.begin(), linkedShaders.end(), this);
+				if (iterator != linkedShaders.end())
+				{
+					linkedShaders.erase(iterator);
+					break;
+				}
+			}
 		}
 
 		void Shader::addSource(ShaderType type, const GLchar* path)
@@ -96,6 +107,8 @@ namespace bplr
 
 			m_linked = true;
 
+			linkedShaders.push_back(this);
+
 			if (!isGeometryInitialised)
 				initGeometry();
 		}
@@ -108,6 +121,16 @@ namespace bplr
 		void Shader::reload()
 		{
 			glDeleteProgram(m_program);
+			for (int i = 0; i < linkedShaders.size(); ++i)
+			{
+				std::vector<Shader*>::iterator iterator = find(linkedShaders.begin(), linkedShaders.end(), this);
+				if (iterator != linkedShaders.end())
+				{
+					linkedShaders.erase(iterator);
+					break;
+				}
+			}
+
 			m_program = glCreateProgram();
 			m_linked = false;
 
@@ -193,6 +216,12 @@ namespace bplr
 			rectangleVAO->storeInBuffer(getAttribLocation("position"), 3, 4, vertices);
 			rectangleVAO->storeInElementBuffer(6, indices);
 			rectangleVAO->unbind();
+		}
+
+		void reloadShaders()
+		{
+			for (int i = 0; i < linkedShaders.size(); ++i)
+				linkedShaders[i]->reload();
 		}
 	}
 }

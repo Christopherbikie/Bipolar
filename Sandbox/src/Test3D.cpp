@@ -87,12 +87,6 @@ void Test3D::render()
 	entity->getComponent<entity::MeshComponent>()->render(shader);
 }
 
-void Test3D::reloadShaders() const
-{
-	shader->reload();
-	skyboxShader->reload();
-}
-
 InputHandler::InputHandler(Test3D* layer)
 {
 	m_layer = layer;
@@ -102,6 +96,4 @@ void InputHandler::pressKey(GLuint key)
 {
 	if (key == GLFW_KEY_ESCAPE)
 		bplr::input::Mouse::toggleCaptured(m_layer->getWindow());
-	else if (key == GLFW_KEY_R)
-		m_layer->reloadShaders();
 }
