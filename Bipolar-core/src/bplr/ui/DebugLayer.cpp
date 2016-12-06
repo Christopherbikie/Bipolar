@@ -39,7 +39,7 @@ namespace bplr
 
 				GLfloat framerate = ImGui::GetIO().Framerate;
 
-				ImGui::Begin("Debug", &m_visible);
+				ImGui::Begin("Debug Menu", &m_visible);
 				ImGui::Text("Application average: %.3f ms/frame (%.1f FPS)", 1000.0f / framerate, framerate);
 				if (ImGui::Button("Reload shaders"))
 					graphics::reloadShaders();
