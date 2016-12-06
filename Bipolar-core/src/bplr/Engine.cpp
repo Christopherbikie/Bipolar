@@ -39,6 +39,7 @@ namespace bplr
 			std::cout << "Failed to initialise GLEW" << std::endl;
 			return -1;
 		}
+		isGlewInitialised = true;
 		return 0;
 	}
 
