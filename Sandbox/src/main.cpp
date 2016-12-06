@@ -9,7 +9,7 @@ public:
 		: Application("Bipolar", 1366, 768)
 	{
 		addLayer(new Test3D());
-		addLayer(new Test2D());
+//		addLayer(new Test2D());
 	}
 };
 

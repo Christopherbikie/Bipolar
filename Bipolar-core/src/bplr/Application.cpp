@@ -48,10 +48,10 @@ namespace bplr
 			previous = current;
 			lag += delta;
 
-			m_debugLayer->update(delta);
-
 			// Get input
+			m_debugLayer->updateInputCapture();
 			bplr::getInput();
+			m_debugLayer->update(delta);
 			for (graphics::Layer* layer : m_layers)
 				layer->getInput();
 

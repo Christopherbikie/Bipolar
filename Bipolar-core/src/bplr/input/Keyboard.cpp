@@ -28,6 +28,12 @@ namespace bplr
 			m_keyHandlers[key].push_back(handler);
 		}
 
+		void Keyboard::releaseAllKeys()
+		{
+			for (bool key : m_keys)
+				key = false;
+		}
+
 		bool Keyboard::m_keys[1024];
 
 		std::map<GLuint, std::vector<KeyEventHandler*>> Keyboard::m_keyHandlers;

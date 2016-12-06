@@ -1,7 +1,6 @@
 #include "DebugLayer.h"
+#include "../input/Keyboard.h"
 #include "imgui/imgui_impl_glfw_gl3.h"
-#include "../input/Mouse.h"
-#include <iostream>
 
 namespace bplr
 {
@@ -11,15 +10,30 @@ namespace bplr
 		{
 			m_window = window;
 
-			ImGui_ImplGlfwGL3_Init(window->getGLFWwindow(), true);
+			ImGui_ImplGlfwGL3_Init(window->getGLFWwindow(), false);
+			glfwSetCharCallback(m_window->getGLFWwindow(), ImGui_ImplGlfwGL3_CharCallback);
+			glfwSetScrollCallback(window->getGLFWwindow(), ImGui_ImplGlfwGL3_ScrollCallback);
+		}
+
+		void DebugLayer::updateInputCapture()
+		{
+			ImGuiIO& io = ImGui::GetIO();
+			if (io.WantCaptureKeyboard && m_currentCallback == Bipolar) {
+				glfwSetKeyCallback(m_window->getGLFWwindow(), ImGui_ImplGlfwGL3_KeyCallback);
+				input::Keyboard::releaseAllKeys();
+				m_currentCallback = ImGui;
+			}
+			else if (!io.WantCaptureKeyboard && m_currentCallback == ImGui)
+			{
+				glfwSetKeyCallback(m_window->getGLFWwindow(), input::Keyboard::keyCallback);
+				m_currentCallback = Bipolar;
+			}
 		}
 
 		void DebugLayer::update(GLfloat delta)
 		{
 			if (m_visible)
 			{
-				ImGuiIO& io = ImGui::GetIO();
-
 				ImGui_ImplGlfwGL3_NewFrame();
 
 				ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiSetCond_FirstUseEver);

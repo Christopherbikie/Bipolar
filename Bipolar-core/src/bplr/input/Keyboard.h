@@ -24,6 +24,8 @@ namespace bplr
 			static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
 			static bool isKeyDown(int key);
 			static void addKeyHandler(GLuint key, KeyEventHandler* handler);
+			static void releaseAllKeys();
+
 		private:
 			static bool m_keys[1024];
 
