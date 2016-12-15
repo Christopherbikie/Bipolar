@@ -1,8 +1,7 @@
 #include <GL/glew.h>
 #include "CameraComponent.h"
-#include "../../input/Keyboard.h"
 #include "../Entity.h"
-#include "TransformComponent.h"
+#include "../../input/Keyboard.h"
 #include "../../input/Mouse.h"
 #include "../../math/Math.h"
 
