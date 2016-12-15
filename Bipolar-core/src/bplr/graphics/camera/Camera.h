@@ -16,10 +16,9 @@ namespace bplr
 			}
 			virtual ~Camera() {}
 
-			virtual math::mat4 getProjectionMatrix() const = 0;
-			virtual math::mat4 getViewMatrix() const = 0;
-			virtual math::mat4 getViewMatrixNoTranslate() const = 0;
-
+			math::mat4 getProjectionMatrix() const { return m_projMat; }
+			math::mat4 Camera::getViewMatrix() const { return math::mat4(1.0f).translate(-m_position) * math::mat4(1.0f).rotate(m_rotation); }
+			math::mat4 Camera::getViewMatrixNoTranslate() const { return math::mat4(1.0f).rotate(m_rotation); }
 
 			math::vec3 getPosition() const { return m_position; }
 			void setPosition(const math::vec3& position) { m_position = position; }

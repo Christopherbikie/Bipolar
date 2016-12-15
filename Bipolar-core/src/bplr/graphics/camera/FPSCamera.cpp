@@ -10,21 +10,6 @@ namespace bplr
 			updateProjectionMatrix();
 		}
 
-		math::mat4 FPSCamera::getProjectionMatrix() const
-		{
-			return m_projMat;
-		}
-
-		math::mat4 FPSCamera::getViewMatrix() const
-		{
-			return math::mat4(1.0f).translate(-m_position) * math::mat4(1.0f).rotate(m_rotation);
-		}
-
-		math::mat4 FPSCamera::getViewMatrixNoTranslate() const
-		{
-			return math::mat4(1.0f).rotate(m_rotation);
-		}
-
 		GLfloat FPSCamera::getFov() const
 		{
 			return m_fov;
