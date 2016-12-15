@@ -33,6 +33,7 @@ namespace bplr
 		void FPSCamera::setFov(GLfloat fov)
 		{
 			m_fov = fov;
+			updateProjectionMatrix();
 		}
 
 		GLfloat FPSCamera::getAspectRatio() const
@@ -43,6 +44,7 @@ namespace bplr
 		void FPSCamera::setAspectRatio(GLfloat aspectRatio)
 		{
 			m_aspectRatio = aspectRatio;
+			updateProjectionMatrix();
 		}
 
 		void FPSCamera::updateProjectionMatrix()
