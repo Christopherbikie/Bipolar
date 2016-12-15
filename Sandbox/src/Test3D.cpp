@@ -29,16 +29,14 @@ void Test3D::init(graphics::Window* window)
 	graphics::Mesh* inner = new graphics::Mesh("res/models/mitsuba/mitsuba-sphere-inner.obj", "res/materials/rubber.mat");
 	graphics::Mesh* outer = new graphics::Mesh("res/models/mitsuba/mitsuba-sphere-outer.obj", "res/materials/gold.mat");
 
+	// Create Camera
+	camera = new graphics::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, 1366.0f / 768.0f);
+
 	// Create Entity
 	entity = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))
 		->addComponent(new entity::MeshComponent(inner));
 	    entity->getComponent<entity::MeshComponent>()->addMesh(outer);
-
-	// Create Camera
-	camera = (new entity::Entity())
-		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 2.0f)))
-		->addComponent(new entity::CameraComponent());
 
 	// Create Light
 	light = (new entity::Entity())
@@ -52,9 +50,6 @@ void Test3D::init(graphics::Window* window)
 		"res/images/skybox/back.jpg", "res/images/skybox/front.jpg"
 	);
 
-	// Create projection matrix
-	projectionMatrix = math::mat4::perspective(60.0f, 1366.0f / 768.0f, 0.5f, 1000.0f);
-
 	InputHandler* inputHandler = new InputHandler(this);
 	input::Keyboard::addKeyHandler(GLFW_KEY_ESCAPE, inputHandler);
 	input::Keyboard::addKeyHandler(GLFW_KEY_R, inputHandler);
@@ -62,7 +57,6 @@ void Test3D::init(graphics::Window* window)
 
 void Test3D::update(float delta)
 {
-	camera->getComponent<entity::CameraComponent>()->update(delta);
 }
 
 void Test3D::render()
@@ -70,14 +64,14 @@ void Test3D::render()
 	// Load uniforms
 	shader->use();
 	shader->loadUniform("model", entity->getComponent<entity::TransformComponent>()->getTransform());
-	shader->loadUniform("view", camera->getComponent<entity::CameraComponent>()->getViewMatrix());
-	shader->loadUniform("projection", projectionMatrix);
-	shader->loadUniform("cameraPosition", camera->getComponent<entity::TransformComponent>()->position);
+	shader->loadUniform("view", camera->getViewMatrix());
+	shader->loadUniform("projection", camera->getProjectionMatrix());
+	shader->loadUniform("cameraPosition", camera->getPosition());
 	light->getComponent<entity::LightSourceComponent>()->loadUniforms(shader);
 
 	skyboxShader->use();
-	skyboxShader->loadUniform("view", camera->getComponent<entity::CameraComponent>()->getViewMatrixNoTranslate());
-	skyboxShader->loadUniform("projection", projectionMatrix);
+	skyboxShader->loadUniform("view", camera->getViewMatrixNoTranslate());
+	skyboxShader->loadUniform("projection", camera->getProjectionMatrix());
 
 	skyboxShader->use();
 	skybox->render(skyboxShader);

@@ -26,6 +26,9 @@
 #include "bplr/graphics/VAO.h"
 #include "bplr/graphics/Window.h"
 
+#include "bplr/graphics/camera/Camera.h"
+#include "bplr/graphics/camera/FPSCamera.h"
+
 #include "bplr/graphics/layers/Layer.h"
 
 #include "bplr/input/Keyboard.h"

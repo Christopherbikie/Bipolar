@@ -22,13 +22,12 @@ private:
 	graphics::Shader3D* shader;
 	graphics::Shader3D* skyboxShader;
 
+	graphics::FPSCamera* camera;
+
 	entity::Entity* entity;
-	entity::Entity* camera;
 	entity::Entity* light;
 
 	graphics::CubeMap* skybox;
-
-	math::mat4 projectionMatrix;
 };
 
 class InputHandler : public input::KeyEventHandler
