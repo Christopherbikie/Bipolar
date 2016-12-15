@@ -242,6 +242,8 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+/Sandbox/imgui.ini
 /Sandbox/res/models/nanosuit
 /Sandbox/res/models/hairball.obj
 /Sandbox/res/models/earth.png
