@@ -24,6 +24,7 @@ private:
 
 	graphics::FPSCamera* camera;
 
+	entity::Entity* player;
 	entity::Entity* entity;
 	entity::Entity* light;
 

@@ -32,11 +32,16 @@ void Test3D::init(graphics::Window* window)
 	// Create Camera
 	camera = new graphics::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, 1366.0f / 768.0f);
 
+	// Create Player
+	player = (new entity::Entity())
+		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 2.0f)))
+		->addComponent(new entity::CameraComponent(camera));
+
 	// Create Entity
 	entity = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))
 		->addComponent(new entity::MeshComponent(inner));
-	    entity->getComponent<entity::MeshComponent>()->addMesh(outer);
+	entity->getComponent<entity::MeshComponent>()->addMesh(outer);
 
 	// Create Light
 	light = (new entity::Entity())
@@ -57,6 +62,7 @@ void Test3D::init(graphics::Window* window)
 
 void Test3D::update(float delta)
 {
+	player->getComponent<entity::CameraComponent>()->update(delta);
 }
 
 void Test3D::render()

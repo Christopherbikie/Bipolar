@@ -10,6 +10,11 @@ namespace bplr
 {
 	namespace entity
 	{
+		CameraComponent::CameraComponent(graphics::Camera* camera)
+			: m_camera(camera)
+		{
+		}
+
 		void CameraComponent::update(float delta) const
 		{
 			// Rotation
@@ -46,16 +51,9 @@ namespace bplr
 				m_transform->position.y += delta * m_moveSpeed;
 			if (input::Keyboard::isKeyDown(GLFW_KEY_LEFT_SHIFT))
 				m_transform->position.y -= delta * m_moveSpeed;
-		}
 
-		math::mat4 CameraComponent::getViewMatrix() const
-		{
-			return math::mat4(1.0f).translate(-m_transform->position) * math::mat4(1.0f).rotate(m_transform->rotation);
-		}
-
-		math::mat4 CameraComponent::getViewMatrixNoTranslate() const
-		{
-			return math::mat4(1.0f).rotate(m_transform->rotation);
+			m_camera->setPosition(m_transform->position);
+			m_camera->setRotation(m_transform->rotation);
 		}
 
 		std::string CameraComponent::getType()
