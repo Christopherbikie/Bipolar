@@ -123,6 +123,12 @@
     <ClInclude Include="src\bplr\ui\imgui\imgui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\bplr\graphics\camera\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bplr\graphics\camera\FPSCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\graphics\Window.cpp">
@@ -210,6 +216,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\bplr\ui\imgui\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bplr\graphics\camera\FPSCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
