@@ -20,8 +20,11 @@ namespace bplr
 			virtual math::mat4 getViewMatrix() const = 0;
 			virtual math::mat4 getViewMatrixNoTranslate() const = 0;
 
-			void setPosition(math::vec3 location) { m_position = location; }
-			void setRotation(math::vec3 rotation) { m_rotation = rotation; }
+
+			math::vec3 getPosition() const { return m_position; }
+			void setPosition(const math::vec3& position) { m_position = position; }
+			math::vec3 getRotation() const { return m_rotation; }
+			void setRotation(const math::vec3& rotation) { m_rotation = rotation; }
 
 		protected:
 			math::mat4 m_projMat;
