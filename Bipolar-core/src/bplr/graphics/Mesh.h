@@ -19,14 +19,15 @@ namespace bplr
 
 		class Mesh {
 		public:
-			Mesh(std::string objPath, std::string matPath);
 			Mesh(std::string objPath, Material* material = new Material());
+			Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, Material* material);
 			~Mesh();
 
 			void render(Shader3D* shader) const;
 
 		private:
 			VAO* m_vao;
+			std::vector<Texture*> m_textures;
 			Material* m_material;
 		};
 	}

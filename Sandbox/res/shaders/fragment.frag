@@ -45,7 +45,7 @@ void main()
 	vec3 ambient = light.ambient * albedoColour;
 
 	vec3 normalisedNormal = normalize(pass_normal);
-	vec3 lightDirection = normalize(light.position - fragmentPosition);  
+	vec3 lightDirection = normalize(light.position - fragmentPosition);
 	float albedoIntensity = max(dot(normalisedNormal, lightDirection), 0.0f);
 	vec3 albedo = albedoIntensity * light.colour * albedoColour;
 
@@ -54,9 +54,9 @@ void main()
 	float specularIntensity = pow(max(dot(viewDirection, reflectDirection), 0.0f), 20); // <- Random constant, will fix
 	vec3 incomingDirection = fragmentPosition - cameraPosition;
 	vec3 reflection = reflect(incomingDirection, pass_normal);
-	vec3 reflectionColor = texture(skybox, reflection).xyz * specularColour * gloss;
+	vec3 reflectionColor = texture(skybox, reflection).xyz * specularColour;
 
 	vec3 specular = specularIntensity * light.colour * specularColour;
 
 	color = vec4(ambient + albedo + specular + reflectionColor, 1.0f);
-} 
+}

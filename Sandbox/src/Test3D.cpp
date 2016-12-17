@@ -23,11 +23,7 @@ void Test3D::init(graphics::Window* window)
 	skyboxShader->addSource(graphics::FRAGMENT_SHADER, skyboxFragShaderPath.c_str());
 	skyboxShader->link();
 
-	graphics::Material* gold = new graphics::Material("res/materials/gold.mat");
-	graphics::Material* rubber = new graphics::Material("res/materials/rubber.mat");
-
-	graphics::Mesh* inner = new graphics::Mesh("res/models/mitsuba/mitsuba-sphere-inner.obj", "res/materials/rubber.mat");
-	graphics::Mesh* outer = new graphics::Mesh("res/models/mitsuba/mitsuba-sphere-outer.obj", "res/materials/gold.mat");
+	graphics::Model* mitsuba = assets::ModelLoader::loadModel("res/models/mitsuba/mitsuba-sphere.obj");
 
 	// Create Camera
 	camera = new graphics::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, 1366.0f / 768.0f);
@@ -40,8 +36,7 @@ void Test3D::init(graphics::Window* window)
 	// Create Entity
 	entity = (new entity::Entity())
 		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))
-		->addComponent(new entity::MeshComponent(inner));
-	entity->getComponent<entity::MeshComponent>()->addMesh(outer);
+		->addComponent(new entity::MeshComponent(mitsuba));
 
 	// Create Light
 	light = (new entity::Entity())
@@ -95,5 +90,5 @@ InputHandler::InputHandler(Test3D* layer)
 void InputHandler::pressKey(GLuint key)
 {
 	if (key == GLFW_KEY_ESCAPE)
-		bplr::input::Mouse::toggleCaptured(m_layer->getWindow());
+		input::Mouse::toggleCaptured(m_layer->getWindow());
 }

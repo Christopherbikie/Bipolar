@@ -4,26 +4,19 @@ namespace bplr
 {
 	namespace entity
 	{
-		MeshComponent::MeshComponent(graphics::Mesh* mesh)
+		MeshComponent::MeshComponent(graphics::Model* model)
+			: m_model(model)
 		{
-			m_meshes.push_back(mesh);
 		}
 
 		MeshComponent::~MeshComponent()
 		{
-			for (graphics::Mesh* mesh : m_meshes)
-				delete mesh;
-		}
-
-		void MeshComponent::addMesh(graphics::Mesh* mesh)
-		{
-			m_meshes.push_back(mesh);
+			delete m_model;
 		}
 
 		void MeshComponent::render(graphics::Shader3D *shader) const
 		{
-			for (graphics::Mesh* mesh : m_meshes)
-				mesh->render(shader);
+			m_model->render(shader);
 		}
 
 		std::string MeshComponent::getType()

@@ -9,6 +9,8 @@
 #include "bplr/Engine.h"
 #include "bplr/Application.h"
 
+#include "bplr/assets/ModelLoader.h"
+
 #include "bplr/entity/Entity.h"
 #include "bplr/entity/components/CameraComponent.h"
 #include "bplr/entity/components/Component.h"
@@ -19,6 +21,7 @@
 #include "bplr/graphics/CubeMap.h"
 #include "bplr/graphics/Material.h"
 #include "bplr/graphics/Mesh.h"
+#include "bplr/graphics/Model.h"
 #include "bplr/graphics/Shader.h"
 #include "bplr/graphics/Shader2D.h"
 #include "bplr/graphics/Shader3D.h"

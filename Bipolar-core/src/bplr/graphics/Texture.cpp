@@ -6,6 +6,28 @@ namespace bplr
 {
 	namespace graphics
 	{
+		Texture::Texture(TextureType type)
+			: m_type(type)
+		{
+			unsigned char* data;
+
+			// Allocate the needed space.
+			int width = 128;
+			int height = 128;
+
+			data = new unsigned char[width * height * 4];
+
+			for (int i = 0; i < (int)(width * height * 4); i++)
+				data[i] = 0;
+
+			// Generate white OpenGL texture.
+			glGenTextures(1, &m_location);
+			glBindTexture(GL_TEXTURE_2D, m_location);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+		}
+
 		Texture::Texture(const char* filename, TextureType type, GLint mipmapLevel, GLint border)
 			: m_type(type)
 		{

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Texture.h"
 
 namespace bplr
@@ -9,7 +10,6 @@ namespace bplr
 		{
 		public:
 			Material();
-			Material(std::string path);
 			~Material();
 
 			void loadUniforms(Shader* shader, std::string structName = "material") const;

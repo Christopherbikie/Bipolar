@@ -2,6 +2,7 @@
 
 #include "Component.h"
 #include "../../graphics/Mesh.h"
+#include "../../graphics/Model.h"
 
 namespace bplr
 {
@@ -10,18 +11,16 @@ namespace bplr
 		class MeshComponent : public Component
 		{
 		public:
-			MeshComponent(graphics::Mesh* mesh);
+			MeshComponent(graphics::Model* model);
 			~MeshComponent();
-
-			void addMesh(graphics::Mesh* mesh);
 
 			void render(graphics::Shader3D* shader) const;
 
 			std::string getType() override;
 			static std::string getStaticType();
-			
+
 		private:
-			std::vector<graphics::Mesh*> m_meshes;
+			graphics::Model* m_model;
 		};
 	}
 }

@@ -69,13 +69,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\tinyobjloader;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\tinyobjloader;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\assimp\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)Dependencies\glew\lib;$(LibraryPath)</LibraryPath>
     <TargetName>BPLRCore</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>BPLRCore</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\tinyobjloader;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\tinyobjloader;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\assimp\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)Dependencies\glew\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="src\Bipolar.h" />
     <ClInclude Include="src\bplr\Application.h" />
+    <ClInclude Include="src\bplr\assets\ModelLoader.h" />
     <ClInclude Include="src\bplr\Engine.h" />
     <ClInclude Include="src\bplr\entity\components\CameraComponent.h" />
     <ClInclude Include="src\bplr\entity\components\LightSourceComponent.h" />
@@ -138,6 +139,7 @@
     <ClInclude Include="src\bplr\graphics\layers\Layer.h" />
     <ClInclude Include="src\bplr\graphics\Material.h" />
     <ClInclude Include="src\bplr\graphics\Mesh.h" />
+    <ClInclude Include="src\bplr\graphics\Model.h" />
     <ClInclude Include="src\bplr\graphics\Shader.h" />
     <ClInclude Include="src\bplr\graphics\Shader2D.h" />
     <ClInclude Include="src\bplr\graphics\Shader3D.h" />
@@ -168,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\Application.cpp" />
+    <ClCompile Include="src\bplr\assets\ModelLoader.cpp" />
     <ClCompile Include="src\bplr\Engine.cpp" />
     <ClCompile Include="src\bplr\entity\components\CameraComponent.cpp" />
     <ClCompile Include="src\bplr\entity\components\LightSourceComponent.cpp" />
@@ -176,6 +179,7 @@
     <ClCompile Include="src\bplr\graphics\layers\Layer.cpp" />
     <ClCompile Include="src\bplr\graphics\Material.cpp" />
     <ClCompile Include="src\bplr\graphics\Mesh.cpp" />
+    <ClCompile Include="src\bplr\graphics\Model.cpp" />
     <ClCompile Include="src\bplr\graphics\Shader.cpp" />
     <ClCompile Include="src\bplr\graphics\Shader2D.cpp" />
     <ClCompile Include="src\bplr\graphics\Shader3D.cpp" />

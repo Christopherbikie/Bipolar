@@ -10,6 +10,7 @@ namespace bplr
 	{
 		enum TextureType
 		{
+			Unknown,
 			AlbedoMap,
 			GlossMap,
 			NormalMap,
@@ -18,6 +19,7 @@ namespace bplr
 
 		static std::map<TextureType, std::string> typeNames = {
 			{ AlbedoMap, "albedo" },
+			{ Unknown, "unknown" },
 			{ GlossMap, "gloss" },
 			{ NormalMap, "normal" },
 			{ SpecularMap, "specular" },
@@ -26,6 +28,7 @@ namespace bplr
 		class Texture
 		{
 		public:
+			Texture(TextureType type = Unknown);
 			Texture(const char* filename, TextureType type = AlbedoMap, GLint mipmapLevel = 0, GLint border = 0);
 			~Texture();
 

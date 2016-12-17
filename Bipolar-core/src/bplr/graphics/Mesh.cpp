@@ -8,11 +8,6 @@ namespace bplr
 {
 	namespace graphics
 	{
-		Mesh::Mesh(std::string objPath, std::string matPath)
-			: Mesh(objPath, new Material(matPath))
-		{
-		}
-
 		Mesh::Mesh(std::string objPath, Material* material)
 			: m_vao(new VAO()), m_material(material)
 		{
@@ -73,10 +68,34 @@ namespace bplr
 			m_vao->unbind();
 		}
 
+		Mesh::Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, Material* material)
+			: m_vao(new VAO), m_material(material)
+		{
+			std::vector<math::vec3> positions;
+			std::vector<math::vec3> normals;
+			std::vector<math::vec2> textureCoords;
+
+			for (Vertex vertex : vertices)
+			{
+				positions.push_back(vertex.position);
+				normals.push_back(vertex.normal);
+				textureCoords.push_back(vertex.textureCoord);
+			}
+
+			m_vao->bind();
+			m_vao->storeInBuffer(0, 3, positions.size(), (GLfloat*)&positions[0]);
+			m_vao->storeInBuffer(1, 3, normals.size(), (GLfloat*)&normals[0]);
+			m_vao->storeInBuffer(2, 2, textureCoords.size(), (GLfloat*)&textureCoords[0]);
+			m_vao->storeInElementBuffer(indices.size(), &indices[0]);
+			m_vao->unbind();
+		}
+
 		Mesh::~Mesh()
 		{
 			delete m_vao;
 			delete m_material;
+			for (Texture* texture : m_textures)
+				delete texture;
 		}
 
 		void Mesh::render(Shader3D* shader) const
