@@ -31,6 +31,8 @@ namespace bplr
 		{
 		public:
 			Texture(std::string path);
+			// For loading cubemap faces
+			Texture(std::string path, GLenum cubemapFace);
 //			Texture(GLuint width, GLuint height, unsigned char *data);
 			~Texture();
 
@@ -42,7 +44,7 @@ namespace bplr
 			GLuint m_width, m_height;
 			FIBITMAP *m_bitmap, *m_bitmap32;
 
-			GLubyte* loadToBitmap(std::string path);
+			GLubyte* loadToBitmap(std::string path, bool flip = false);
 		};
 
 //		class TextureStore
@@ -62,29 +64,5 @@ namespace bplr
 //			static std::map<std::string, Texture*> m_textures;
 //			static GLboolean m_initialised;
 //		};
-
-		class TextureData
-		{
-		public:
-			TextureData(const char* filename);
-			~TextureData();
-
-			BYTE* getBits() const;
-			GLuint getWidth() const;
-			GLuint getHeight() const;
-			GLenum getFormat() const;
-			GLenum getInternalFormat() const;
-			GLint getBitsPerPixel() const;
-
-		private:
-			BYTE* m_bits;
-			GLuint m_width;
-			GLuint m_height;
-			GLenum m_format;
-			GLenum m_internalFormat;
-			GLint m_bitsPerPixel;
-
-			FIBITMAP* m_bitmap;
-		};
 	}
 }

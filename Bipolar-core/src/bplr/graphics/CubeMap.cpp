@@ -22,11 +22,7 @@ namespace bplr
 
 			glBindTexture(GL_TEXTURE_CUBE_MAP, m_location);
 			for (GLuint i = 0; i < faces.size(); i++)
-			{
-				TextureData data = TextureData(faces[i].c_str());
-
-				glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, data.getInternalFormat(), data.getWidth(), data.getHeight(), 0, data.getFormat(), GL_UNSIGNED_BYTE, data.getBits());
-			}
+				new Texture(faces[i], GL_TEXTURE_CUBE_MAP_POSITIVE_X + i);
 
 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
