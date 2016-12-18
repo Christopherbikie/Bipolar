@@ -160,7 +160,7 @@ namespace bplr
 //					}
 //					if (!skip)
 //					{
-						graphics::Texture* texture = new graphics::Texture((directory + "/" + string.C_Str()).c_str(), bplrType);
+						graphics::Texture* texture = new graphics::Texture((directory + "/" + string.C_Str()).c_str());
 //						m_textures.push_back(texture);
 						switch (bplrType)
 						{

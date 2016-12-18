@@ -1,8 +1,10 @@
 #pragma once
 
+#include <map>
+#include <vector>
 #include <GL/glew.h>
+#include "FreeImage.h"
 #include "Shader.h"
-#include <FreeImage.h>
 
 namespace bplr
 {
@@ -28,18 +30,35 @@ namespace bplr
 		class Texture
 		{
 		public:
-			Texture(TextureType type = Unknown);
-			Texture(const char* filename, TextureType type = AlbedoMap, GLint mipmapLevel = 0, GLint border = 0);
+			Texture(std::string path);
+//			Texture(GLuint width, GLuint height, unsigned char *data);
 			~Texture();
 
 			void bind(Shader *shader, const char *uniformName) const;
 
-			TextureType getType() const;
-
 		private:
-			TextureType m_type;
 			GLuint m_location;
+			std::string m_path;
+			GLuint m_width, m_height;
 		};
+
+//		class TextureStore
+//		{
+//		public:
+//			static void init();
+//
+//			static void add(Texture* model);
+//			static Texture* get(std::string path);
+//			static Texture* getBlank();
+//
+//			static void clear();
+//
+//			static std::vector<std::string> getTexturePaths();
+//
+//		private:
+//			static std::map<std::string, Texture*> m_textures;
+//			static GLboolean m_initialised;
+//		};
 
 		class TextureData
 		{
@@ -53,7 +72,7 @@ namespace bplr
 			GLenum getFormat() const;
 			GLenum getInternalFormat() const;
 			GLint getBitsPerPixel() const;
-		
+
 		private:
 			BYTE* m_bits;
 			GLuint m_width;

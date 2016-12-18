@@ -1,66 +1,57 @@
 #include "Texture.h"
-#include <FreeImage.h>
+#include "FreeImage.h"
+#include <ostream>
 #include <iostream>
 
 namespace bplr
 {
 	namespace graphics
 	{
-		Texture::Texture(TextureType type)
-			: m_type(type)
+		Texture::Texture(std::string path)
 		{
-			unsigned char* data;
+			const char* pathCStr = path.c_str();
 
-			// Allocate the needed space.
-			int width = 128;
-			int height = 128;
+			FREE_IMAGE_FORMAT format = FIF_UNKNOWN;
+			format = FreeImage_GetFileType(pathCStr);
+			if (format == FIF_UNKNOWN)
+				format = FreeImage_GetFIFFromFilename(pathCStr);
+			if (format == FIF_UNKNOWN) {
+				std::cout << "Failed to load image at " << pathCStr << std::endl;
+				return;
+			}
+			if (!FreeImage_FIFSupportsReading(format))
+			{
+				std::cout << "Detected image format cannot be read! " <<  pathCStr << std::endl;
+				return;
+			}
 
-			data = new unsigned char[width * height * 4];
+			FIBITMAP* bitmap = FreeImage_Load(format, pathCStr);
 
-			for (int i = 0; i < (int)(width * height * 4); i++)
-				data[i] = 0;
+			GLint bitsPerPixel = FreeImage_GetBPP(bitmap);
+			FIBITMAP* bitmap32;
+			if (bitsPerPixel == 32)
+				bitmap32 = bitmap;
+			else
+				bitmap32 = FreeImage_ConvertTo32Bits(bitmap);
 
-			// Generate white OpenGL texture.
+			m_width = FreeImage_GetWidth(bitmap32);
+			m_height = FreeImage_GetHeight(bitmap32);
+
+			GLubyte* textureData = FreeImage_GetBits(bitmap32);
+
 			glGenTextures(1, &m_location);
 			glBindTexture(GL_TEXTURE_2D, m_location);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-		}
 
-		Texture::Texture(const char* filename, TextureType type, GLint mipmapLevel, GLint border)
-			: m_type(type)
-		{
-			TextureData data = TextureData(filename);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_width, m_height, 0, GL_BGRA, GL_UNSIGNED_BYTE, textureData);
 
-			glGenTextures(1, &m_location);
-			glBindTexture(GL_TEXTURE_2D, m_location);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-			glTexImage2D(GL_TEXTURE_2D, mipmapLevel, data.getInternalFormat(), data.getWidth(), data.getHeight(), border, data.getFormat(), GL_UNSIGNED_BYTE, data.getBits());
 			glGenerateMipmap(GL_TEXTURE_2D);
 
-			glBindTexture(GL_TEXTURE_2D, 0);
-
-			// Print pixel values (slow on big images)
-//			for (int y = 0; y < height; ++y)
-//			{
-//				BYTE *pixel = (BYTE*)bits;
-//				for (int x = 0; x < width; ++x)
-//				{
-//					std::cout << +pixel[FI_RGBA_RED] << " " << +pixel[FI_RGBA_GREEN] << " " << +pixel[FI_RGBA_BLUE] << std::endl;
-//					pixel += 3;
-//				}
-//				bits += pitch;
-//			}
-
-			// Print bits per pixel
-//			std::cout << bitsPerPixel << std::endl;
+			FreeImage_Unload(bitmap32);
+			if (bitsPerPixel != 32)
+				FreeImage_Unload(bitmap);
 		}
 
 		Texture::~Texture()
@@ -74,11 +65,6 @@ namespace bplr
 			glActiveTexture(GL_TEXTURE0 + location);
 			glBindTexture(GL_TEXTURE_2D, m_location);
 			glUniform1i(location, location);
-		}
-
-		TextureType Texture::getType() const
-		{
-			return m_type;
 		}
 
 		TextureData::TextureData(const char* filename)
