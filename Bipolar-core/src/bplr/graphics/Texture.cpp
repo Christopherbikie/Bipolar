@@ -8,36 +8,9 @@ namespace bplr
 	namespace graphics
 	{
 		Texture::Texture(std::string path)
+			: m_path(path)
 		{
-			const char* pathCStr = path.c_str();
-
-			FREE_IMAGE_FORMAT format = FIF_UNKNOWN;
-			format = FreeImage_GetFileType(pathCStr);
-			if (format == FIF_UNKNOWN)
-				format = FreeImage_GetFIFFromFilename(pathCStr);
-			if (format == FIF_UNKNOWN) {
-				std::cout << "Failed to load image at " << pathCStr << std::endl;
-				return;
-			}
-			if (!FreeImage_FIFSupportsReading(format))
-			{
-				std::cout << "Detected image format cannot be read! " <<  pathCStr << std::endl;
-				return;
-			}
-
-			FIBITMAP* bitmap = FreeImage_Load(format, pathCStr);
-
-			GLint bitsPerPixel = FreeImage_GetBPP(bitmap);
-			FIBITMAP* bitmap32;
-			if (bitsPerPixel == 32)
-				bitmap32 = bitmap;
-			else
-				bitmap32 = FreeImage_ConvertTo32Bits(bitmap);
-
-			m_width = FreeImage_GetWidth(bitmap32);
-			m_height = FreeImage_GetHeight(bitmap32);
-
-			GLubyte* textureData = FreeImage_GetBits(bitmap32);
+			GLubyte* textureData = loadToBitmap(m_path);
 
 			glGenTextures(1, &m_location);
 			glBindTexture(GL_TEXTURE_2D, m_location);
@@ -49,9 +22,10 @@ namespace bplr
 
 			glGenerateMipmap(GL_TEXTURE_2D);
 
-			FreeImage_Unload(bitmap32);
+			GLuint bitsPerPixel = FreeImage_GetBPP(m_bitmap);
+			FreeImage_Unload(m_bitmap32);
 			if (bitsPerPixel != 32)
-				FreeImage_Unload(bitmap);
+				FreeImage_Unload(m_bitmap);
 		}
 
 		Texture::~Texture()
@@ -65,6 +39,39 @@ namespace bplr
 			glActiveTexture(GL_TEXTURE0 + location);
 			glBindTexture(GL_TEXTURE_2D, m_location);
 			glUniform1i(location, location);
+		}
+
+		GLubyte* Texture::loadToBitmap(std::string path)
+		{
+			const char* pathCStr = path.c_str();
+
+			FREE_IMAGE_FORMAT format = FIF_UNKNOWN;
+			format = FreeImage_GetFileType(pathCStr);
+			if (format == FIF_UNKNOWN)
+				format = FreeImage_GetFIFFromFilename(pathCStr);
+			if (format == FIF_UNKNOWN) {
+				std::cout << "Failed to load image at " << pathCStr << std::endl;
+				return nullptr;
+			}
+			if (!FreeImage_FIFSupportsReading(format))
+			{
+				std::cout << "Detected image format cannot be read! " << pathCStr << std::endl;
+				return nullptr;
+			}
+
+			FIBITMAP* m_bitmap = FreeImage_Load(format, pathCStr);
+
+			GLint bitsPerPixel = FreeImage_GetBPP(m_bitmap);
+			FIBITMAP* m_bitmap32;
+			if (bitsPerPixel == 32)
+				m_bitmap32 = m_bitmap;
+			else
+				m_bitmap32 = FreeImage_ConvertTo32Bits(m_bitmap);
+
+			m_width = FreeImage_GetWidth(m_bitmap32);
+			m_height = FreeImage_GetHeight(m_bitmap32);
+
+			return FreeImage_GetBits(m_bitmap32);
 		}
 
 		TextureData::TextureData(const char* filename)

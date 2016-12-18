@@ -40,6 +40,9 @@ namespace bplr
 			GLuint m_location;
 			std::string m_path;
 			GLuint m_width, m_height;
+			FIBITMAP *m_bitmap, *m_bitmap32;
+
+			GLubyte* loadToBitmap(std::string path);
 		};
 
 //		class TextureStore
