@@ -11,7 +11,6 @@ namespace bplr
 
 		MeshComponent::~MeshComponent()
 		{
-			delete m_model;
 		}
 
 		void MeshComponent::render(graphics::Shader3D *shader) const

@@ -7,6 +7,8 @@
 #include "graphics/Window.h"
 #include "input/Mouse.h"
 #include <vector>
+#include "graphics/ModelStore.h"
+#include "graphics/TextureStore.h"
 
 namespace bplr
 {
@@ -17,6 +19,8 @@ namespace bplr
 	{
 		for (graphics::Window* window : m_windows)
 			delete window;
+		graphics::modelStore->clear();
+		graphics::TextureStore::clear();
 		glfwTerminate();
 	}
 

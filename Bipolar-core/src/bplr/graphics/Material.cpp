@@ -11,10 +11,6 @@ namespace bplr
 
 		Material::~Material()
 		{
-			delete m_albedoMap;
-			delete m_glossMap;
-			delete m_normalMap;
-			delete m_specularMap;
 		}
 
 		void Material::loadUniforms(Shader* shader, std::string structName) const
