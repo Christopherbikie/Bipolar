@@ -32,7 +32,12 @@ namespace bplr
 			}
 
 			if (find(assimpFiles.begin(), assimpFiles.end(), fileExtention) != assimpFiles.end())
-				return assimpLoadModel(path);
+			{
+				graphics::Model* model = assimpLoadModel(path);
+				model->setPath(path);
+				graphics::modelStore->add(model);
+				return model;
+			}
 
 			return new graphics::Model;
 		}

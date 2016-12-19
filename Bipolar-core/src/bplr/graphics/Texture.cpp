@@ -11,15 +11,15 @@ namespace bplr
 		Texture::Texture(std::string path)
 			: m_path(path)
 		{
-//			Texture* previousTexture = TextureStore::get(m_path);
-//			if (previousTexture != nullptr)
-//			{
-//				m_location = previousTexture->getLocation();
-//				m_width = previousTexture->getWidth();
-//				m_height = previousTexture->getHeight();
-//				return;
-//			}
-//			TextureStore::add(this);
+			Texture* previousTexture = TextureStore::get(m_path);
+			if (previousTexture != nullptr)
+			{
+				m_location = previousTexture->getLocation();
+				m_width = previousTexture->getWidth();
+				m_height = previousTexture->getHeight();
+				return;
+			}
+			TextureStore::add(this);
 
 			GLubyte* textureData = loadToBitmap(m_path);
 

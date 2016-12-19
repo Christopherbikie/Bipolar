@@ -1,4 +1,5 @@
 #include "Model.h"
+#include <iostream>
 
 namespace bplr
 {
@@ -10,7 +11,6 @@ namespace bplr
 
 		Model::Model(std::string path)
 		{
-			
 		}
 
 		Model::Model(Mesh* mesh)
@@ -40,7 +40,17 @@ namespace bplr
 
 		std::string Model::getPath() const
 		{
-			return path;
+			return m_path;
+		}
+
+		void Model::setPath(std::string path)
+		{
+			if (m_path.empty())
+				m_path = path;
+			else
+				std::cout << "Attemped to write path to model when path was already assigned!" << std::endl
+				<< "Current: " << m_path << std::endl
+				<< "Attemped change: " << path << std::endl;
 		}
 
 		void Model::render(Shader3D* shader) const
@@ -67,8 +77,8 @@ namespace bplr
 		Model* ModelStore::get(std::string path)
 		{
 			if (m_models.find(path) == m_models.end())
-				return m_models[path];
-			return nullptr;
+				return nullptr;
+			return m_models[path];
 		}
 
 		void ModelStore::clear()

@@ -20,12 +20,14 @@ namespace bplr
 			std::vector<Mesh*> getMeshes() const;
 
 			std::string getPath() const;
+			// Only works if path has not been set!
+			void setPath(std::string path);
 
 			void render(Shader3D* shader) const;
 
 		private:
 			std::vector<Mesh*> m_meshes;
-			std::string path;
+			std::string m_path;
 		};
 
 		class ModelStore

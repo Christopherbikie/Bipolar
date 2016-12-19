@@ -2,7 +2,8 @@
 
 Test3D::~Test3D()
 {
-	delete entity;
+	delete entity1;
+	delete entity2;
 	delete camera;
 	delete shader;
 	delete skyboxShader;
@@ -23,7 +24,6 @@ void Test3D::init(graphics::Window* window)
 	skyboxShader->addSource(graphics::FRAGMENT_SHADER, skyboxFragShaderPath.c_str());
 	skyboxShader->link();
 
-	graphics::Model* mitsuba = assets::ModelLoader::loadModel("res/models/mitsuba/mitsuba-sphere.obj");
 
 	// Create Camera
 	camera = new graphics::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, 1366.0f / 768.0f);
@@ -34,9 +34,14 @@ void Test3D::init(graphics::Window* window)
 		->addComponent(new entity::CameraComponent(camera));
 
 	// Create Entity
-	entity = (new entity::Entity())
-		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 0.0f)))
-		->addComponent(new entity::MeshComponent(mitsuba));
+	graphics::Model* model1 = assets::ModelLoader::loadModel("res/models/earth/earth.obj");
+	entity1 = (new entity::Entity())
+		->addComponent(new entity::TransformComponent(math::vec3(-1.0f, 0.0f, 0.0f)))
+		->addComponent(new entity::MeshComponent(model1));
+	graphics::Model* model2 = assets::ModelLoader::loadModel("res/models/earth/earth.obj");
+	entity2 = (new entity::Entity())
+		->addComponent(new entity::TransformComponent(math::vec3(1.0f, 0.0f, 0.0f)))
+		->addComponent(new entity::MeshComponent(model2));
 
 	// Create Light
 	light = (new entity::Entity())
@@ -62,14 +67,6 @@ void Test3D::update(float delta)
 
 void Test3D::render()
 {
-	// Load uniforms
-	shader->use();
-	shader->loadUniform("model", entity->getComponent<entity::TransformComponent>()->getTransform());
-	shader->loadUniform("view", camera->getViewMatrix());
-	shader->loadUniform("projection", camera->getProjectionMatrix());
-	shader->loadUniform("cameraPosition", camera->getPosition());
-	light->getComponent<entity::LightSourceComponent>()->loadUniforms(shader);
-
 	skyboxShader->use();
 	skyboxShader->loadUniform("view", camera->getViewMatrixNoTranslate());
 	skyboxShader->loadUniform("projection", camera->getProjectionMatrix());
@@ -78,8 +75,16 @@ void Test3D::render()
 	skybox->render(skyboxShader);
 
 	shader->use();
+	shader->loadUniform("view", camera->getViewMatrix());
+	shader->loadUniform("projection", camera->getProjectionMatrix());
+	shader->loadUniform("cameraPosition", camera->getPosition());
+	light->getComponent<entity::LightSourceComponent>()->loadUniforms(shader);
 	skybox->bind();
-	entity->getComponent<entity::MeshComponent>()->render(shader);
+
+	shader->loadUniform("model", entity1->getComponent<entity::TransformComponent>()->getTransform());
+	entity1->getComponent<entity::MeshComponent>()->render(shader);
+	shader->loadUniform("model", entity2->getComponent<entity::TransformComponent>()->getTransform());
+	entity2->getComponent<entity::MeshComponent>()->render(shader);
 }
 
 InputHandler::InputHandler(Test3D* layer)

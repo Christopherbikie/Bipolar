@@ -25,7 +25,8 @@ private:
 	graphics::FPSCamera* camera;
 
 	entity::Entity* player;
-	entity::Entity* entity;
+	entity::Entity* entity1;
+	entity::Entity* entity2;
 	entity::Entity* light;
 
 	graphics::CubeMap* skybox;
