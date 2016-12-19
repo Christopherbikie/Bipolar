@@ -2,6 +2,7 @@
 #include <iostream>
 #include <postprocess.h>
 #include <Importer.hpp>
+#include "../graphics/ModelStore.h"
 
 namespace bplr
 {
