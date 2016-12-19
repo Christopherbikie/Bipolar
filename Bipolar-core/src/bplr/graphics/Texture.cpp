@@ -2,6 +2,7 @@
 #include "FreeImage.h"
 #include <ostream>
 #include <iostream>
+#include "TextureStore.h"
 
 namespace bplr
 {
@@ -10,6 +11,16 @@ namespace bplr
 		Texture::Texture(std::string path)
 			: m_path(path)
 		{
+//			Texture* previousTexture = TextureStore::get(m_path);
+//			if (previousTexture != nullptr)
+//			{
+//				m_location = previousTexture->getLocation();
+//				m_width = previousTexture->getWidth();
+//				m_height = previousTexture->getHeight();
+//				return;
+//			}
+//			TextureStore::add(this);
+
 			GLubyte* textureData = loadToBitmap(m_path);
 
 			glGenTextures(1, &m_location);
@@ -45,6 +56,27 @@ namespace bplr
 		Texture::~Texture()
 		{
 			glDeleteTextures(1, &m_location);
+		}
+
+		GLuint Texture::getLocation() const
+		{
+			return m_location;
+		}
+
+
+		std::string Texture::getPath() const
+		{
+			return m_path;
+		}
+
+		GLuint Texture::getWidth() const
+		{
+			return m_width;
+		}
+
+		GLuint Texture::getHeight() const
+		{
+			return m_height;
 		}
 
 		void Texture::bind(Shader *shader, const char *uniformName) const

@@ -36,6 +36,11 @@ namespace bplr
 //			Texture(GLuint width, GLuint height, unsigned char *data);
 			~Texture();
 
+			GLuint getLocation() const;
+			std::string getPath() const;
+			GLuint getWidth() const;
+			GLuint getHeight() const;
+
 			void bind(Shader *shader, const char *uniformName) const;
 
 		private:
@@ -46,23 +51,5 @@ namespace bplr
 
 			GLubyte* loadToBitmap(std::string path, bool flip = false);
 		};
-
-//		class TextureStore
-//		{
-//		public:
-//			static void init();
-//
-//			static void add(Texture* model);
-//			static Texture* get(std::string path);
-//			static Texture* getBlank();
-//
-//			static void clear();
-//
-//			static std::vector<std::string> getTexturePaths();
-//
-//		private:
-//			static std::map<std::string, Texture*> m_textures;
-//			static GLboolean m_initialised;
-//		};
 	}
 }
