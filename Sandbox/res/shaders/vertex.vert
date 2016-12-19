@@ -17,5 +17,5 @@ void main()
 	gl_Position = projection * view * model * vec4(position, 1.0);
 	pass_textureCoords = textureCoords;
 	fragmentPosition = (model * vec4(position, 1.0f)).xyz;
-	pass_normal = (model * vec4(normal, 1.0f)).xyz;
+	pass_normal = normal;
 }
