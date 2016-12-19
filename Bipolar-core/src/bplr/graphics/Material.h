@@ -13,6 +13,7 @@ namespace bplr
 			~Material();
 
 			void loadUniforms(Shader* shader, std::string structName = "material") const;
+			void unbindTextures() const;
 
 			void setAlbedo(const math::vec3& albedo);
 			void setSpecular(const math::vec3& specular);

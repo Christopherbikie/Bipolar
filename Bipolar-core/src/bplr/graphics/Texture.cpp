@@ -87,6 +87,11 @@ namespace bplr
 			glUniform1i(location, location);
 		}
 
+		void Texture::unbind() const
+		{
+			glBindTexture(GL_TEXTURE_2D, 0);
+		}
+
 		GLubyte* Texture::loadToBitmap(std::string path, bool flip)
 		{
 			const char* pathCStr = path.c_str();

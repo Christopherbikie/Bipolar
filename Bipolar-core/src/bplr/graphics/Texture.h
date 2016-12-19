@@ -42,6 +42,7 @@ namespace bplr
 			GLuint getHeight() const;
 
 			void bind(Shader *shader, const char *uniformName) const;
+			void unbind() const;
 
 		private:
 			GLuint m_location;

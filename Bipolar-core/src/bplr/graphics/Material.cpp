@@ -49,6 +49,14 @@ namespace bplr
 			shader->loadUniform(structName + ".gloss", m_gloss);
 		}
 
+		void Material::unbindTextures() const
+		{
+			m_albedoMap->unbind();
+			m_glossMap->unbind();
+			m_normalMap->unbind();
+			m_specularMap->unbind();
+		}
+
 		void Material::setAlbedo(const math::vec3& albedo)
 		{
 			m_albedo = albedo;

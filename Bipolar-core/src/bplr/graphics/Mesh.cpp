@@ -107,6 +107,8 @@ namespace bplr
 			m_vao->bindEBO();
 			shader->drawElements(m_vao->getVertexCount());
 			m_vao->unbind();
+
+			m_material->unbindTextures();
 		}
 	}
 }
