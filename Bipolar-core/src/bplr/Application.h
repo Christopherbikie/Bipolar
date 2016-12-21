@@ -1,33 +1,25 @@
 #pragma once
 
-#include <glfw3.h>
 #include <vector>
-
+#include "graphics/layers/Layer.h"
 #include "graphics/Window.h"
+#include "ui/DebugLayer.h"
 
 namespace bplr
 {
-	class Bipolar
+	class Application
 	{
 	public:
-		Bipolar();
-		~Bipolar();
+		Application(std::string title, GLint width, GLint height);
+		~Application();
 
-		static int init();
-		static int initGlew();
+		void addLayer(graphics::Layer* layer);
 
-		void getInput();
-		void update();
-		void render() const;
-		void processCloseRequests();
+		void start();
 
-		bplr::window* createWindow(std::string name, int width, int height);
-		bool shouldApplicationClose() const;
-		std::vector<bplr::window*> getWindows() const;
-
-	private:
-		std::vector<bplr::window*> m_windows;
-		GLFWwindow* m_window;
-		int m_width, m_height;
+	protected:
+		std::vector<graphics::Layer*> m_layers;
+		ui::DebugLayer* m_debugLayer;
+		graphics::Window* m_window;
 	};
 }

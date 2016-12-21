@@ -69,12 +69,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Christopher\git\Bipolar\Dependencies\glew\include;C:\Users\Christopher\git\Bipolar\Dependencies\glfw\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Christopher\git\Bipolar\Dependencies\glfw\lib;C:\Users\Christopher\git\Bipolar\Dependencies\glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\tinyobjloader;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\assimp\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)Dependencies\glew\lib;$(LibraryPath)</LibraryPath>
     <TargetName>BPLRCore</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>BPLRCore</TargetName>
+    <IncludePath>$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\tinyobjloader;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\assimp\lib;$(SolutionDir)Dependencies\glfw\lib;$(SolutionDir)Dependencies\glew\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -88,6 +90,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -113,6 +117,8 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -123,12 +129,84 @@
   <ItemGroup>
     <ClInclude Include="src\Bipolar.h" />
     <ClInclude Include="src\bplr\Application.h" />
+    <ClInclude Include="src\bplr\assets\ModelLoader.h" />
+    <ClInclude Include="src\bplr\Engine.h" />
+    <ClInclude Include="src\bplr\entity\components\CameraComponent.h" />
+    <ClInclude Include="src\bplr\entity\components\LightSourceComponent.h" />
+    <ClInclude Include="src\bplr\graphics\camera\Camera.h" />
+    <ClInclude Include="src\bplr\graphics\camera\FPSCamera.h" />
+    <ClInclude Include="src\bplr\graphics\CubeMap.h" />
+    <ClInclude Include="src\bplr\graphics\FrameBuffer.h" />
+    <ClInclude Include="src\bplr\graphics\layers\Layer.h" />
+    <ClInclude Include="src\bplr\graphics\Material.h" />
+    <ClInclude Include="src\bplr\graphics\Mesh.h" />
+    <ClInclude Include="src\bplr\graphics\Model.h" />
+    <ClInclude Include="src\bplr\graphics\ModelStore.h" />
+    <ClInclude Include="src\bplr\graphics\Shader.h" />
+    <ClInclude Include="src\bplr\graphics\Shader2D.h" />
+    <ClInclude Include="src\bplr\graphics\Shader3D.h" />
+    <ClInclude Include="src\bplr\graphics\TextureStore.h" />
+    <ClInclude Include="src\bplr\graphics\VAO.h" />
     <ClInclude Include="src\bplr\graphics\Window.h" />
+    <ClInclude Include="src\bplr\input\Keyboard.h" />
+    <ClInclude Include="src\bplr\input\Mouse.h" />
+    <ClInclude Include="src\bplr\math\mat4.h" />
+    <ClInclude Include="src\bplr\math\Math.h" />
+    <ClInclude Include="src\bplr\math\vec2.h" />
+    <ClInclude Include="src\bplr\math\vec3.h" />
+    <ClInclude Include="src\bplr\math\vec4.h" />
+    <ClInclude Include="src\bplr\ui\DebugLayer.h" />
+    <ClInclude Include="src\bplr\ui\imgui\imconfig.h" />
+    <ClInclude Include="src\bplr\ui\imgui\imgui.h" />
+    <ClInclude Include="src\bplr\ui\imgui\imgui_impl_glfw_gl3.h" />
+    <ClInclude Include="src\bplr\ui\imgui\imgui_internal.h" />
+    <ClInclude Include="src\bplr\ui\imgui\stb_rect_pack.h" />
+    <ClInclude Include="src\bplr\ui\imgui\stb_textedit.h" />
+    <ClInclude Include="src\bplr\ui\imgui\stb_truetype.h" />
+    <ClInclude Include="src\bplr\util\Loader.h" />
     <ClInclude Include="src\bplr\util\Time.h" />
+    <ClInclude Include="src\bplr\entity\components\Component.h" />
+    <ClInclude Include="src\bplr\entity\Entity.h" />
+    <ClInclude Include="src\bplr\entity\components\MeshComponent.h" />
+    <ClInclude Include="src\bplr\entity\components\TransformComponent.h" />
+    <ClInclude Include="src\bplr\graphics\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\Application.cpp" />
+    <ClCompile Include="src\bplr\assets\ModelLoader.cpp" />
+    <ClCompile Include="src\bplr\Engine.cpp" />
+    <ClCompile Include="src\bplr\entity\components\CameraComponent.cpp" />
+    <ClCompile Include="src\bplr\entity\components\LightSourceComponent.cpp" />
+    <ClCompile Include="src\bplr\graphics\camera\FPSCamera.cpp" />
+    <ClCompile Include="src\bplr\graphics\CubeMap.cpp" />
+    <ClCompile Include="src\bplr\graphics\FrameBuffer.cpp" />
+    <ClCompile Include="src\bplr\graphics\layers\Layer.cpp" />
+    <ClCompile Include="src\bplr\graphics\Material.cpp" />
+    <ClCompile Include="src\bplr\graphics\Mesh.cpp" />
+    <ClCompile Include="src\bplr\graphics\Model.cpp" />
+    <ClCompile Include="src\bplr\graphics\ModelStore.cpp" />
+    <ClCompile Include="src\bplr\graphics\Shader.cpp" />
+    <ClCompile Include="src\bplr\graphics\Shader2D.cpp" />
+    <ClCompile Include="src\bplr\graphics\Shader3D.cpp" />
+    <ClCompile Include="src\bplr\graphics\Texture.cpp" />
+    <ClCompile Include="src\bplr\graphics\TextureStore.cpp" />
     <ClCompile Include="src\bplr\graphics\Window.cpp" />
+    <ClCompile Include="src\bplr\input\Keyboard.cpp" />
+    <ClCompile Include="src\bplr\input\Mouse.cpp" />
+    <ClCompile Include="src\bplr\math\mat4.cpp" />
+    <ClCompile Include="src\bplr\math\vec2.cpp" />
+    <ClCompile Include="src\bplr\math\vec3.cpp" />
+    <ClCompile Include="src\bplr\math\vec4.cpp" />
+    <ClCompile Include="src\bplr\ui\DebugLayer.cpp" />
+    <ClCompile Include="src\bplr\ui\imgui\imgui.cpp" />
+    <ClCompile Include="src\bplr\ui\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\bplr\ui\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\bplr\ui\imgui\imgui_impl_glfw_gl3.cpp" />
+    <ClCompile Include="src\bplr\util\Loader.cpp" />
+    <ClCompile Include="src\bplr\graphics\VAO.cpp" />
+    <ClCompile Include="src\bplr\entity\Entity.cpp" />
+    <ClCompile Include="src\bplr\entity\components\MeshComponent.cpp" />
+    <ClCompile Include="src\bplr\entity\components\TransformComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

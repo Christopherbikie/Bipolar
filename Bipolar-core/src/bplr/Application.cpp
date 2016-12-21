@@ -1,82 +1,80 @@
-#define GLEW_STATIC
-
-#include <GL/glew.h>
-#include <glfw3.h>
-#include <iostream>
-#include <string>
 #include "Application.h"
-#include "graphics/Window.h"
+#include "Engine.h"
+#include "util/Time.h"
 
 namespace bplr
 {
-	Bipolar::Bipolar()
+	Application::Application(std::string title, GLint width, GLint height)
 	{
+		bplr::init();
+		
+		m_window = createWindow(title, width, height);
+
+		m_debugLayer = new ui::DebugLayer();
+		m_debugLayer->init(m_window);
 	}
 
-	Bipolar::~Bipolar()
+	Application::~Application()
 	{
-		for (bplr::window* window : m_windows)
-			delete window;
-		glfwTerminate();
+		// Don't delete m_window because it is handled automaticly by processCloseRequests in Engine.cpp
+
+		for (graphics::Layer* layer : m_layers)
+			delete layer;
+		delete m_debugLayer;
+
+		terminateEngine();
 	}
 
-	int Bipolar::init()
+	void Application::addLayer(graphics::Layer* layer)
 	{
-		glfwInit();
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-
-		return 0;
+		layer->init(m_window);
+		m_layers.push_back(layer);
 	}
 
-	int Bipolar::initGlew()
+	void Application::start()
 	{
-		glewExperimental = GL_TRUE;
-		if (glewInit() != GLEW_OK)
+		// Timing vars
+		GLfloat previous = time::getTime();
+		GLfloat lag = 0.0;
+		GLfloat lastSecond = previous;
+		GLint frames = 0;
+		GLint updates = 0;
+
+		while (!shouldApplicationClose())
 		{
-			std::cout << "Failed to initialise GLEW" << std::endl;
-			return -1;
-		}
-		return 0;
-	}
+			// Timing math
+			GLfloat current = time::getTime();
+			GLfloat delta = current - previous;
+			previous = current;
+			lag += delta;
 
-	bplr::window* Bipolar::createWindow(std::string name, int width, int height)
-	{
-		bplr::window* window = new bplr::window(name, width, height);
-		m_windows.push_back(window);
-		return window;
-	}
+			// Get input
+			m_debugLayer->updateInputCapture();
+			bplr::getInput();
+			m_debugLayer->update(delta);
+			for (graphics::Layer* layer : m_layers)
+				layer->getInput();
 
-	void Bipolar::getInput()
-	{
-		glfwPollEvents();
-	}
-
-	void Bipolar::update()
-	{
-	}
-
-	void Bipolar::render() const
-	{
-		for (bplr::window* window : m_windows)
-			window->render();
-	}
-
-	void Bipolar::processCloseRequests()
-	{
-		for (int i = 0; i < m_windows.size(); ++i)
-			if (m_windows[i]->isCloseRequested())
+			// Update
+			while (lag >= time::MS_PER_UPDATE)
 			{
-				delete m_windows[i];
-				m_windows.erase(m_windows.begin() + i);
+				for (graphics::Layer* layer : m_layers)
+					layer->update(delta);
+				lag -= time::MS_PER_UPDATE;
+				updates++;
 			}
-	}
 
-	bool Bipolar::shouldApplicationClose() const
-	{
-		return m_windows.size() > 0 ? false : true;
+			// Render
+			m_window->beginRender();
+			for (graphics::Layer* layer : m_layers)
+				if (layer->isVisible())
+					layer->render();
+			m_debugLayer->render();
+			m_window->swapBuffers();
+			frames++;
+
+			// Check if we need to close any windows
+			processCloseRequests();
+		}
 	}
 }
-		
