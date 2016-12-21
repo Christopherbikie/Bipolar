@@ -94,6 +94,7 @@ namespace bplr
 			glUniform1i(glGetUniformLocation(shader->getLocation(), "skybox"), 0);
 			glBindTexture(GL_TEXTURE_CUBE_MAP, m_location);
 			shader->drawArrays(0, m_vao->getVertexCount());
+			glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 			m_vao->unbind();
 			glDepthMask(GL_TRUE);
 		}
