@@ -5,7 +5,7 @@
 
 namespace bplr
 {
-	namespace graphics
+	namespace scene
 	{
 		class FPSCamera : public Camera
 		{

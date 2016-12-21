@@ -23,7 +23,7 @@ private:
 	graphics::Shader3D* skyboxShader;
 	graphics::Shader3D* screenShader;
 
-	graphics::FPSCamera* camera;
+	scene::FPSCamera* camera;
 
 	scene::Entity* player;
 	scene::Entity* entity1;

@@ -32,7 +32,7 @@ void FrameBufferTest::init(graphics::Window* window)
 	screenShader->link();
 
 	// Create Camera
-	camera = new graphics::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, 1366.0f / 768.0f);
+	camera = new scene::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, 1366.0f / 768.0f);
 
 	// Create Player
 	player = (new scene::Entity())

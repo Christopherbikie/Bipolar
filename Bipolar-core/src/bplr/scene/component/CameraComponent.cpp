@@ -4,12 +4,13 @@
 #include "../../input/Keyboard.h"
 #include "../../input/Mouse.h"
 #include "../../math/Math.h"
+#include "../camera/Camera.h"
 
 namespace bplr
 {
 	namespace scene
 	{
-		CameraComponent::CameraComponent(graphics::Camera* camera)
+		CameraComponent::CameraComponent(Camera* camera)
 			: m_camera(camera)
 		{
 		}

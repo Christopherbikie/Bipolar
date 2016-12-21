@@ -22,7 +22,7 @@ private:
 	graphics::Shader3D* shader;
 	graphics::Shader3D* skyboxShader;
 
-	graphics::FPSCamera* camera;
+	scene::FPSCamera* camera;
 
 	scene::Entity* player;
 	scene::Entity* entity1;
@@ -37,7 +37,7 @@ class InputHandler : public input::KeyEventHandler
 public:
 	InputHandler(Test3D* Layer);
 	void pressKey(GLuint key) override;
-	
+
 private:
 	Test3D* m_layer;
 };

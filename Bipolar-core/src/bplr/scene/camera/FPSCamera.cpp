@@ -2,7 +2,7 @@
 
 namespace bplr
 {
-	namespace graphics
+	namespace scene
 	{
 		FPSCamera::FPSCamera(math::vec3 position, math::vec3 rotation, GLfloat fov, GLfloat aspectRatio)
 			: Camera(position, rotation), m_fov(fov), m_aspectRatio(aspectRatio)
