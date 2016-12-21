@@ -4,7 +4,7 @@
 
 namespace bplr
 {
-	namespace entity
+	namespace scene
 	{
 		TransformComponent::TransformComponent(math::vec3 position)
 			: position(position)

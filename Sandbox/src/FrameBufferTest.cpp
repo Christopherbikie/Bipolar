@@ -35,24 +35,24 @@ void FrameBufferTest::init(graphics::Window* window)
 	camera = new graphics::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, 1366.0f / 768.0f);
 
 	// Create Player
-	player = (new entity::Entity())
-		->addComponent(new entity::TransformComponent(math::vec3(0.0f, 0.0f, 2.0f)))
-		->addComponent(new entity::CameraComponent(camera));
+	player = (new scene::Entity())
+		->addComponent(new scene::TransformComponent(math::vec3(0.0f, 0.0f, 2.0f)))
+		->addComponent(new scene::CameraComponent(camera));
 
 	// Create Entity
 	graphics::Model* model1 = assets::ModelLoader::loadModel("res/models/earth/earth.obj");
-	entity1 = (new entity::Entity())
-		->addComponent(new entity::TransformComponent(math::vec3(-1.0f, 0.0f, 0.0f)))
-		->addComponent(new entity::MeshComponent(model1));
+	entity1 = (new scene::Entity())
+		->addComponent(new scene::TransformComponent(math::vec3(-1.0f, 0.0f, 0.0f)))
+		->addComponent(new scene::MeshComponent(model1));
 	graphics::Model* model2 = assets::ModelLoader::loadModel("res/models/earth/earth.obj");
-	entity2 = (new entity::Entity())
-		->addComponent(new entity::TransformComponent(math::vec3(1.0f, 0.0f, 0.0f)))
-		->addComponent(new entity::MeshComponent(model2));
+	entity2 = (new scene::Entity())
+		->addComponent(new scene::TransformComponent(math::vec3(1.0f, 0.0f, 0.0f)))
+		->addComponent(new scene::MeshComponent(model2));
 
 	// Create Light
-	light = (new entity::Entity())
-		->addComponent(new entity::TransformComponent(math::vec3(-10.0f, 10.0f, 10.0f)))
-		->addComponent(new entity::LightSourceComponent(math::vec3(0.9f), math::vec3(0.1f)));
+	light = (new scene::Entity())
+		->addComponent(new scene::TransformComponent(math::vec3(-10.0f, 10.0f, 10.0f)))
+		->addComponent(new scene::LightSourceComponent(math::vec3(0.9f), math::vec3(0.1f)));
 
 	// Create Skybox
 	skybox = new graphics::CubeMap(
@@ -96,7 +96,7 @@ void FrameBufferTest::init(graphics::Window* window)
 
 void FrameBufferTest::update(float delta)
 {
-	player->getComponent<entity::CameraComponent>()->update(delta);
+	player->getComponent<scene::CameraComponent>()->update(delta);
 }
 
 void FrameBufferTest::render()
@@ -116,13 +116,13 @@ void FrameBufferTest::render()
 	shader->loadUniform("view", camera->getViewMatrix());
 	shader->loadUniform("projection", camera->getProjectionMatrix());
 	shader->loadUniform("cameraPosition", camera->getPosition());
-	light->getComponent<entity::LightSourceComponent>()->loadUniforms(shader);
+	light->getComponent<scene::LightSourceComponent>()->loadUniforms(shader);
 	skybox->bind();
 
-	shader->loadUniform("model", entity1->getComponent<entity::TransformComponent>()->getTransform());
-	entity1->getComponent<entity::MeshComponent>()->render(shader);
-	shader->loadUniform("model", entity2->getComponent<entity::TransformComponent>()->getTransform());
-	entity2->getComponent<entity::MeshComponent>()->render(shader);
+	shader->loadUniform("model", entity1->getComponent<scene::TransformComponent>()->getTransform());
+	entity1->getComponent<scene::MeshComponent>()->render(shader);
+	shader->loadUniform("model", entity2->getComponent<scene::TransformComponent>()->getTransform());
+	entity2->getComponent<scene::MeshComponent>()->render(shader);
 
 	// Draw Screen
 	framebuffer->bindDefault();

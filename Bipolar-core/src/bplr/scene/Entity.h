@@ -1,11 +1,11 @@
 #pragma once
 
 #include <vector>
-#include "components/Component.h"
+#include "component/Component.h"
 
 namespace bplr
 {
-	namespace entity
+	namespace scene
 	{
 		class Entity
 		{

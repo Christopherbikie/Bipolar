@@ -7,7 +7,7 @@
 
 namespace bplr
 {
-	namespace entity
+	namespace scene
 	{
 		CameraComponent::CameraComponent(graphics::Camera* camera)
 			: m_camera(camera)

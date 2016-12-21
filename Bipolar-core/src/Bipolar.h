@@ -11,12 +11,12 @@
 
 #include "bplr/assets/ModelLoader.h"
 
-#include "bplr/entity/Entity.h"
-#include "bplr/entity/components/CameraComponent.h"
-#include "bplr/entity/components/Component.h"
-#include "bplr/entity/components/LightSourceComponent.h"
-#include "bplr/entity/components/MeshComponent.h"
-#include "bplr/entity/components/TransformComponent.h"
+#include "bplr/scene/Entity.h"
+#include "bplr/scene/component/CameraComponent.h"
+#include "bplr/scene/component/Component.h"
+#include "bplr/scene/component/LightSourceComponent.h"
+#include "bplr/scene/component/MeshComponent.h"
+#include "bplr/scene/component/TransformComponent.h"
 
 #include "bplr/graphics/CubeMap.h"
 #include "bplr/graphics/Framebuffer.h"

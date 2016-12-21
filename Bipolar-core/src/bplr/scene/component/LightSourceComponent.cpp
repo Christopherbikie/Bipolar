@@ -5,7 +5,7 @@
 
 namespace bplr
 {
-	namespace entity
+	namespace scene
 	{
 		LightSourceComponent::LightSourceComponent(math::vec3 colour, math::vec3 ambient)
 			: m_colour(colour), m_ambient(ambient)

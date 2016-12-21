@@ -6,7 +6,7 @@
 
 namespace bplr
 {
-	namespace entity
+	namespace scene
 	{
 		class MeshComponent : public Component
 		{

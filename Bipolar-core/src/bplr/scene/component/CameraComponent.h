@@ -7,7 +7,7 @@
 
 namespace bplr
 {
-	namespace entity
+	namespace scene
 	{
 		class CameraComponent : public Component
 		{

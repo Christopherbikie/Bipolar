@@ -2,7 +2,7 @@
 
 namespace bplr
 {
-	namespace entity
+	namespace scene
 	{
 		MeshComponent::MeshComponent(graphics::Model* model)
 			: m_model(model)

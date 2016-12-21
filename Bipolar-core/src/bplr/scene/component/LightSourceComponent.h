@@ -5,7 +5,7 @@
 
 namespace bplr
 {
-	namespace entity
+	namespace scene
 	{
 		class LightSourceComponent : public Component
 		{

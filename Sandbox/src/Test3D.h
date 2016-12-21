@@ -24,10 +24,10 @@ private:
 
 	graphics::FPSCamera* camera;
 
-	entity::Entity* player;
-	entity::Entity* entity1;
-	entity::Entity* entity2;
-	entity::Entity* light;
+	scene::Entity* player;
+	scene::Entity* entity1;
+	scene::Entity* entity2;
+	scene::Entity* light;
 
 	graphics::CubeMap* skybox;
 };

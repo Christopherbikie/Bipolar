@@ -2,7 +2,7 @@
 
 namespace bplr
 {
-	namespace entity
+	namespace scene
 	{
 		Entity::Entity()
 		{

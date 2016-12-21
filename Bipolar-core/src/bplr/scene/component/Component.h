@@ -4,7 +4,7 @@
 
 namespace bplr
 {
-	namespace entity
+	namespace scene
 	{
 		class Entity;
 

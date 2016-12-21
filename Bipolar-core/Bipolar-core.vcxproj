@@ -131,8 +131,11 @@
     <ClInclude Include="src\bplr\Application.h" />
     <ClInclude Include="src\bplr\assets\ModelLoader.h" />
     <ClInclude Include="src\bplr\Engine.h" />
-    <ClInclude Include="src\bplr\entity\components\CameraComponent.h" />
-    <ClInclude Include="src\bplr\entity\components\LightSourceComponent.h" />
+    <ClInclude Include="src\bplr\scene\component\CameraComponent.h" />
+    <ClInclude Include="src\bplr\scene\component\Component.h" />
+    <ClInclude Include="src\bplr\scene\component\LightSourceComponent.h" />
+    <ClInclude Include="src\bplr\scene\component\MeshComponent.h" />
+    <ClInclude Include="src\bplr\scene\component\TransformComponent.h" />
     <ClInclude Include="src\bplr\graphics\camera\Camera.h" />
     <ClInclude Include="src\bplr\graphics\camera\FPSCamera.h" />
     <ClInclude Include="src\bplr\graphics\CubeMap.h" />
@@ -165,18 +168,17 @@
     <ClInclude Include="src\bplr\ui\imgui\stb_truetype.h" />
     <ClInclude Include="src\bplr\util\Loader.h" />
     <ClInclude Include="src\bplr\util\Time.h" />
-    <ClInclude Include="src\bplr\entity\components\Component.h" />
-    <ClInclude Include="src\bplr\entity\Entity.h" />
-    <ClInclude Include="src\bplr\entity\components\MeshComponent.h" />
-    <ClInclude Include="src\bplr\entity\components\TransformComponent.h" />
+    <ClInclude Include="src\bplr\scene\Entity.h" />
     <ClInclude Include="src\bplr\graphics\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\Application.cpp" />
     <ClCompile Include="src\bplr\assets\ModelLoader.cpp" />
     <ClCompile Include="src\bplr\Engine.cpp" />
-    <ClCompile Include="src\bplr\entity\components\CameraComponent.cpp" />
-    <ClCompile Include="src\bplr\entity\components\LightSourceComponent.cpp" />
+    <ClCompile Include="src\bplr\scene\component\CameraComponent.cpp" />
+    <ClCompile Include="src\bplr\scene\component\LightSourceComponent.cpp" />
+    <ClCompile Include="src\bplr\scene\component\MeshComponent.cpp" />
+    <ClCompile Include="src\bplr\scene\component\TransformComponent.cpp" />
     <ClCompile Include="src\bplr\graphics\camera\FPSCamera.cpp" />
     <ClCompile Include="src\bplr\graphics\CubeMap.cpp" />
     <ClCompile Include="src\bplr\graphics\FrameBuffer.cpp" />
@@ -204,9 +206,7 @@
     <ClCompile Include="src\bplr\ui\imgui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\bplr\util\Loader.cpp" />
     <ClCompile Include="src\bplr\graphics\VAO.cpp" />
-    <ClCompile Include="src\bplr\entity\Entity.cpp" />
-    <ClCompile Include="src\bplr\entity\components\MeshComponent.cpp" />
-    <ClCompile Include="src\bplr\entity\components\TransformComponent.cpp" />
+    <ClCompile Include="src\bplr\scene\Entity.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
