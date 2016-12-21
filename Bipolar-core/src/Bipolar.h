@@ -11,7 +11,12 @@
 
 #include "bplr/assets/ModelLoader.h"
 
+#include "bplr/scene/Scene.h"
 #include "bplr/scene/Entity.h"
+
+#include "bplr/scene/camera/Camera.h"
+#include "bplr/scene/camera/FPSCamera.h"
+
 #include "bplr/scene/component/CameraComponent.h"
 #include "bplr/scene/component/Component.h"
 #include "bplr/scene/component/LightSourceComponent.h"
@@ -29,9 +34,6 @@
 #include "bplr/graphics/Texture.h"
 #include "bplr/graphics/VAO.h"
 #include "bplr/graphics/Window.h"
-
-#include "bplr/scene/camera/Camera.h"
-#include "bplr/scene/camera/FPSCamera.h"
 
 #include "bplr/graphics/layers/Layer.h"
 

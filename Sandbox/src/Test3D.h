@@ -21,15 +21,11 @@ public:
 private:
 	graphics::Shader3D* shader;
 	graphics::Shader3D* skyboxShader;
-
-	scene::FPSCamera* camera;
-
-	scene::Entity* player;
-	scene::Entity* entity1;
-	scene::Entity* entity2;
-	scene::Entity* light;
-
 	graphics::CubeMap* skybox;
+
+	std::shared_ptr<scene::Entity> player;
+	scene::FPSCamera* camera;
+	scene::Scene* scene;
 };
 
 class InputHandler : public input::KeyEventHandler

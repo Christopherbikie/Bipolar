@@ -17,9 +17,12 @@ namespace bplr
 			template <typename T>
 			T* getComponent();
 			std::vector<Component*> getComponents() const;
+			void destroy();
+			bool isDestroyed() const;
 
 		private:
 			std::vector<Component*> m_components;
+			bool m_destroyed;
 
 			template <typename T>
 			const T* Entity::getComponentInternal() const

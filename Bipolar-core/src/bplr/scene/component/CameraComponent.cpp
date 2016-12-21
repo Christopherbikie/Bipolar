@@ -56,6 +56,11 @@ namespace bplr
 			m_camera->setRotation(m_transform->rotation);
 		}
 
+		Camera* CameraComponent::getCamera() const
+		{
+			return m_camera;
+		}
+
 		std::string CameraComponent::getType()
 		{
 			return getStaticType();

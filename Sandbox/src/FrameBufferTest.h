@@ -22,15 +22,11 @@ private:
 	graphics::Shader3D* shader;
 	graphics::Shader3D* skyboxShader;
 	graphics::Shader3D* screenShader;
-
-	scene::FPSCamera* camera;
-
-	scene::Entity* player;
-	scene::Entity* entity1;
-	scene::Entity* entity2;
-	scene::Entity* light;
-
 	graphics::CubeMap* skybox;
+
+	std::shared_ptr<scene::Entity> player;
+	scene::FPSCamera* camera;
+	scene::Scene* scene;
 
 	graphics::Framebuffer* framebuffer;
 	graphics::VAO* rectVAO;

@@ -2,9 +2,8 @@
 
 Test3D::~Test3D()
 {
-	delete entity1;
-	delete entity2;
 	delete camera;
+	delete scene;
 	delete shader;
 	delete skyboxShader;
 }
@@ -24,28 +23,32 @@ void Test3D::init(graphics::Window* window)
 	skyboxShader->addSource(graphics::FRAGMENT_SHADER, skyboxFragShaderPath.c_str());
 	skyboxShader->link();
 
+	scene = new scene::Scene;
+
 	// Create Camera
 	camera = new scene::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, 1366.0f / 768.0f);
 
 	// Create Player
-	player = (new scene::Entity())
+	player = std::shared_ptr<scene::Entity>((new scene::Entity())
 		->addComponent(new scene::TransformComponent(math::vec3(0.0f, 0.0f, 2.0f)))
-		->addComponent(new scene::CameraComponent(camera));
+		->addComponent(new scene::CameraComponent(camera)));
+	scene->setCamera(player.get());
 
-	// Create Entity
-	graphics::Model* model1 = assets::ModelLoader::loadModel("res/models/util/plane.obj");
-	entity1 = (new scene::Entity())
+	// Create Entities
+	std::shared_ptr<scene::Entity> plane((new scene::Entity())
 		->addComponent(new scene::TransformComponent(math::vec3(-1.0f, 0.0f, 0.0f), 1.5f))
-		->addComponent(new scene::MeshComponent(model1));
-	graphics::Model* model2 = assets::ModelLoader::loadModel("res/models/mitsuba/mitsuba-sphere.obj");
-	entity2 = (new scene::Entity())
+		->addComponent(new scene::MeshComponent(assets::ModelLoader::loadModel("res/models/util/plane.obj"))));
+	scene->addEntity(plane);
+	std::shared_ptr<scene::Entity> entity((new scene::Entity())
 		->addComponent(new scene::TransformComponent(math::vec3(1.0f, 0.0f, 0.0f)))
-		->addComponent(new scene::MeshComponent(model2));
+		->addComponent(new scene::MeshComponent(assets::ModelLoader::loadModel("res/models/mitsuba/mitsuba-sphere.obj"))));
+	scene->addEntity(entity);
 
 	// Create Light
-	light = (new scene::Entity())
+	std::shared_ptr<scene::Entity> light((new scene::Entity())
 		->addComponent(new scene::TransformComponent(math::vec3(-10.0f, 10.0f, 10.0f)))
-		->addComponent(new scene::LightSourceComponent(math::vec3(0.9f), math::vec3(0.1f)));
+		->addComponent(new scene::LightSourceComponent(math::vec3(0.9f), math::vec3(0.1f))));
+	scene->addLight(light);
 
 	// Create Skybox
 	skybox = new graphics::CubeMap(
@@ -53,6 +56,7 @@ void Test3D::init(graphics::Window* window)
 		"res/images/skybox/top.jpg", "res/images/skybox/bottom.jpg",
 		"res/images/skybox/back.jpg", "res/images/skybox/front.jpg"
 	);
+	scene->setEnvMap(skybox);
 
 	InputHandler* inputHandler = new InputHandler(this);
 	input::Keyboard::addKeyHandler(GLFW_KEY_ESCAPE, inputHandler);
@@ -73,17 +77,8 @@ void Test3D::render()
 	skyboxShader->use();
 	skybox->render(skyboxShader);
 
-	shader->use();
-	shader->loadUniform("view", camera->getViewMatrix());
-	shader->loadUniform("projection", camera->getProjectionMatrix());
-	shader->loadUniform("cameraPosition", camera->getPosition());
-	light->getComponent<scene::LightSourceComponent>()->loadUniforms(shader);
-	skybox->bind();
-
-	shader->loadUniform("model", entity1->getComponent<scene::TransformComponent>()->getTransform());
-	entity1->getComponent<scene::MeshComponent>()->render(shader);
-	shader->loadUniform("model", entity2->getComponent<scene::TransformComponent>()->getTransform());
-	entity2->getComponent<scene::MeshComponent>()->render(shader);
+	scene->render(shader);
+	scene->post();
 }
 
 InputHandler::InputHandler(Test3D* layer)

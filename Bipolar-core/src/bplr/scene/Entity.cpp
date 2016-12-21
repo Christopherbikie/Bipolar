@@ -27,5 +27,15 @@ namespace bplr
 		{
 			return m_components;
 		}
+
+		void Entity::destroy()
+		{
+			m_destroyed = true;
+		}
+
+		bool Entity::isDestroyed() const
+		{
+			return m_destroyed;
+		}
 	}
 }

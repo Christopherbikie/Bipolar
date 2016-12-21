@@ -200,6 +200,7 @@
     <ClCompile Include="src\bplr\math\vec2.cpp" />
     <ClCompile Include="src\bplr\math\vec3.cpp" />
     <ClCompile Include="src\bplr\math\vec4.cpp" />
+    <ClCompile Include="src\bplr\scene\Scene.cpp" />
     <ClCompile Include="src\bplr\ui\DebugLayer.cpp" />
     <ClCompile Include="src\bplr\ui\imgui\imgui.cpp" />
     <ClCompile Include="src\bplr\ui\imgui\imgui_demo.cpp" />
