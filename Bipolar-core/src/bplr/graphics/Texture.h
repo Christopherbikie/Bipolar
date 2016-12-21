@@ -33,6 +33,8 @@ namespace bplr
 			Texture(std::string path);
 			// For loading cubemap faces
 			Texture(std::string path, GLenum cubemapFace);
+			// Create texture with nullptr data
+			Texture(GLuint width, GLuint height);
 //			Texture(GLuint width, GLuint height, unsigned char *data);
 			~Texture();
 

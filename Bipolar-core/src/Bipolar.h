@@ -19,6 +19,7 @@
 #include "bplr/entity/components/TransformComponent.h"
 
 #include "bplr/graphics/CubeMap.h"
+#include "bplr/graphics/Framebuffer.h"
 #include "bplr/graphics/Material.h"
 #include "bplr/graphics/Mesh.h"
 #include "bplr/graphics/Model.h"

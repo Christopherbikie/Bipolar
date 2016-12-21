@@ -141,6 +141,9 @@
     <ClInclude Include="src\bplr\graphics\TextureStore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\bplr\graphics\FrameBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\graphics\Window.cpp">
@@ -243,6 +246,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\bplr\graphics\TextureStore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bplr\graphics\FrameBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
