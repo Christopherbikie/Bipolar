@@ -32,6 +32,7 @@ namespace bplr
 			Texture* m_glossMap;
 			Texture* m_normalMap;
 			Texture* m_specularMap;
+			Texture* m_blankTexture;
 		};
 	}
 }

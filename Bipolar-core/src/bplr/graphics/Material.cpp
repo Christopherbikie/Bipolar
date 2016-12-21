@@ -7,46 +7,64 @@ namespace bplr
 	{
 		Material::Material()
 		{
+			m_blankTexture = new Texture(1, 1);
 		}
 
 		Material::~Material()
 		{
+			delete m_blankTexture;
 		}
 
 		void Material::loadUniforms(Shader* shader, std::string structName) const
 		{
+			glActiveTexture(GL_TEXTURE0);
 			if (m_albedoMap != nullptr)
 			{
-				glActiveTexture(GL_TEXTURE0);
 				m_albedoMap->bind(shader, (structName + ".albedoMap").c_str());
 				shader->loadUniform((structName + ".usingAlbedoMap").c_str(), 1.0f);
 			}
 			else
+			{
+				m_blankTexture->bind(shader, (structName + ".albedoMap").c_str());
 				shader->loadUniform((structName + ".usingAlbedoMap").c_str(), 0.0f);
+			}
+
+			glActiveTexture(GL_TEXTURE1);
 			if (m_glossMap != nullptr)
 			{
-				glActiveTexture(GL_TEXTURE1);
 				m_glossMap->bind(shader, (structName + ".glossMap").c_str());
 				shader->loadUniform((structName + ".usingGlossMap").c_str(), 1.0f);
 			}
 			else
+			{
+//				glActiveTexture(GL_TEXTURE1);
+//				m_blankTexture->bind(shader, (structName + ".glossMap").c_str());
 				shader->loadUniform((structName + ".usingGlossMap").c_str(), 0.0f);
+			}
+
+			glActiveTexture(GL_TEXTURE2);
 			if (m_normalMap != nullptr)
 			{
-				glActiveTexture(GL_TEXTURE2);
 				m_normalMap->bind(shader, (structName + ".normalMap").c_str());
 				shader->loadUniform((structName + ".usingNormalMap").c_str(), 1.0f);
 			}
 			else
+			{
+				m_blankTexture->bind(shader, (structName + ".normalMap").c_str());
 				shader->loadUniform((structName + ".usingNormalMap").c_str(), 0.0f);
+			}
+
+			glActiveTexture(GL_TEXTURE3);
 			if (m_specularMap != nullptr)
 			{
-				glActiveTexture(GL_TEXTURE3);
 				m_specularMap->bind(shader, (structName + ".specularMap").c_str());
 				shader->loadUniform((structName + ".usingSpecularMap").c_str(), 1.0f);
 			}
 			else
+			{
+				m_blankTexture->bind(shader, (structName + ".specularMap").c_str());
 				shader->loadUniform((structName + ".usingSpecularMap").c_str(), 0.0f);
+			}
 
 			shader->loadUniform(structName + ".albedo", m_albedo);
 			shader->loadUniform(structName + ".specular", m_specular);
@@ -59,6 +77,7 @@ namespace bplr
 			m_glossMap->unbind();
 			m_normalMap->unbind();
 			m_specularMap->unbind();
+			m_blankTexture->unbind();
 		}
 
 		void Material::setAlbedo(const math::vec3& albedo)
