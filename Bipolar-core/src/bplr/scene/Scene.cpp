@@ -68,6 +68,12 @@ namespace bplr
 
 		void Scene::render(graphics::Shader3D* shader)
 		{
+			if (m_camera == nullptr)
+			{
+				std::cout << "Attemped to render a scene when camera was nullptr" << std::endl;
+				return;
+			}
+
 			shader->use();
 			shader->loadUniform("view", m_camera->getViewMatrix());
 			shader->loadUniform("projection", m_camera->getProjectionMatrix());
