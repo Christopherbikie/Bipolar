@@ -27,5 +27,20 @@ namespace bplr
 		{
 			return "Mesh";
 		}
+
+		graphics::Model* MeshComponent::getModel() const
+		{
+			return m_model;
+		}
+
+		void MeshComponent::setModel(graphics::Model* model)
+		{
+			m_model = model;
+		}
+
+		graphics::Mesh* MeshComponent::getMesh(GLint index) const
+		{
+			return m_model->getMeshes()[index];
+		}
 	}
 }

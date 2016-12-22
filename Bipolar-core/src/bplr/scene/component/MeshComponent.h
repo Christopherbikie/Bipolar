@@ -19,6 +19,10 @@ namespace bplr
 			std::string getType() override;
 			static std::string getStaticType();
 
+			graphics::Model* getModel() const;
+			void setModel(graphics::Model* model);
+			graphics::Mesh* getMesh(GLint index) const;
+
 		private:
 			graphics::Model* m_model;
 		};

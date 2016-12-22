@@ -25,6 +25,9 @@ namespace bplr
 
 			void render(Shader3D* shader) const;
 
+			Material* getMaterial() const;
+			void setMaterial(Material* material);
+
 		private:
 			VAO* m_vao;
 			std::vector<Texture*> m_textures;

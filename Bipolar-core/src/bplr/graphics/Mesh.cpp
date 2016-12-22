@@ -110,5 +110,15 @@ namespace bplr
 
 			m_material->unbindTextures();
 		}
+
+		Material* Mesh::getMaterial() const
+		{
+			return m_material;
+		}
+
+		void Mesh::setMaterial(Material* material)
+		{
+			m_material = material;
+		}
 	}
 }
