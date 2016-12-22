@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "GL/glew.h"
 
 namespace bplr
 {
@@ -14,6 +15,8 @@ namespace bplr
 			virtual ~Component()
 			{
 			}
+
+			virtual void update(GLfloat delta) {}
 
 			virtual void setEntity(Entity* entity) { m_entity = entity; }
 			Entity* getEntity() const { return m_entity; }

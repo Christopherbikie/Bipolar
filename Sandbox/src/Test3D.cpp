@@ -29,9 +29,10 @@ void Test3D::init(graphics::Window* window)
 	camera = new scene::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, 1366.0f / 768.0f);
 
 	// Create Player
-	player = std::shared_ptr<scene::Entity>((new scene::Entity())
+	std::shared_ptr<scene::Entity> player((new scene::Entity())
 		->addComponent(new scene::TransformComponent(math::vec3(0.0f, 0.0f, 2.0f)))
 		->addComponent(new scene::CameraComponent(camera)));
+	scene->addEntity(player);
 	scene->setCamera(player.get());
 
 	// Create Entities
@@ -65,7 +66,7 @@ void Test3D::init(graphics::Window* window)
 
 void Test3D::update(float delta)
 {
-	player->getComponent<scene::CameraComponent>()->update(delta);
+	scene->update(delta);
 }
 
 void Test3D::render()

@@ -28,6 +28,7 @@ namespace bplr
 
 			void setEnvMap(graphics::CubeMap* cubeMap);
 
+			void update(GLfloat delta);
 			void render(graphics::Shader3D* shader);
 			void post();
 

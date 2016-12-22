@@ -15,7 +15,7 @@ namespace bplr
 		public:
 			CameraComponent(Camera* camera);
 
-			void update(float delta) const;
+			void update(GLfloat delta) override;
 			Camera* getCamera() const;
 
 			std::string getType() override;

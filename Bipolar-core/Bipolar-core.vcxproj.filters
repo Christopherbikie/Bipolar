@@ -147,6 +147,9 @@
     <ClInclude Include="src\bplr\scene\camera\FPSCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\bplr\scene\System.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\graphics\Window.cpp">

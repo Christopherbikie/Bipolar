@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <GL/glew.h>
 #include "component/Component.h"
 
 namespace bplr
@@ -12,6 +13,8 @@ namespace bplr
 		public:
 			Entity();
 			~Entity();
+
+			void update(GLfloat delta);
 
 			Entity* addComponent(Component *c);
 			template <typename T>

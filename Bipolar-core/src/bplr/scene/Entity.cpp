@@ -16,6 +16,12 @@ namespace bplr
 			}
 		}
 
+		void Entity::update(GLfloat delta)
+		{
+			for (Component* component : m_components)
+				component->update(delta);
+		}
+
 		Entity* Entity::addComponent(Component* c)
 		{
 			m_components.push_back(c);

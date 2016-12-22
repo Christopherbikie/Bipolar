@@ -60,6 +60,12 @@ namespace bplr
 			m_envMap = cubeMap;
 		}
 
+		void Scene::update(GLfloat delta)
+		{
+			for (std::shared_ptr<Entity> entity : m_entities)
+				entity->update(delta);
+		}
+
 		void Scene::render(graphics::Shader3D* shader)
 		{
 			shader->use();
@@ -78,8 +84,11 @@ namespace bplr
 
 			for (std::shared_ptr<Entity> entity : m_entities)
 			{
+				MeshComponent* meshComponent = entity->getComponent<MeshComponent>();
+				if (meshComponent == nullptr)
+					continue;
 				shader->loadUniform("model", entity->getComponent<TransformComponent>()->getTransform());
-				entity->getComponent<MeshComponent>()->render(shader);
+				meshComponent->render(shader);
 			}
 		}
 

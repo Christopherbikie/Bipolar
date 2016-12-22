@@ -159,6 +159,7 @@
     <ClInclude Include="src\bplr\math\vec3.h" />
     <ClInclude Include="src\bplr\math\vec4.h" />
     <ClInclude Include="src\bplr\scene\Scene.h" />
+    <ClInclude Include="src\bplr\scene\System.h" />
     <ClInclude Include="src\bplr\ui\DebugLayer.h" />
     <ClInclude Include="src\bplr\ui\imgui\imconfig.h" />
     <ClInclude Include="src\bplr\ui\imgui\imgui.h" />

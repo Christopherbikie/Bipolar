@@ -15,7 +15,7 @@ namespace bplr
 		{
 		}
 
-		void CameraComponent::update(float delta) const
+		void CameraComponent::update(GLfloat delta)
 		{
 			// Rotation
 			if (input::Mouse::isCaptured())

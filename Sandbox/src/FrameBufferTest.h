@@ -24,7 +24,6 @@ private:
 	graphics::Shader3D* screenShader;
 	graphics::CubeMap* skybox;
 
-	std::shared_ptr<scene::Entity> player;
 	scene::FPSCamera* camera;
 	scene::Scene* scene;
 
