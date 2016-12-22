@@ -150,6 +150,9 @@
     <ClInclude Include="src\bplr\scene\System.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\bplr\graphics\GBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bplr\graphics\Window.cpp">
@@ -258,6 +261,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\bplr\scene\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bplr\graphics\GBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

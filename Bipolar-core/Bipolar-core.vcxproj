@@ -131,6 +131,7 @@
     <ClInclude Include="src\bplr\Application.h" />
     <ClInclude Include="src\bplr\assets\ModelLoader.h" />
     <ClInclude Include="src\bplr\Engine.h" />
+    <ClInclude Include="src\bplr\graphics\GBuffer.h" />
     <ClInclude Include="src\bplr\scene\component\CameraComponent.h" />
     <ClInclude Include="src\bplr\scene\component\Component.h" />
     <ClInclude Include="src\bplr\scene\component\LightSourceComponent.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="src\bplr\Application.cpp" />
     <ClCompile Include="src\bplr\assets\ModelLoader.cpp" />
     <ClCompile Include="src\bplr\Engine.cpp" />
+    <ClCompile Include="src\bplr\graphics\GBuffer.cpp" />
     <ClCompile Include="src\bplr\scene\component\CameraComponent.cpp" />
     <ClCompile Include="src\bplr\scene\component\LightSourceComponent.cpp" />
     <ClCompile Include="src\bplr\scene\component\MeshComponent.cpp" />

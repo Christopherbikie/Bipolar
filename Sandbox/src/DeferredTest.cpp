@@ -1,16 +1,16 @@
-#include "FrameBufferTest.h"
+#include "DeferredTest.h"
 
-FrameBufferTest::~FrameBufferTest()
+DeferredTest::~DeferredTest()
 {
 	delete camera;
 	delete scene;
 	delete shader;
 	delete skyboxShader;
 	delete screenShader;
-	delete rectVAO;
+	delete gBuffer;
 }
 
-void FrameBufferTest::init(graphics::Window* window)
+void DeferredTest::init(graphics::Window* window)
 {
 	m_window = window;
 
@@ -44,13 +44,18 @@ void FrameBufferTest::init(graphics::Window* window)
 
 	// Create Entities
 	std::shared_ptr<scene::Entity> plane((new scene::Entity())
-		->addComponent(new scene::TransformComponent(math::vec3(-1.0f, 0.0f, 0.0f), 1.5f))
+		->addComponent(new scene::TransformComponent(math::vec3(0.0f, 0.0f, -4.5f), 1.5f))
 		->addComponent(new scene::MeshComponent(assets::loadModel("res/models/util/plane.obj"))));
 	scene->addEntity(plane);
-	std::shared_ptr<scene::Entity> entity((new scene::Entity())
-		->addComponent(new scene::TransformComponent(math::vec3(1.0f, 0.0f, 0.0f)))
-		->addComponent(new scene::MeshComponent(assets::loadModel("res/models/mitsuba/mitsuba-sphere.obj"))));
-	scene->addEntity(entity);
+
+	for (int i = 0; i < 4; ++i)
+		for (int j = 0; j < 4; ++j)
+		{
+			std::shared_ptr<scene::Entity> entity((new scene::Entity())
+				->addComponent(new scene::TransformComponent(math::vec3(-4.5f + i * 3, 0.0f, j * -3)))
+				->addComponent(new scene::MeshComponent(assets::loadModel("res/models/mitsuba/mitsuba-sphere.obj"))));
+			scene->addEntity(entity);
+		}
 
 	// Create Light
 	std::shared_ptr<scene::Entity> light((new scene::Entity())
@@ -70,67 +75,31 @@ void FrameBufferTest::init(graphics::Window* window)
 	input::Keyboard::addKeyHandler(GLFW_KEY_ESCAPE, inputHandler);
 	input::Keyboard::addKeyHandler(GLFW_KEY_R, inputHandler);
 
-	framebuffer = new graphics::Framebuffer;
-
-	GLfloat quadVertices[] = {
-		-1.0f,  1.0f,
-		-1.0f, -1.0f,
-		1.0f, -1.0f,
-
-		-1.0f,  1.0f,
-		1.0f, -1.0f,
-		1.0f,  1.0f
-	};
-
-	GLfloat quadTextureCoords[] = {
-		0.0f, 1.0f,
-		0.0f, 0.0f,
-		1.0f, 0.0f,
-
-		0.0f, 1.0f,
-		1.0f, 0.0f,
-		1.0f, 1.0f
-	};
-
-	rectVAO = new graphics::VAO;
-	rectVAO->bind();
-	rectVAO->storeInBuffer(0, 2, 6, quadVertices);
-	rectVAO->storeInBuffer(2, 2, 6, quadTextureCoords);
-	rectVAO->unbind();
+	gBuffer = new graphics::GBuffer;
+	gBuffer->init(1366, 768);
 }
 
-void FrameBufferTest::update(float delta)
+void DeferredTest::update(float delta)
 {
 	scene->update(delta);
 }
 
-void FrameBufferTest::render()
+void DeferredTest::render()
 {
-	//Draw scene to framebuffer
-	framebuffer->bind();
-	framebuffer->clear();
-
-	skyboxShader->use();
-	skyboxShader->loadUniform("view", camera->getViewMatrixNoTranslate());
-	skyboxShader->loadUniform("projection", camera->getProjectionMatrix());
-
-	skyboxShader->use();
-	skybox->render(skyboxShader);
+	gBuffer->bindForWriting();
+	gBuffer->clear();
 
 	scene->render(shader);
 	scene->post();
 
-	// Draw Screen
-	framebuffer->bindDefault();
+	graphics::bindDefaultFramebuffer();
+	graphics::clearFramebuffer();
+	gBuffer->bindForReading();
 
-	screenShader->use();
-	rectVAO->bind();
-	framebuffer->bindTexture(screenShader, "screenTexture");
-	screenShader->drawArrays(0, rectVAO->getVertexCount());
-	rectVAO->unbind();
+	gBuffer->drawBuffers(1366, 768);
 }
 
-FrameBufferTestInputHandler::FrameBufferTestInputHandler(FrameBufferTest* layer)
+FrameBufferTestInputHandler::FrameBufferTestInputHandler(DeferredTest* layer)
 {
 	m_layer = layer;
 }

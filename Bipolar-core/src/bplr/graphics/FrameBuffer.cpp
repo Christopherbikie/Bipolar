@@ -5,6 +5,16 @@ namespace bplr
 {
 	namespace graphics
 	{
+		void bindDefaultFramebuffer()
+		{
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		}
+
+		void clearFramebuffer()
+		{
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		}
+
 		Framebuffer::Framebuffer(bool enableDepthTest)
 			: m_enableDepthTest(enableDepthTest)
 		{
@@ -25,7 +35,7 @@ namespace bplr
 			if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 				std::cout << "Failed to complete framebuffer! GLenum " << glCheckFramebufferStatus(GL_FRAMEBUFFER) << std::endl;
 
-			bindDefault();
+			bindDefaultFramebuffer();
 		}
 
 		Framebuffer::~Framebuffer()
@@ -42,11 +52,6 @@ namespace bplr
 				glDisable(GL_DEPTH_TEST);
 		}
 
-		void Framebuffer::bindDefault()
-		{
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		}
-
 		void Framebuffer::bindTexture(Shader *shader, std::string uniformName) const
 		{
 			m_texture->bind(shader, uniformName.c_str());
@@ -60,7 +65,7 @@ namespace bplr
 		void Framebuffer::clear() const
 		{
 			if (m_enableDepthTest)
-				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+				clearFramebuffer();
 			else
 				glClear(GL_COLOR_BUFFER_BIT);
 		}

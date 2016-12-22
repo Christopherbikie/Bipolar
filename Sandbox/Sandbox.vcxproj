@@ -126,7 +126,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\FrameBufferTest.cpp" />
+    <ClCompile Include="src\DeferredTest.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Test2D.cpp" />
     <ClCompile Include="src\Test3D.cpp" />
@@ -146,6 +146,7 @@
     </None>
     <None Include="res\shaders\framebuffertest.frag" />
     <None Include="res\shaders\framebuffertest.vert" />
+    <None Include="res\shaders\geometryPass.frag" />
     <None Include="res\shaders\skybox.frag" />
     <None Include="res\shaders\skybox.vert" />
     <None Include="res\shaders\test2d.frag" />
@@ -167,9 +168,12 @@
     <Image Include="res\models\earth.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\FrameBufferTest.h" />
+    <ClInclude Include="src\DeferredTest.h" />
     <ClInclude Include="src\Test2D.h" />
     <ClInclude Include="src\Test3D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\shaders\geometryPass.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

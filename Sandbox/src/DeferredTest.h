@@ -4,15 +4,15 @@
 
 using namespace bplr;
 
-const std::string vertShaderPath = "res/shaders/vertex.vert";
-const std::string fragShaderPath = "res/shaders/fragment.frag";
+const std::string vertShaderPath = "res/shaders/geometryPass.vert";
+const std::string fragShaderPath = "res/shaders/geometryPass.frag";
 const std::string skyboxVertShaderPath = "res/shaders/skybox.vert";
 const std::string skyboxFragShaderPath = "res/shaders/skybox.frag";
 
-class FrameBufferTest : public graphics::Layer
+class DeferredTest : public graphics::Layer
 {
 public:
-	~FrameBufferTest();
+	~DeferredTest();
 
 	void init(graphics::Window* window) override;
 	void update(float delta) override;
@@ -27,16 +27,15 @@ private:
 	scene::FPSCamera* camera;
 	scene::Scene* scene;
 
-	graphics::Framebuffer* framebuffer;
-	graphics::VAO* rectVAO;
+	graphics::GBuffer* gBuffer;
 };
 
 class FrameBufferTestInputHandler : public input::KeyEventHandler
 {
 public:
-	FrameBufferTestInputHandler(FrameBufferTest* Layer);
+	FrameBufferTestInputHandler(DeferredTest* Layer);
 	void pressKey(GLuint key) override;
 
 private:
-	FrameBufferTest* m_layer;
+	DeferredTest* m_layer;
 };

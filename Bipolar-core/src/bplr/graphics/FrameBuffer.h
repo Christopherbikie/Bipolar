@@ -7,6 +7,9 @@ namespace bplr
 {
 	namespace graphics
 	{
+		void bindDefaultFramebuffer();
+		void clearFramebuffer();
+
 		class Framebuffer
 		{
 		public:
@@ -14,7 +17,6 @@ namespace bplr
 			~Framebuffer();
 
 			void bind() const;
-			static void bindDefault();
 
 			void bindTexture(Shader *shader, std::string uniformName) const;
 
