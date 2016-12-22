@@ -38,7 +38,7 @@ void Test3D::init(graphics::Window* window)
 	// Create Entities
 	std::shared_ptr<scene::Entity> plane((new scene::Entity())
 		->addComponent(new scene::TransformComponent(math::vec3(0.0f, 0.0f, -4.5f), 1.5f))
-		->addComponent(new scene::MeshComponent(assets::ModelLoader::loadModel("res/models/util/plane.obj"))));
+		->addComponent(new scene::MeshComponent(assets::loadModel("res/models/util/plane.obj"))));
 	scene->addEntity(plane);
 
 	for (int i = 0; i < 4; ++i)
@@ -46,7 +46,7 @@ void Test3D::init(graphics::Window* window)
 		{
 			std::shared_ptr<scene::Entity> entity((new scene::Entity())
 				->addComponent(new scene::TransformComponent(math::vec3(-4.5f + i * 3, 0.0f, j * -3)))
-				->addComponent(new scene::MeshComponent(assets::ModelLoader::loadModel("res/models/mitsuba/mitsuba-sphere.obj"))));
+				->addComponent(new scene::MeshComponent(assets::loadModel("res/models/mitsuba/mitsuba-sphere.obj"))));
 			entity->getComponent<scene::MeshComponent>()->getMesh(1)->getMaterial()->setAlbedo(math::vec3(1.0f, 0.2f, 0.2f));
 			scene->addEntity(entity);
 		}

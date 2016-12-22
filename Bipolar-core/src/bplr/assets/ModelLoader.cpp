@@ -17,7 +17,12 @@ namespace bplr
 			"stl",
 		};
 
-		graphics::Model* ModelLoader::loadModel(std::string path)
+		graphics::Model* assimpLoadModel(std::string path);
+		std::vector<graphics::Mesh*> assimpProcessNode(aiNode* node, const aiScene* scene, std::string path);
+		graphics::Mesh* assimpProcessMesh(aiMesh* mesh, const aiScene* scene, std::string path);
+		void assimpLoadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType, graphics::Material* myMaterial, std::string path);
+
+		graphics::Model* loadModel(std::string path)
 		{
 			graphics::Model* previousModel = graphics::modelStore->get(path);
 
@@ -43,7 +48,7 @@ namespace bplr
 			return new graphics::Model;
 		}
 
-		graphics::Model* ModelLoader::assimpLoadModel(std::string path)
+		graphics::Model* assimpLoadModel(std::string path)
 		{
 			Assimp::Importer importer;
 			const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate);
@@ -62,7 +67,7 @@ namespace bplr
 			return model;
 		}
 
-		std::vector<graphics::Mesh*> ModelLoader::assimpProcessNode(aiNode* node, const aiScene* scene, std::string path)
+		std::vector<graphics::Mesh*> assimpProcessNode(aiNode* node, const aiScene* scene, std::string path)
 		{
 			std::vector<graphics::Mesh*> meshes;
 
@@ -81,7 +86,7 @@ namespace bplr
 			return meshes;
 		}
 
-		graphics::Mesh* ModelLoader::assimpProcessMesh(aiMesh* mesh, const aiScene* scene, std::string path)
+		graphics::Mesh* assimpProcessMesh(aiMesh* mesh, const aiScene* scene, std::string path)
 		{
 			std::vector<graphics::Vertex> vertices;
 			std::vector<GLuint> indices;
@@ -144,7 +149,7 @@ namespace bplr
 			return new graphics::Mesh(vertices, indices, myMaterial);
 		}
 
-		void ModelLoader::assimpLoadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType, graphics::Material* myMaterial, std::string path)
+		void assimpLoadMaterialTextures(aiMaterial* material, aiTextureType type, graphics::TextureType bplrType, graphics::Material* myMaterial, std::string path)
 		{
 			if (material->GetTextureCount(type) > 0)
 			{

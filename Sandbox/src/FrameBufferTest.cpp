@@ -45,11 +45,11 @@ void FrameBufferTest::init(graphics::Window* window)
 	// Create Entities
 	std::shared_ptr<scene::Entity> plane((new scene::Entity())
 		->addComponent(new scene::TransformComponent(math::vec3(-1.0f, 0.0f, 0.0f), 1.5f))
-		->addComponent(new scene::MeshComponent(assets::ModelLoader::loadModel("res/models/util/plane.obj"))));
+		->addComponent(new scene::MeshComponent(assets::loadModel("res/models/util/plane.obj"))));
 	scene->addEntity(plane);
 	std::shared_ptr<scene::Entity> entity((new scene::Entity())
 		->addComponent(new scene::TransformComponent(math::vec3(1.0f, 0.0f, 0.0f)))
-		->addComponent(new scene::MeshComponent(assets::ModelLoader::loadModel("res/models/mitsuba/mitsuba-sphere.obj"))));
+		->addComponent(new scene::MeshComponent(assets::loadModel("res/models/mitsuba/mitsuba-sphere.obj"))));
 	scene->addEntity(entity);
 
 	// Create Light
