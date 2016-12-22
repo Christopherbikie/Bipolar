@@ -27,25 +27,25 @@ namespace bplr
 			// Position
 			if (input::Keyboard::isKeyDown(GLFW_KEY_W))
 			{
-				m_transform->position.x -= sin(m_transform->rotation.y * math::PI / 180) * delta * m_moveSpeed;
-				m_transform->position.y += sin(m_transform->rotation.x * math::PI / 180) * delta * m_moveSpeed;
-				m_transform->position.z -= cos(m_transform->rotation.y * math::PI / 180) * delta * m_moveSpeed;
+				m_transform->position.x -= sinf(m_transform->rotation.y * math::PIf / 180) * delta * m_moveSpeed;
+				m_transform->position.y += sinf(m_transform->rotation.x * math::PIf / 180) * delta * m_moveSpeed;
+				m_transform->position.z -= cosf(m_transform->rotation.y * math::PIf / 180) * delta * m_moveSpeed;
 			}
 			if (input::Keyboard::isKeyDown(GLFW_KEY_S))
 			{
-				m_transform->position.x += sin(m_transform->rotation.y * math::PI / 180) * delta * m_moveSpeed;
-				m_transform->position.y -= sin(m_transform->rotation.x * math::PI / 180) * delta * m_moveSpeed;
-				m_transform->position.z += cos(m_transform->rotation.y * math::PI / 180) * delta * m_moveSpeed;
+				m_transform->position.x += sinf(m_transform->rotation.y * math::PIf / 180) * delta * m_moveSpeed;
+				m_transform->position.y -= sinf(m_transform->rotation.x * math::PIf / 180) * delta * m_moveSpeed;
+				m_transform->position.z += cosf(m_transform->rotation.y * math::PIf / 180) * delta * m_moveSpeed;
 			}
 			if (input::Keyboard::isKeyDown(GLFW_KEY_A))
 			{
-				m_transform->position.x += sin((m_transform->rotation.y - 90) * math::PI / 180) * delta * m_moveSpeed;
-				m_transform->position.z += cos((m_transform->rotation.y - 90) * math::PI / 180) * delta * m_moveSpeed;
+				m_transform->position.x += sinf((m_transform->rotation.y - 90) * math::PIf / 180) * delta * m_moveSpeed;
+				m_transform->position.z += cosf((m_transform->rotation.y - 90) * math::PIf / 180) * delta * m_moveSpeed;
 			}
 			if (input::Keyboard::isKeyDown(GLFW_KEY_D))
 			{
-				m_transform->position.x += sin((m_transform->rotation.y + 90) * math::PI / 180) * delta * m_moveSpeed;
-				m_transform->position.z += cos((m_transform->rotation.y + 90) * math::PI / 180) * delta * m_moveSpeed;
+				m_transform->position.x += sinf((m_transform->rotation.y + 90) * math::PIf / 180) * delta * m_moveSpeed;
+				m_transform->position.z += cosf((m_transform->rotation.y + 90) * math::PIf / 180) * delta * m_moveSpeed;
 			}
 			if (input::Keyboard::isKeyDown(GLFW_KEY_SPACE))
 				m_transform->position.y += delta * m_moveSpeed;

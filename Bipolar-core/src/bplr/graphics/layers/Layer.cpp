@@ -34,7 +34,7 @@ namespace bplr
 			return m_visible;
 		}
 
-		void Layer::setVisible(GLboolean visible)
+		void Layer::setVisible(bool visible)
 		{
 			m_visible = visible;
 		}

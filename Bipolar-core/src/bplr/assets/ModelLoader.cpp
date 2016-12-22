@@ -92,7 +92,7 @@ namespace bplr
 			std::vector<GLuint> indices;
 			std::vector<graphics::Texture*> textures;
 
-			for (GLint i = 0; i < mesh->mNumVertices; ++i)
+			for (GLuint i = 0; i < mesh->mNumVertices; ++i)
 			{
 				graphics::Vertex vertex;
 
@@ -115,10 +115,10 @@ namespace bplr
 				vertices.push_back(vertex);
 			}
 
-			for (GLint i = 0; i < mesh->mNumFaces; i++)
+			for (GLuint i = 0; i < mesh->mNumFaces; i++)
 			{
 				aiFace face = mesh->mFaces[i];
-				for (int j = 0; j < face.mNumIndices; j++)
+				for (GLuint j = 0; j < face.mNumIndices; j++)
 					indices.push_back((face.mIndices[j]));
 			}
 
@@ -154,7 +154,7 @@ namespace bplr
 			if (material->GetTextureCount(type) > 0)
 			{
 				std::string directory = path.substr(0, path.find_last_of('/'));
-				for (int i = 0; i < material->GetTextureCount(type); i++)
+				for (GLuint i = 0; i < material->GetTextureCount(type); i++)
 				{
 					aiString string;
 					material->GetTexture(type, i, &string);

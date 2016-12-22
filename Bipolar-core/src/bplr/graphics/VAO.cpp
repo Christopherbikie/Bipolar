@@ -26,10 +26,10 @@ namespace bplr
 			glBindVertexArray(0);
 		}
 
-		void VAO::storeInBuffer(GLuint location, GLuint componentsPerVertex, GLint vertexCount, GLfloat* data, DataUsage usage)
+		void VAO::storeInBuffer(GLuint location, GLuint componentsPerVertex, GLuint vertexCount, GLfloat* data, DataUsage usage)
 		{
 			bind();
-			
+
 			glGenBuffers(1, &m_vbos[location]);
 			glBindBuffer(GL_ARRAY_BUFFER, m_vbos[location]);
 			glBufferData(GL_ARRAY_BUFFER, vertexCount * componentsPerVertex * sizeof(GLfloat), data, static_cast<GLenum>(usage));
@@ -43,7 +43,7 @@ namespace bplr
 				m_vertexCount = vertexCount;
 		}
 
-		void VAO::storeInElementBuffer(GLint vertexCount, GLuint* data, DataUsage usage)
+		void VAO::storeInElementBuffer(GLuint vertexCount, GLuint* data, DataUsage usage)
 		{
 			bind();
 

@@ -22,7 +22,7 @@ namespace bplr
 			virtual void render();
 
 			bool isVisible() const;
-			void setVisible(GLboolean visible);
+			void setVisible(bool visible);
 
 			Window* getWindow() const;
 		};

@@ -6,7 +6,7 @@ namespace bplr
 	{
 		void Mouse::mouseMoveCallback(GLFWwindow* window, double xPosition, double yPosition)
 		{
-			math::vec2 newPosition = math::vec2(xPosition, yPosition);
+			math::vec2 newPosition = math::vec2((GLfloat)xPosition, (GLfloat)yPosition);
 			m_difference = newPosition - m_position;
 			m_position = newPosition;
 		}

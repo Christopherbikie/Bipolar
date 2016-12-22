@@ -10,9 +10,9 @@ namespace bplr
 		static constexpr float FRAME_CAP = 60.0f;
 		static constexpr float MS_PER_UPDATE = 1 / FRAME_CAP;
 
-		static double getTime()
+		static GLfloat getTime()
 		{
-			return glfwGetTime();
+			return (GLfloat) glfwGetTime();
 		}
 	};
 }

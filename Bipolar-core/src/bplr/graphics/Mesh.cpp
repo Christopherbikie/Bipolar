@@ -61,10 +61,10 @@ namespace bplr
 			}
 
 			m_vao->bind();
-			m_vao->storeInBuffer(0, 3, vertices[0].size(), (GLfloat*)&vertices[0][0]);
-			m_vao->storeInBuffer(1, 3, normals[0].size(), (GLfloat*)&normals[0][0]);
-			m_vao->storeInBuffer(2, 2, texcoords[0].size(), (GLfloat*)&texcoords[0][0]);
-			m_vao->storeInElementBuffer(indices[0].size(), &indices[0][0]);
+			m_vao->storeInBuffer(0, 3, (GLint)vertices[0].size(), (GLfloat*)&vertices[0][0]);
+			m_vao->storeInBuffer(1, 3, (GLint)normals[0].size(), (GLfloat*)&normals[0][0]);
+			m_vao->storeInBuffer(2, 2, (GLint)texcoords[0].size(), (GLfloat*)&texcoords[0][0]);
+			m_vao->storeInElementBuffer((GLint)indices[0].size(), &indices[0][0]);
 			m_vao->unbind();
 		}
 
@@ -83,10 +83,10 @@ namespace bplr
 			}
 
 			m_vao->bind();
-			m_vao->storeInBuffer(0, 3, positions.size(), (GLfloat*)&positions[0]);
-			m_vao->storeInBuffer(1, 3, normals.size(), (GLfloat*)&normals[0]);
-			m_vao->storeInBuffer(2, 2, textureCoords.size(), (GLfloat*)&textureCoords[0]);
-			m_vao->storeInElementBuffer(indices.size(), &indices[0]);
+			m_vao->storeInBuffer(0, 3, (GLint)positions.size(), (GLfloat*)&positions[0]);
+			m_vao->storeInBuffer(1, 3, (GLint)normals.size(), (GLfloat*)&normals[0]);
+			m_vao->storeInBuffer(2, 2, (GLint)textureCoords.size(), (GLfloat*)&textureCoords[0]);
+			m_vao->storeInElementBuffer((GLint)indices.size(), &indices[0]);
 			m_vao->unbind();
 		}
 

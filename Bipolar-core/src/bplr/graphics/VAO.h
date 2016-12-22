@@ -23,8 +23,8 @@ namespace bplr
 			void bind() const;
 			static void unbind();
 
-			void storeInBuffer(GLuint location, GLuint componentsPerVertex, GLint vertexCount, GLfloat *data, DataUsage usage = STATIC_DRAW);
-			void storeInElementBuffer(GLint vertexCount, GLuint* data, DataUsage usage = STATIC_DRAW);
+			void storeInBuffer(GLuint location, GLuint componentsPerVertex, GLuint vertexCount, GLfloat *data, DataUsage usage = STATIC_DRAW);
+			void storeInElementBuffer(GLuint vertexCount, GLuint* data, DataUsage usage = STATIC_DRAW);
 			void bindEBO() const;
 
 			GLuint getVertexCount() const;

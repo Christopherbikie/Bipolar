@@ -232,7 +232,7 @@ namespace bplr
 		mat4 mat4::perspective(float fov, float aspectRatio, float near, float far)
 		{
 			mat4 result;
-			float yScale = 1.0f / tan(fov / 2.0f * PI / 180) * aspectRatio;
+			float yScale = 1.0f / tanf(fov / 2.0f * PIf / 180) * aspectRatio;
 			float xScale = yScale / aspectRatio;
 			float frustumLength = far - near;
 
@@ -281,24 +281,24 @@ namespace bplr
 		mat4 mat4::rotate(const vec3& rotation)
 		{
 			mat4 xRot = mat4(1.0f);
-			float sinX = sin(rotation.x * PI / 180);
-			float cosX = cos(rotation.x * PI / 180);
+			float sinX = sinf(rotation.x * PIf / 180);
+			float cosX = cosf(rotation.x * PIf / 180);
 			xRot.elements[1 + 1 * 4] = cosX;
 			xRot.elements[2 + 1 * 4] = -sinX;
 			xRot.elements[1 + 2 * 4] = sinX;
 			xRot.elements[2 + 2 * 4] = cosX;
 
 			mat4 yRot = mat4(1.0f);
-			float sinY = sin(rotation.y * PI / 180);
-			float cosY = cos(rotation.y * PI / 180);
+			float sinY = sinf(rotation.y * PIf / 180);
+			float cosY = cosf(rotation.y * PIf / 180);
 			yRot.elements[0 + 0* 4] = cosY;
 			yRot.elements[2 + 0 * 4] = sinY;
 			yRot.elements[0 + 2 * 4] = -sinY;
 			yRot.elements[2 + 2 * 4] = cosY;
 
 			mat4 zRot = mat4(1.0f);
-			float sinZ = sin(rotation.z * PI / 180);
-			float cosZ = cos(rotation.z * PI / 180);
+			float sinZ = sinf(rotation.z * PIf / 180);
+			float cosZ = cosf(rotation.z * PIf / 180);
 			zRot.elements[0 + 0 * 4] = cosZ;
 			zRot.elements[1 + 0 * 4] = -sinZ;
 			zRot.elements[0 + 1 * 4] = sinZ;
