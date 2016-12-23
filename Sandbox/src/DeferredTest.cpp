@@ -76,7 +76,7 @@ void DeferredTest::init(graphics::Window* window)
 	input::Keyboard::addKeyHandler(GLFW_KEY_R, inputHandler);
 
 	gBuffer = new graphics::GBuffer;
-	gBuffer->init(1366, 768);
+	gBuffer->init(1366, 768, 4);
 }
 
 void DeferredTest::update(float delta)
@@ -96,7 +96,7 @@ void DeferredTest::render()
 	graphics::clearFramebuffer();
 	gBuffer->bindForReading();
 
-	gBuffer->drawBuffers(1366, 768);
+	gBuffer->drawBuffers();
 }
 
 FrameBufferTestInputHandler::FrameBufferTestInputHandler(DeferredTest* layer)

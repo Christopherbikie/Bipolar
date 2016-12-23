@@ -53,13 +53,24 @@ namespace bplr
 			glTexImage2D(cubemapFace, 0, GL_RGBA, m_width, m_height, 0, GL_BGRA, GL_UNSIGNED_BYTE, textureData);
 		}
 
-		Texture::Texture(GLuint width, GLuint height)
+		Texture::Texture(GLuint width, GLuint height, GLuint precision)
 			: m_width(width), m_height(height)
 		{
 			glGenTextures(1, &m_location);
 			glBindTexture(GL_TEXTURE_2D, m_location);
 
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_width, m_height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+			switch (precision)
+			{
+			case 8:
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_width, m_height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+				break;
+			case 16:
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, m_width, m_height, 0, GL_RGB, GL_FLOAT, nullptr);
+				break;
+			case 32:
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB32F, m_width, m_height, 0, GL_RGB, GL_FLOAT, nullptr);
+				break;
+			}
 
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

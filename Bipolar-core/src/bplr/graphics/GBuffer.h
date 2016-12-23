@@ -9,32 +9,24 @@ namespace bplr
 		class GBuffer
 		{
 		public:
-			enum GBufferTextureType
-			{
-				GBUFFER_TEXTURE_TYPE_POSITION,
-				GBUFFER_TEXTURE_TYPE_NORMAL,
-				GBUFFER_TEXTURE_TYPE_ALBEDO,
-				GBUFFER_TEXTURE_TYPE_SPECULAR,
-				GBUFFER_NUM_TEXURES,
-			};
-
 			GBuffer();
 			~GBuffer();
 
-			void init(GLuint width, GLuint height);
+			void init(GLsizei width, GLsizei height, GLuint numColorBuffers);
 
 			void bindForReading() const;
 			void bindForWriting() const;
-			void setReadBuffer(GBufferTextureType buffer) const;
+			void setReadBuffer(GLuint bufferIndex) const;
 
 			void clear() const;
 
-			void drawBuffers(GLsizei width, GLsizei height) const;
+			void drawBuffers() const;
 
 		private:
+			GLsizei m_width, m_height;
 			GLuint m_location;
-			GLuint m_textures[GBUFFER_NUM_TEXURES];
 			GLuint m_depthTexture;
+			std::vector<Texture*> m_textures;
 		};
 	}
 }

@@ -15,8 +15,7 @@ namespace bplr
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
 
-		Framebuffer::Framebuffer(bool enableDepthTest)
-			: m_enableDepthTest(enableDepthTest)
+		Framebuffer::Framebuffer()
 		{
 			glGenFramebuffers(1, &m_location);
 			bind();
@@ -46,10 +45,6 @@ namespace bplr
 		void Framebuffer::bind() const
 		{
 			glBindFramebuffer(GL_FRAMEBUFFER, m_location);
-			if (m_enableDepthTest)
-				glEnable(GL_DEPTH_TEST);
-			else
-				glDisable(GL_DEPTH_TEST);
 		}
 
 		void Framebuffer::bindTexture(Shader *shader, std::string uniformName) const
@@ -57,22 +52,9 @@ namespace bplr
 			m_texture->bind(shader, uniformName.c_str());
 		}
 
-		void Framebuffer::setClearColour(math::vec3 colour)
-		{
-			m_clearColour = colour;
-		}
-
 		void Framebuffer::clear() const
 		{
-			if (m_enableDepthTest)
-				clearFramebuffer();
-			else
-				glClear(GL_COLOR_BUFFER_BIT);
-		}
-
-		void Framebuffer::setEnableDepthTest(bool enable)
-		{
-			m_enableDepthTest = enable;
+			clearFramebuffer();
 		}
 	}
 }

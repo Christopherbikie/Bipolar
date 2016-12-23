@@ -58,5 +58,5 @@ void main()
 
 	vec3 specular = specularIntensity * light.colour * specularColour;
 
-	color = vec4(ambient + albedo + specular + reflectionColor, 1.0f);
+	color = vec4(ambient + albedo + specular/* + reflectionColor*/, 1.0f);
 }
