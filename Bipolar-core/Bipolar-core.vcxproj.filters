@@ -117,9 +117,6 @@
     <ClInclude Include="src\bplr\graphics\TextureStore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\bplr\graphics\FrameBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\bplr\scene\Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -150,7 +147,7 @@
     <ClInclude Include="src\bplr\scene\System.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\bplr\graphics\GBuffer.h">
+    <ClInclude Include="src\bplr\graphics\Framebuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -239,9 +236,6 @@
     <ClCompile Include="src\bplr\graphics\TextureStore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\bplr\graphics\FrameBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\bplr\scene\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -263,7 +257,7 @@
     <ClCompile Include="src\bplr\scene\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\bplr\graphics\GBuffer.cpp">
+    <ClCompile Include="src\bplr\graphics\Framebuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -33,7 +33,7 @@ void DeferredTest::init(graphics::Window* window)
 	scene = new scene::Scene;
 
 	// Create Camera
-	camera = new scene::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, 1366.0f / 768.0f);
+	camera = new scene::FPSCamera(math::vec3(0.0f, 0.0f, 2.0f), math::vec3(0.0f), 60.0f, (GLfloat)m_window->getWidth() / m_window->getHeight());
 
 	// Create Player
 	std::shared_ptr<scene::Entity> player((new scene::Entity())
@@ -75,8 +75,7 @@ void DeferredTest::init(graphics::Window* window)
 	input::Keyboard::addKeyHandler(GLFW_KEY_ESCAPE, inputHandler);
 	input::Keyboard::addKeyHandler(GLFW_KEY_R, inputHandler);
 
-	gBuffer = new graphics::GBuffer;
-	gBuffer->init(1366, 768, 4);
+	gBuffer = new graphics::Framebuffer(m_window->getWidth(), m_window->getHeight(), 4);
 }
 
 void DeferredTest::update(float delta)

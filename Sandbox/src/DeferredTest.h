@@ -27,7 +27,7 @@ private:
 	scene::FPSCamera* camera;
 	scene::Scene* scene;
 
-	graphics::GBuffer* gBuffer;
+	graphics::Framebuffer* gBuffer;
 };
 
 class FrameBufferTestInputHandler : public input::KeyEventHandler
